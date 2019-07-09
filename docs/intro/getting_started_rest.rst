@@ -80,7 +80,7 @@ First, we need to be able to log in with someone. Let's start with registering a
          Email address of user.
       roles : :type:`string[]`
          Collection of roles user has access.
-      securityQuestions : object[], :required:`required` *if using question verification*
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
 
 Example Response:

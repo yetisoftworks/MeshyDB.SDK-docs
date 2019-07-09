@@ -13,45 +13,47 @@ Meshy DB is a relational json solution as a backend for rapid and flexible imple
 | Create new users to allow access. Allow logged in users to manage their information and passwords.
 
 .. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Getting Started
-   
-   intro/getting_started_rest
-   intro/getting_started_csharp
-   intro/getting_started_nodejs
-   
-.. toctree::
-   :maxdepth: 3
-   :hidden:
-   :caption: Authorization
-   
-   authorization/generating_token
-   authorization/refreshing_token
+    :maxdepth: 1
+    :hidden:
+    :caption: Getting Started
+
+    intro/getting_started_rest
+    intro/getting_started_csharp
+    intro/getting_started_nodejs
    
 .. toctree::
-   :maxdepth: 3
-   :hidden:
-   :caption: Data
-   
-   data/creating
-   data/updating
-   data/searching
-   data/deleting
+    :maxdepth: 3
+    :hidden:
+    :caption: Authorization
+
+    authorization/generating_token
+    authorization/refreshing_token
    
 .. toctree::
-   :maxdepth: 3
-   :hidden:
-   :caption: Users
+    :maxdepth: 3
+    :hidden:
+    :caption: Data
+
+    data/creating
+    data/retrieving
+    data/updating
+    data/searching
+    data/deleting
    
-   users/registering_user
-   users/registering_anonymoususer
-   users/retrieving_self
-   users/updating_self
-   users/forgetting_password
-   users/resetting_password
-   users/changing_password
-   users/retrieving_userinfo
-   users/logging_out
-   users/verifying_user
-   users/checking_hash
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+    :caption: Users
+
+    users/registering_user
+    users/registering_anonymoususer
+    users/retrieving_self
+    users/updating_self
+    users/forgetting_password
+    users/resetting_password
+    users/changing_password
+    users/retrieving_userinfo
+    users/logging_out
+    users/verifying_user
+    users/checking_hash
+    users/updating_questions

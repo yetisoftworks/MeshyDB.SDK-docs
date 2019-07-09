@@ -7,25 +7,25 @@
    <h4>Parameters</h4>
    
 --------
-Creating
+Retrieving
 --------
-Create new data into Mesh collection. If it is the first time this Mesh is being used a new collection will be created automatically.
+Retrieve single item from Mesh collection.
 
 .. tabs::
 
-   .. group-tab:: REST
+    .. group-tab:: REST
    
-      .. code-block:: http
+        .. code-block:: http
 
-         POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
-         Authentication: Bearer {access_token}
-         Content-Type: application/json
-         tenant: {tenant}
-         
-            {
-               "firstName": "Bob",
-               "lastName": "Bobberson"
-            }
+            GET https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
+            Authentication: Bearer {access_token}
+            Content-Type: application/json
+            tenant: {tenant}
+
+                {
+                    "firstName": "Bob",
+                    "lastName": "Bobberson"
+                }
             
       |parameters|
 
@@ -37,7 +37,9 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
-   
+      id : :type:`string`, :required:`required`
+         Idenfities location of what Mesh data to retrieve.
+
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -52,10 +54,7 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
          var client = new MeshyClient(accountName, tenant, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
          
-         var person = await connection.Meshes.CreateAsync(new Person(){
-           FirstName="Bob",
-           LastName="Bobberson"
-         });
+         var person = await connection.Meshes.GetData<Person>(id);
 
       |parameters|
 
@@ -69,23 +68,21 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
          Username of user.
       mesh : :type:`string`, default: class name
          Identifies name of mesh collection. e.g. person.
+      id : :type:`string`, :required:`required`
+         Idenfities location of what Mesh data to retrieve.
 
-   .. group-tab:: NodeJS
+    .. group-tab:: NodeJS
       
-      .. code-block:: javascript
+        .. code-block:: javascript
          
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
+            var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
 
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                        var refreshToken = meshyConnection.meshes.create(meshName, 
-                                                                        {
-                                                                           firstName:"Bob",
-                                                                           lastName:"Bobberson"
-                                                                        })
-                                                                 .then(function(result) { });
-               }); 
-      
+            client.loginAnonymously(username)
+                  .then(function (meshyConnection){
+                            var refreshToken = meshyConnection.meshes.get(meshName, id)
+                                                                     .then(function(result) { });
+                  }); 
+
       |parameters|
 
       tenant : :type:`string`, :required:`required`
@@ -98,13 +95,15 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
          Username of user.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
-         
+      id : :type:`string`, :required:`required`
+         Idenfities location of what Mesh data to retrieve.
+
 Example Response:
 
 .. code-block:: json
 
-   {
-      "_id":"5c78cc81dd870827a8e7b6c4",
-      "firstName": "Bob",
-      "lastName": "Bobberson"
-   }
+    {
+        "_id":"5c78cc81dd870827a8e7b6c4",
+        "firstName": "Bob",
+        "lastName": "Bobberson"
+    }

@@ -118,13 +118,13 @@ Example Response:
 
 .. code-block:: json
 
-  {
-    "page": 1,
-    "pageSize": 25,
-    "results": [{
-                 "_id":"5c78cc81dd870827a8e7b6c4",
-                 "firstName": "Bobbo",
-                 "lastName": "Bobberson"
-               }],
-    "totalRecords": 1
-  }
+   {
+      "page": 1,
+      "pageSize": 25,
+      "results": [{
+                     "_id":"5c78cc81dd870827a8e7b6c4",
+                     "firstName": "Bobbo",
+                     "lastName": "Bobberson"
+                 }],
+      "totalRecords": 1
+   }

@@ -21,7 +21,7 @@ Using the token request made to generate an access token, a refresh token will a
          POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
          Content-Type: application/x-www-form-urlencoded
          tenant: {tenant}
-         
+
             client_id={publicKey}&
             grant_type=refresh_token&
             refresh_token={refresh_token}
@@ -70,13 +70,13 @@ Using the token request made to generate an access token, a refresh token will a
       .. code-block:: javascript
          
          var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
-         
+
          client.login(username,password)
                .then(function (meshyConnection){
-                  var refreshToken = meshyConnection.retrievePersistanceToken();
-                     
-                  client.loginWithPersistance(refreshToken)
-                        .then(function(refreshedMeshyConnection) { });
+                        var refreshToken = meshyConnection.retrievePersistanceToken();
+
+                        client.loginWithPersistance(refreshToken)
+                              .then(function(refreshedMeshyConnection) { });
                });
       
       |parameters|
@@ -98,9 +98,9 @@ Example Response:
 
 .. code-block:: json
 
-  {
-    "access_token": "ey...",
-    "expires_in": 3600,
-    "token_type": "Bearer",
-    "refresh_token": "ab23cd3343e9328g"
-  }
+   {
+      "access_token": "ey...",
+      "expires_in": 3600,
+      "token_type": "Bearer",
+      "refresh_token": "ab23cd3343e9328g"
+   }

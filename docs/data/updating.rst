@@ -23,8 +23,8 @@ Update Mesh data in collection by id.
          tenant: {tenant}
 
          {
-          "firstName": "Bobbo",
-          "lastName": "Bobberson"
+            "firstName": "Bobbo",
+            "lastName": "Bobberson"
          }
 
       |parameters|
@@ -104,8 +104,8 @@ Example Response:
 
 .. code-block:: json
 
-  {
-    "_id":"5c78cc81dd870827a8e7b6c4",
-    "firstName": "Bobbo",
-    "lastName": "Bobberson"
-  }
+   {
+      "_id":"5c78cc81dd870827a8e7b6c4",
+      "firstName": "Bobbo",
+      "lastName": "Bobberson"
+   }

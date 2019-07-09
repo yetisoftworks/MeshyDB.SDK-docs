@@ -32,7 +32,7 @@ Create a shortlived access token to be used for authorized API calls. Typically 
       (Form-encoding removed and line breaks added for readability)
 
       |parameters|
-      
+
       tenant : :type:`string`, :required:`required`
          Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName : :type:`string`, :required:`required`
@@ -48,8 +48,8 @@ Create a shortlived access token to be used for authorized API calls. Typically 
    
       .. code-block:: c#
 
-        var client = new MeshyClient(accountName, tenant, publicKey);
-        var connection = client.LoginWithPassword(username, password);
+         var client = new MeshyClient(accountName, tenant, publicKey);
+         var connection = client.LoginWithPassword(username, password);
 
       |parameters|
 
@@ -90,9 +90,9 @@ Example Response:
 
 .. code-block:: json
 
-  {
-    "access_token": "ey...",
-    "expires_in": 3600,
-    "token_type": "Bearer",
-    "refresh_token": "ab23cd3343e9328g"
-  }
+   {
+      "access_token": "ey...",
+      "expires_in": 3600,
+      "token_type": "Bearer",
+      "refresh_token": "ab23cd3343e9328g"
+   }

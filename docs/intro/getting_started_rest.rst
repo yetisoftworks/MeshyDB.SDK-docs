@@ -83,7 +83,7 @@ First, we need to be able to log in with someone. Let's start with registering a
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
 
-Example Response:
+Example Response: 
 
 .. code-block:: json
 

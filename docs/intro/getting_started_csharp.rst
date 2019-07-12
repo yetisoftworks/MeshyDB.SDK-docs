@@ -144,7 +144,7 @@ Example Response:
     "refresh_token": "ab23cd3343e9328g"
   }
  
- Once we login we can access our connection staticly.
+Once we login we can access our connection staticly.
 
 .. tabs::
 
@@ -234,6 +234,11 @@ Let's see if we can find Bobbo.
    
       .. code-block:: c#
 
+         var filter = "{ \"firstName\": \"Bobbo\" }";
+         var sort = "";
+         var page = 1;
+         var pageSize = 25;
+
          var pagedPersonResult = await MeshyClient.CurrentConnection.Meshes.SearchAsync<Person>(filter, sort, page, pageSize);
 
       |parameters|
@@ -295,3 +300,5 @@ Now the user is complete. Let us sign out so someone else can have a try.
       |parameters|
 
       No parameters provided. The client is aware of who needs to be signed out.
+
+Upon signing out we will clear our connection allowing another user to now be logged in.

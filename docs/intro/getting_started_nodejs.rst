@@ -132,7 +132,7 @@ We have a client; we have a user let's make a connection!
                .catch(function(error) { }); 
 
          // Or log in anonomously if we made an anonymous user
-		   client.loginAnonmously(username)
+         client.loginAnonmously(username)
                .then(function (connection) { meshyConnection = connection; })
                .catch(function(error) { });
       

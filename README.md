@@ -1,4 +1,4 @@
-# MeshyDb.SDK
+# MeshyDB.SDK [![Documentation Status](https://readthedocs.org/projects/meshydbsdk/badge/?version=latest)](https://docs.meshydb.com/en/latest/?badge=latest)
 
 Before you integrate the MeshyDB SDK, create a free account at https://meshydb.com
 

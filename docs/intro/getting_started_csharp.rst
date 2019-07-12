@@ -28,12 +28,12 @@ Let's install the `MeshyDB.SDK <https://www.nuget.org/packages/MeshyDB.SDK/>`_ N
 
    Install-Package MeshyDb.SDK
 
-Now we are configured and we can get started!
+Now we are installed and we can get started!
 
------
-Login
------
-Let's log in using our MeshyDB credentials.
+----------
+Initialize
+----------
+Let's start with initializing our MeshyDB Client. This will allow us register a new user next!
 
 .. tabs::
    
@@ -41,25 +41,97 @@ Let's log in using our MeshyDB credentials.
    
       .. code-block:: c#
    
-         var client = new MeshyClient(accountName, tenant, publicKey);
-         var connection = client.LoginWithPassword(username, password);
+         var client = MeshyClient.Initialize(accountName, publicKey);
          
-         // Or log in anonomously
-         connection = client.LoginAnonymouslyAsync(username);
-         
+         // Or if we want to use a different tenant
+
+         client = MeshyClient.Initialize(accountName, tenant, publicKey);
+
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
+      tenant : :type:`string`, :required:`required`
+         Indicates which tenant data to use. If not provided, it will use the configured default.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
+
+-------------
+Register User
+-------------
+Using our client we can register a user. Optionally, we can register an anonymous user and skip to logging in.
+
+If you have yet to do any configuration through the admin portal, you will by default be required to supply security questions.
+
+If you wish to use email or text message, we can go to Configuration under your tenant you initialized.
+
+.. tabs::
+   
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+         var registerUser = new RegisterUser(username,password);
+         registerUser.EmailAddress = "test@test.com";
+         registerUser.PhoneNumber = "+15551234567";
+
+         var securityQuestions = new List<SecurityQuestion>();
+
+         securityQuestions.Add(new SecurityQuestions() {
+            Question = "What is the most magical place in the universe?",
+            Answer = "MeshyDB!"
+         });
+         
+         registerUser.SecurityQuestions = securityQuestions;
+         
+         var hash = client.RegisterUser(registerUser);
+         
+         // Or we just register an anonymous user and take the quick way around
+
+         var anonymousUser = client.RegisterAnonymousUser();
+
+      |parameters|
+
       username : :type:`string`, :required:`required`
          User name.
       password : :type:`string`, :required:`required`
          User password.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of user.
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
+         Collection of questions and answers used for password recovery if question security is configured.
 
+Once we register a user a hash may be returned. This is used to verify the newly registered user.
+
+If we are using question verification by default it will be null since they are automatically verified.
+
+However, if we are using text or email a verification code will be sent.
+
+Once the verification code has been recieved we will need to verify the user.
+
+-----
+Login
+-----
+We have a client, we have a user lets make a connection!
+
+.. tabs::
+   
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+   
+         var connection = await client.LoginWithPassword(username, password);
+         
+         // Or log in anonomously if we made an anonymous user
+         connection = await client.LoginAnonymouslyAsync(anonymousUser.Username);
+         
+      |parameters|
+
+      username : :type:`string`, :required:`required`
+         User name.
+      password : :type:`string`, :required:`required`
+         User password.
 
 Example Response:
 
@@ -72,10 +144,20 @@ Example Response:
     "refresh_token": "ab23cd3343e9328g"
   }
  
+ Once we login we can access our connection staticly.
+
+.. tabs::
+
+   .. group-tab:: C#
+
+      .. code-block:: c#
+
+         connection = MeshyClient.CurrentConnection;
+
 -----------
 Create data
 -----------
-Now that we are logged in we can use our Bearer token to authenticate requests with MeshyDB and create some data.
+We can use our newly authenticated user to make requests with MeshyDB and create some data.
 
 The data object can whatever information you would like to capture. The following example will have some data fields with example data.
 
@@ -84,23 +166,23 @@ The data object can whatever information you would like to capture. The followin
    .. group-tab:: C#
    
       .. code-block:: c#
-
-         // Mesh is derived from class name
-         public class Person: MeshData
+         
+         // Mesh Name can be overriden by attribute, otherwise by default it is derived from class name
+         [MeshName("Person")]
+         public class Person : MeshData
          {
            public string FirstName { get; set; }
            public string LastName { get; set; }
          }
 
-         var person = await connection.Meshes.CreateAsync(new Person(){
+         var person = await MeshyClient.CurrentConnection.Meshes.CreateAsync(new Person() {
            FirstName="Bob",
            LastName="Bobberson"
          });
 
       |parameters|
 
-      mesh : :type:`string`, :required:`required`, default: class name
-         Identifies name of mesh collection. e.g. person.
+      No parameters provided.
 
 Example Response:
 
@@ -111,7 +193,7 @@ Example Response:
     "firstName": "Bob",
     "lastName": "Bobberson"
   }
-  
+
 -----------
 Update data
 -----------
@@ -125,12 +207,11 @@ If we need to make a modificaiton let's update our Mesh!
 
          person.FirstName = "Bobbo";
 
-         person = await connection.Meshes.UpdateAsync(person);
+         person = await MeshyClient.CurrentConnection.Meshes.UpdateAsync(person);
 
       |parameters|
 
-      mesh : :type:`string`, :required:`required`, default: class name
-         Identifies name of mesh collection. e.g. person. The id of the person to be updated will be derived from the object.
+      No parameters provided.
 
 Example Response:
 
@@ -153,15 +234,13 @@ Let's see if we can find Bobbo.
    
       .. code-block:: c#
 
-         var pagedPersonResult = await connection.Meshes.SearchAsync<Person>(filter, page, pageSize);
+         var pagedPersonResult = await MeshyClient.CurrentConnection.Meshes.SearchAsync<Person>(filter, sort, page, pageSize);
 
       |parameters|
 
-      mesh : :type:`string`, :required:`required`, default: class name
-         Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Filter criteria for search. Uses MongoDB format.
-      orderby : :type:`string`
+      sort : :type:`string`
          How to order results. Uses MongoDB format.
       page : :type:`integer`
          Page number of users to bring back.
@@ -194,12 +273,11 @@ We are now done with our data, so let us clean up after ourselves.
    
       .. code-block:: c#
       
-         await connection.Meshes.DeleteAsync(person);
+         await MeshyClient.CurrentConnection.Meshes.DeleteAsync(person);
 
       |parameters|
 
-      mesh : :type:`string`, :required:`required`, default: class name
-         Identifies name of mesh collection. e.g. person. The id of the person to be deleted will be derived from the object.
+      No parameters provided.
 
 --------
 Sign out
@@ -212,7 +290,7 @@ Now the user is complete. Let us sign out so someone else can have a try.
    
       .. code-block:: c#
 
-         await connection.SignoutAsync();
+         await MeshyClient.CurrentConnection.SignoutAsync();
          
       |parameters|
 

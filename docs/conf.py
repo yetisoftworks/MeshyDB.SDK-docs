@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'MeshyDB'
-copyright = '2019, Yetisoftworks'
-author = 'Yetisoftworks'
+copyright = '2019, Yeti Softworks'
+author = 'Yeti Softworks'
 
 # The short X.Y version
 version = ''

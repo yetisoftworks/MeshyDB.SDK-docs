@@ -22,44 +22,122 @@ Now that we have the required information let's start coding!
 
 The supporting SDK is open source and your able to use a browser or NodeJS application.
 
-Let's install the `MeshyDB.SDK <https://www.nuget.org/packages/MeshyDB.SDK/>`_ NuGet package with the following command:
+Let's install the `MeshyDB.SDK <https://www.npmjs.com/package/@meshydb/sdk/>`_ NPM package with the following command:
 
-.. code-block:: powershell
+.. code-block:: console
 
    npm install @meshydb/sdk
 
 Now we are configured and we can get started!
 
+----------
+Initialize
+----------
+Let's start with initializing our MeshyDB Client. This will allow us to register a new user next! 
+
+.. tabs::
+   
+   .. group-tab:: NodeJS
+   
+      .. code-block:: javascript
+   
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         // Or if we want to use a different tenant
+
+         client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      tenant : :type:`string`, :required:`required`
+         Indicates which tenant data to use. If not provided, it will use the configured default.
+      publicKey : :type:`string`, :required:`required`
+         Public accessor for application.
+
+-------------
+Register User
+-------------
+Using our client, we can register a user. Optionally, we can register an anonymous user and skip to logging in.
+
+If you have yet to do any configuration through the admin portal, you will by default be required to supply security questions.
+
+If you wish to use email or text message, we can go to Configuration under your tenant you initialized.
+
+.. tabs::
+   
+   .. group-tab:: NodeJS
+   
+      .. code-block:: javascript
+
+         var registerUser = { 
+                              username: useranme, 
+                              password: password,
+                              emailAddress: "test@test.com",
+                              phoneNumber: "+15551234567",
+                              securityQuestions: [
+                                 {
+                                    question:  "What is the most magical place in the universe?",
+                                    answer:  "MeshyDB!"
+                                 }
+                              ]
+         };
+         
+         client.registerUser(registerUser)
+               .then(function(hash){ });
+         
+         // Or we just register an anonymous user and take the quick way around
+
+         client.registerAnonymousUser()
+               .then(function(user){ });
+
+      |parameters|
+
+      username : :type:`string`, :required:`required`
+         User name.
+      password : :type:`string`, :required:`required`
+         User password.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of user.
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
+         Collection of questions and answers used for password recovery if question security is configured.
+
+Once we register a user a hash may be returned. This is used to verify the newly registered user.
+
+If we are using question verification by default it will be null since they are automatically verified.
+
+However, if we are using text or email a verification code will be sent.
+
+Once the verification code has been received, we will need to verify the user.
+
+
 -----
 Login
 -----
-Let's log in using our MeshyDB credentials.
+We have a client; we have a user let's make a connection! 
 
 .. tabs::
    
    .. group-tab:: NodeJS
       
       .. code-block:: javascript
-         
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
-
+      
          var meshyConnection;
-        
-         client.login(username,password)
-                 .then(function (connection) { meshyConnection = connection; });
-				 
-		// Or log in anonomously
-		client.loginAnonmously(username)
-				.then(function (connection) { meshyConnection = connection; });
+
+         client.login(username, password)
+               .then(function(connection) { meshyConnection = connection; })
+               .catch(function(error) { }); 
+
+         // Or log in anonomously if we made an anonymous user
+		   client.loginAnonmously(username)
+				   .then(function (connection) { meshyConnection = connection; })
+               .catch(function(error) { });
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
-      publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
       username : :type:`string`, :required:`required`
          User name.
       password : :type:`string`, :required:`required`
@@ -77,10 +155,20 @@ Example Response:
     "refresh_token": "ab23cd3343e9328g"
   }
  
+ Once we login we can access our connection staticly.
+
+.. tabs::
+
+   .. group-tab:: C#
+
+      .. code-block:: c#
+
+         meshyConnection = MeshyClient.CurrentConnection;
+
 -----------
 Create data
 -----------
-Now that we are logged in we can use our Bearer token to authenticate requests with MeshyDB and create some data.
+We can use our newly authenticated user to make requests with MeshyDB and create some data.
 
 The data object can whatever information you would like to capture. The following example will have some data fields with example data.
 
@@ -95,8 +183,10 @@ The data object can whatever information you would like to capture. The followin
                             lastName:"Bobberson"
                       };
                       
-         meshyConnection.meshes.create(meshName, person)
-                               .then(function(result) { person = result; });
+         MeshyClient.currentConnection
+                    .meshes
+                    .create(meshName, person)
+                    .then(function(result) { person = result; });
       
       |parameters|
 
@@ -116,7 +206,7 @@ Example Response:
 -----------
 Update data
 -----------
-If we need to make a modificaiton let's update our Mesh!
+If we need to make a modification let's update our Mesh! 
 
 .. tabs::
 
@@ -126,8 +216,10 @@ If we need to make a modificaiton let's update our Mesh!
 
         person.firstName = "Bobbo";
         
-        meshyConnection.meshes.update(meshName, person, person._id)
-                              .then(function(result){ person = result; });
+        MeshyClient.currentConnection
+                   .meshes
+                   .update(meshName, person, person._id)
+                   .then(function(result){ person = result; });
       
       |parameters|
 
@@ -159,14 +251,16 @@ Let's see if we can find Bobbo.
       .. code-block:: javascript
          
 
-         meshyConnection.meshes.search(meshName, 
-                                       {
-                                          filter: { "firstName": "Bobbo" },
-                                          orderby: null,
-                                          pageNumber: 1,
-                                          pageSize: 25
-                                       })
-                               .then(function(results){ });
+         MeshyClient.currentConnection
+                    .meshes
+                    .search(meshName, 
+                           {
+                              filter: { "firstName": "Bobbo" },
+                              orderby: null,
+                              pageNumber: 1,
+                              pageSize: 25
+                           })
+                    .then(function(results){ });
       
       |parameters|
 
@@ -208,8 +302,10 @@ We are now done with our data, so let us clean up after ourselves.
       
       .. code-block:: javascript
          
-         meshyConnection.meshes.delete(meshName, person._id)
-                               .then(function(_){ });
+         MeshyClient.currentConnection
+                    .meshes
+                    .delete(meshName, person._id)
+                    .then(function(_){ });
          
       |parameters|
 
@@ -229,9 +325,12 @@ Now the user is complete. Let us sign out so someone else can have a try.
       
       .. code-block:: javascript
 
-         meshyConnection.signout()
-                        .then(function(result) { });
+         MeshyClient.currentConnection
+                    .signout()
+                    .then(function(result) { });
       
       |parameters|
 
       No parameters provided. The client is aware of who needs to be signed out.
+
+Upon signing out we will clear our connection allowing another user to now be logged in.

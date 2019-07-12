@@ -20,7 +20,7 @@ Install SDK
 -----------
 Now that we have the required information let's start coding!
 
-The  supporting SDK is open source and your able to use .Net Framework 4.7.1+ or .Net Core 2.x.
+The supporting SDK is open source and your able to use .Net Framework 4.7.1+ or .Net Core 2.x.
 
 Let's install the `MeshyDB.SDK <https://www.nuget.org/packages/MeshyDB.SDK/>`_ NuGet package with the following command:
 
@@ -28,12 +28,12 @@ Let's install the `MeshyDB.SDK <https://www.nuget.org/packages/MeshyDB.SDK/>`_ N
 
    Install-Package MeshyDb.SDK
 
-Now we are installed and we can get started!
+Now we are installed, and we can get started! 
 
 ----------
 Initialize
 ----------
-Let's start with initializing our MeshyDB Client. This will allow us register a new user next!
+Let's start with initializing our MeshyDB Client. This will allow us to register a new user next! 
 
 .. tabs::
    
@@ -45,7 +45,7 @@ Let's start with initializing our MeshyDB Client. This will allow us register a 
          
          // Or if we want to use a different tenant
 
-         client = MeshyClient.Initialize(accountName, tenant, publicKey);
+         client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
 
       |parameters|
 
@@ -59,7 +59,7 @@ Let's start with initializing our MeshyDB Client. This will allow us register a 
 -------------
 Register User
 -------------
-Using our client we can register a user. Optionally, we can register an anonymous user and skip to logging in.
+Using our client, we can register a user. Optionally, we can register an anonymous user and skip to logging in.
 
 If you have yet to do any configuration through the admin portal, you will by default be required to supply security questions.
 
@@ -70,6 +70,7 @@ If you wish to use email or text message, we can go to Configuration under your 
    .. group-tab:: C#
    
       .. code-block:: c#
+      
          var registerUser = new RegisterUser(username,password);
          registerUser.EmailAddress = "test@test.com";
          registerUser.PhoneNumber = "+15551234567";
@@ -108,12 +109,12 @@ If we are using question verification by default it will be null since they are 
 
 However, if we are using text or email a verification code will be sent.
 
-Once the verification code has been recieved we will need to verify the user.
+Once the verification code has been received, we will need to verify the user.
 
 -----
 Login
 -----
-We have a client, we have a user lets make a connection!
+We have a client; we have a user let's make a connection! 
 
 .. tabs::
    
@@ -167,7 +168,7 @@ The data object can whatever information you would like to capture. The followin
    
       .. code-block:: c#
          
-         // Mesh Name can be overriden by attribute, otherwise by default it is derived from class name
+         // Mesh Name can be overridden by attribute, otherwise by default it is derived from class name
          [MeshName("Person")]
          public class Person : MeshData
          {
@@ -197,7 +198,7 @@ Example Response:
 -----------
 Update data
 -----------
-If we need to make a modificaiton let's update our Mesh!
+If we need to make a modification let's update our Mesh! 
 
 .. tabs::
 

@@ -133,7 +133,7 @@ We have a client; we have a user let's make a connection!
 
          // Or log in anonomously if we made an anonymous user
 		   client.loginAnonmously(username)
-				   .then(function (connection) { meshyConnection = connection; })
+               .then(function (connection) { meshyConnection = connection; })
                .catch(function(error) { });
       
       |parameters|

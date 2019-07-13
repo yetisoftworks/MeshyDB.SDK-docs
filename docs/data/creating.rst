@@ -49,7 +49,7 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
            public string LastName { get; set; }
          }
 
-         var client = new MeshyClient(accountName, tenant, publicKey);
+         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
          
          var person = await connection.Meshes.CreateAsync(new Person(){
@@ -74,7 +74,7 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
       
       .. code-block:: javascript
          
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
 
          client.loginAnonymously(username)
                .then(function (meshyConnection){

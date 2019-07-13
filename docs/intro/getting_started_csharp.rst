@@ -2,19 +2,25 @@
 
 .. role:: type
 
-==
+===
 C#
-==
-The first thing we need is some MeshyDB credentials. If you have not you can get started with a free account at `MeshyDB.com <https://meshydb.com/>`_.
+===
 
-Once we have done that we can go to Account and get our Account Name. Next, we can go to Clients and get the Public Key.
+----------------------
+Before we get started!
+----------------------
+Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>`_.
+
+Once we verify our account we want to gather our Public Key from our default tenant under Clients.
+
+In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
 
 Now that we have the required information let's jump in and see how easy it is to start with MeshyDB.
 
 .. |parameters| raw:: html
 
    <h4>Parameters</h4>
-  
+
 -----------
 Install SDK
 -----------
@@ -43,73 +49,50 @@ Let's start with initializing our MeshyDB Client. This will allow us to register
    
          var client = MeshyClient.Initialize(accountName, publicKey);
          
-         // Or if we want to use a different tenant
-
-         client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
-
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
 
--------------
-Register User
--------------
-Using our client, we can register a user. Optionally, we can register an anonymous user and skip to logging in.
-
-If you have yet to do any configuration through the admin portal, you will by default be required to supply security questions.
-
-If you wish to use email or text message, we can go to Configuration under your tenant you initialized.
+-----------------------
+Register Anonymous User
+-----------------------
+Using our client, we can register an anonymous user.
 
 .. tabs::
    
    .. group-tab:: C#
    
       .. code-block:: c#
-      
-         var registerUser = new RegisterUser(username,password);
-         registerUser.EmailAddress = "test@test.com";
-         registerUser.PhoneNumber = "+15551234567";
 
-         var securityQuestions = new List<SecurityQuestion>();
+         string username = null;
 
-         securityQuestions.Add(new SecurityQuestions() {
-            Question = "What is the most magical place in the universe?",
-            Answer = "MeshyDB!"
-         });
+         var anonymousUser = await client.RegisterAnonymousUserAsync(username);
          
-         registerUser.SecurityQuestions = securityQuestions;
-         
-         var hash = client.RegisterUser(registerUser);
-         
-         // Or we just register an anonymous user and take the quick way around
-
-         var anonymousUser = client.RegisterAnonymousUser();
-
       |parameters|
 
-      username : :type:`string`, :required:`required`
-         User name.
-      password : :type:`string`, :required:`required`
-         User password.
-      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of user.
-      emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of user.
-      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         Collection of questions and answers used for password recovery if question security is configured.
+      username : :type:`string`
+         Identifies user to allow login. If it is not provided a username will be automatically generated.
 
-Once we register a user a hash may be returned. This is used to verify the newly registered user.
+Example Response:
 
-If we are using question verification by default it will be null since they are automatically verified.
+.. code-block:: json
 
-However, if we are using text or email a verification code will be sent.
-
-Once the verification code has been received, we will need to verify the user.
+  {
+    "id": "5c...",
+    "username": "2d4c2a18-2596-4ba9-b657-3413d5974502",
+    "firstName": null,
+    "lastName": null,
+    "verified": false,
+    "isActive": true,
+    "phoneNumber": null,
+    "emailAddress": null,
+    "roles": [],
+    "securityQuestions": [],
+	 "anonymous": true
+  }
 
 -----
 Login
@@ -121,18 +104,13 @@ We have a client; we have a user let's make a connection!
    .. group-tab:: C#
    
       .. code-block:: c#
-   
-         var connection = await client.LoginWithPassword(username, password);
-         
-         // Or log in anonomously if we made an anonymous user
-         connection = await client.LoginAnonymouslyAsync(anonymousUser.Username);
+
+         var  connection = await client.LoginAnonymouslyAsync(anonymousUser.Username);
          
       |parameters|
 
       username : :type:`string`, :required:`required`
-         User name.
-      password : :type:`string`, :required:`required`
-         User password.
+         Identifies user to allow login.
 
 Example Response:
 

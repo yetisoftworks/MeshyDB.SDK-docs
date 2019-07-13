@@ -44,7 +44,7 @@ Update Mesh data in collection by id.
    
       .. code-block:: c#
 
-         var client = new MeshyClient(accountName, tenant, publicKey);
+         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
          var person = await connection.Meshes.GetDataAsync<Person>(id);         
 
@@ -72,7 +72,7 @@ Update Mesh data in collection by id.
       
       .. code-block:: javascript
          
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
          client.loginAnonymously(username)
                .then(function (meshyConnection){

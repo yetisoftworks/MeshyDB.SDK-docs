@@ -47,7 +47,7 @@ Uses result from Forgot password to allow a user to reset their password.
    
       .. code-block:: c#
       
-         var client = new MeshyClient(accountName, tenant, publicKey);
+         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
 
          await client.ResetPasswordAsync(resetHash, newPassword);
 
@@ -73,7 +73,7 @@ Uses result from Forgot password to allow a user to reset their password.
       
       .. code-block:: javascript
          
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
          client.forgotPassword(username)
                 .then(function(passwordResetHash){

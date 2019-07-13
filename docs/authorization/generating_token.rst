@@ -48,7 +48,7 @@ Create a shortlived access token to be used for authorized API calls. Typically 
    
       .. code-block:: c#
 
-         var client = new MeshyClient(accountName, tenant, publicKey);
+         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
          var connection = client.LoginWithPassword(username, password);
 
       |parameters|
@@ -68,7 +68,7 @@ Create a shortlived access token to be used for authorized API calls. Typically 
       
       .. code-block:: javascript
          
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
 
          client.login(username,password)
                .then(function (meshyConnection) { });

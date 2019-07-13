@@ -44,7 +44,7 @@ Using the token request made to generate an access token, a refresh token will a
    
       .. code-block:: c#
 
-        var client = new MeshyClient(accountName, tenant, publicKey);
+        var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
         var connection = client.LoginWithPassword(username, password);
         var refreshToken = connection.RetrievePersistanceToken();
         
@@ -69,7 +69,7 @@ Using the token request made to generate an access token, a refresh token will a
       
       .. code-block:: javascript
          
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
 
          client.login(username,password)
                .then(function (meshyConnection){

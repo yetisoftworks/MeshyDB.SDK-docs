@@ -49,7 +49,7 @@ Filter Mesh data from collection based on query parameters.
    
       .. code-block:: c#
       
-         var client = new MeshyClient(accountName, tenant, publicKey);
+         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
 
          var pagedPersonResult = await connection.Meshes.SearchAsync<Person>(filter, page, pageSize);
@@ -80,7 +80,7 @@ Filter Mesh data from collection based on query parameters.
       
       .. code-block:: javascript
          
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
 
          client.loginAnonymously(username)
                .then(function (meshyConnection){

@@ -44,7 +44,7 @@ Allows the logged in user to change their password.
    
       .. code-block:: c#
       
-         var client = new MeshyClient(accountName, tenant, publicKey);
+         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
          var connection = await client.LoginWithPasswordAsync(username, password);
 
          await connection.UpdatePasswordAsync(previousPassword, newPassword);
@@ -71,7 +71,7 @@ Allows the logged in user to change their password.
       
       .. code-block:: javascript
          
-         var client = initializeMeshyClientWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
          client.login(username, password)
                .then(function (meshyConnection){

@@ -5,9 +5,15 @@
 ====
 REST
 ====
-The first thing we need is some MeshyDB credentials. If you have not you can get started with a free account at `MeshyDB.com <https://meshydb.com/>`_.
 
-Once we have done that we can go to Account and get our Account Name. Next we can go to Clients and get the Public Key.
+----------------------
+Before we get started!
+----------------------
+Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>`_.
+
+Once we verify our account we want to gather our Public Key from our default tenant under Clients.
+
+In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
 
 Now that we have the required information let's jump in and see how easy it is to start with MeshyDB.
 
@@ -15,90 +21,53 @@ Now that we have the required information let's jump in and see how easy it is t
 
    <h4>Parameters</h4>
 
------------
-Create User
------------
-First, we need to be able to log in with someone. Let's start with registering a user.
-   
+--------------------------
+Registering Anonymous User
+--------------------------
+To get started we need a user to log in with. We will make an anonymous user to authenticate with going forward.
+
 .. tabs::
 
    .. group-tab:: REST
    
       .. code-block:: http
       
-        POST https://api.meshydb.com/{accountName}/users/register HTTP/1.1
+        POST https://api.meshydb.com/{accountName}/users/register/anonymous HTTP/1.1
         Content-Type: application/json
-        tenant: {tenant}
          
           {
-            "id": "5c78cc81dd870827a8e7b6c4",
-            "username": "username_testermctesterson",
-            "firstName": "Tester",
-            "lastName": "McTesterton",
-            "verified": true,
-            "isActive": true,
-            "phoneNumber": "+15555555555",
-            "emailAddress": "test@test.com",
-            "roles": [
-                        "admin",
-                        "test"
-                     ],
-            "securityQuestions": [
-                                    {
-                                       "question": "What would you say to this question?",
-                                       "answer": "mceasy123"
-                                    }
-                                 ],
-            "newPassword": "newPassword"
+            "username": "2d4c2a18-2596-4ba9-b657-3413d5974502"
           }
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
          Username of user.
-      newPassword : :type:`string`, :required:`required`
-         Password of user to use for login.
-      id : :type:`string`
-         Identifier of user.
-      firstName : :type:`string`
-         First name of user.
-      lastName : :type:`string`
-         Last name of user.
-      verified : :type:`boolean`
-         Identifies whether or not the user is verified.
-      isActive : :type:`boolean`
-         Identifies whether or not the user is active.
-      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of user.
-      emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of user.
-      roles : :type:`string[]`
-         Collection of roles user has access.
-      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         Collection of questions and answers used for password recovery if question security is configured.
 
 Example Response:
 
 .. code-block:: json
 
-   {
-      "username": "username_testermctesterson",
-      "attempt": 1,
-      "hash": "...",
-      "expires": "1/1/1900",
-      "hint": "..."
-   }
+  {
+    "id": "5c...",
+    "username": "2d4c2a18-2596-4ba9-b657-3413d5974502",
+    "firstName": null,
+    "lastName": null,
+    "verified": false,
+    "isActive": true,
+    "phoneNumber": null,
+    "emailAddress": null,
+    "roles": [],
+    "securityQuestions": [],
+	 "anonymous": true
+  }
    
 -----
 Login
 -----
-Let's log in using our MeshyDB credentials.
+Let's log in with our anonymous user using our MeshyDB credentials.
 
 .. tabs::
 
@@ -108,28 +77,25 @@ Let's log in using our MeshyDB credentials.
 
          POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
          Content-Type: application/x-www-form-urlencoded
-         tenant: {tenant}
          
             client_id={publicKey}&
             grant_type=password&
             username={username}&
-            password={password}&
+            password=nopassword&
             scope=meshy.api offline_access
 
       (Form-encoding removed and line breaks added for readability)
 
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Identifies user to allow login.
       password : :type:`string`, :required:`required`
-         User password.
+         User credentials to login. When anonymous it is static as nopassword.
    
 Example Response:
 
@@ -155,10 +121,9 @@ The data object can whatever information you would like to capture. The followin
    
       .. code-block:: http
 
-         POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
+         POST https://api.meshydb.com/{accountName}/meshes/{meshName} HTTP/1.1
          Authentication: Bearer {access_token}
          Content-Type: application/json
-         tenant: {tenant}
          
             {
                "firstName": "Bob",
@@ -167,13 +132,11 @@ The data object can whatever information you would like to capture. The followin
 
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName: :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token: :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
-      mesh : :type:`string`, :required:`required`
+      meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
 
 Example Response:
@@ -197,10 +160,9 @@ If we need to make a modificaiton let's update our Mesh!
    
       .. code-block:: http
 
-       PUT https://api.meshydb.com/{accountName}/meshes/{mesh}/{id}  HTTP/1.1
+       PUT https://api.meshydb.com/{accountName}/meshes/{meshName}/{id}  HTTP/1.1
        Authentication: Bearer {access_token}
        Content-Type: application/json
-       tenant: {tenant}
          
           {
              "firstName": "Bobbo",
@@ -209,13 +171,11 @@ If we need to make a modificaiton let's update our Mesh!
 
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName: :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token: :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
-      mesh : :type:`string`, :required:`required`
+      meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Idenfities location of what Mesh data to replace.
@@ -241,24 +201,21 @@ Let's see if we can find Bobbo.
    
       .. code-block:: http
 
-         GET https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter}&
+         GET https://api.meshydb.com/{accountName}/meshes/{meshName}?filter={filter}&
                                                                orderby={orderby}&
                                                                page={page}&
                                                                pageSize={pageSize} HTTP/1.1
          Authentication: Bearer {access_token}
-         tenant: {tenant}
          
       (Line breaks added for readability)
 
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName: :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token: :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
-      mesh : :type:`string`, :required:`required`
+      meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Filter criteria for search. Uses MongoDB format.
@@ -295,19 +252,16 @@ We are now done with our data, so let us clean up after ourselves.
    
       .. code-block:: http
       
-         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
+         DELETE https://api.meshydb.com/{accountName}/meshes/{meshName}/{id} HTTP/1.1
          Authentication: Bearer {access_token}
-         tenant: {tenant}
          
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName: :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token: :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
-      mesh : :type:`string`, :required:`required`
+      meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Idenfities location of what Mesh data to replace.
@@ -325,7 +279,6 @@ Now the user is complete. Let us sign out so someone else can have a try.
 
          POST https://auth.meshydb.com/{accountName}/connect/revocation HTTP/1.1
          Content-Type: application/x-www-form-urlencoded
-         tenant: {tenant}
          
            client_id={accountName}&
            grant_type=refresh_token&
@@ -336,8 +289,6 @@ Now the user is complete. Let us sign out so someone else can have a try.
          
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
       accountName: :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       refresh_token: :type:`string`, :required:`required`

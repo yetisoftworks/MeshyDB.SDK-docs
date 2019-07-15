@@ -5,6 +5,10 @@
 ======
 NodeJS
 ======
+
+----------------------
+Before we get started!
+----------------------
 Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>`_.
 
 Once we verify our account we want to gather our Public Key from our default tenant under Clients.
@@ -144,8 +148,8 @@ The data object can whatever information you would like to capture. The followin
       .. code-block:: javascript
         
          var person = {
-                            firstName:"Bob",
-                            lastName:"Bobberson"
+                        firstName:"Bob",
+                        lastName:"Bobberson"
                       };
          
          var meshName = "person";

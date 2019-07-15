@@ -13,6 +13,8 @@ Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>
 
 Once we verify our account we want to gather our Public Key from our default tenant under Clients.
 
+.. images:: http://cdn.meshydb.com/images/getting-started-client.png
+
 In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
 
 Now that we have the required information let's jump in and see how easy it is to start with MeshyDB.
@@ -24,17 +26,13 @@ Now that we have the required information let's jump in and see how easy it is t
 -----------
 Install SDK
 -----------
-Now that we have the required information let's start coding!
-
-The supporting SDK is open source and your able to use .Net Framework 4.7.1+ or .Net Core 2.x.
+The supporting SDK is open source and you are able to use .Net Framework 4.7.1+ or .Net Core 2.x.
 
 Let's install the `MeshyDB.SDK <https://www.nuget.org/packages/MeshyDB.SDK/>`_ NuGet package with the following command:
 
 .. code-block:: powershell
 
    Install-Package MeshyDb.SDK
-
-Now we are installed, and we can get started! 
 
 ----------
 Initialize
@@ -59,7 +57,9 @@ Let's start with initializing our MeshyDB Client. This will allow us to register
 -----------------------
 Register Anonymous User
 -----------------------
-Using our client, we can register an anonymous user.
+Anonymous users are great for associating data to people without having them go through any type of user registration. Simply create the user behind the scenes with a unique identifier and begin recording data for that user.
+
+We will register an anonymous user using our initialized client.
 
 .. tabs::
    
@@ -97,7 +97,7 @@ Example Response:
 -----
 Login
 -----
-We have a client; we have a user let's make a connection! 
+All data interaction must be done on behalf of a user. To start interacting with data establish a connection as that user.
 
 .. tabs::
    

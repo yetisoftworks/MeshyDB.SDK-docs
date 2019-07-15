@@ -13,6 +13,8 @@ Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>
 
 Once we verify our account we want to gather our Public Key from our default tenant under Clients.
 
+.. images:: http://cdn.meshydb.com/images/getting-started-client.png
+
 In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
 
 Now that we have the required information let's jump in and see how easy it is to start with MeshyDB.
@@ -24,6 +26,8 @@ Now that we have the required information let's jump in and see how easy it is t
 --------------------------
 Registering Anonymous User
 --------------------------
+Anonymous users are great for associating data to people without having them go through any type of user registration. Simply create the user behind the scenes with a unique identifier and begin recording data for that user.
+
 To get started we need a user to log in with. We will make an anonymous user to authenticate with going forward.
 
 .. tabs::
@@ -67,7 +71,7 @@ Example Response:
 -----
 Login
 -----
-Let's log in with our anonymous user using our MeshyDB credentials.
+All data interaction must be done on behalf of a user. To start interacting with data establish a connection as that user.
 
 .. tabs::
 

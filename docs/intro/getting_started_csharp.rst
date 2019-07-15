@@ -13,7 +13,10 @@ Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>
 
 Once we verify our account we want to gather our Public Key from our default tenant under Clients.
 
-.. images:: http://cdn.meshydb.com/images/getting-started-client.png
+.. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
+           :alt: Public Key under Clients default tenant
+
+|gettingStarted|
 
 In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
 

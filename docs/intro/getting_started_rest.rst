@@ -51,7 +51,7 @@ To get started we need a user to log in with. We will make an anonymous user to 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
 
 Example Response:
 

@@ -77,7 +77,7 @@ We will register an anonymous user using our initialized client.
       |parameters|
 
       username : :type:`string`
-         Identifies user to allow login. If it is not provided a username will be automatically generated.
+         Unique identifier for user or device. If it is not provided a username will be automatically generated.
 
 Example Response:
 

@@ -33,7 +33,7 @@ Creates a request for password reset that must have the matching data to reset t
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       username : :type:`string`, :required:`required`
-         User name to be reset.
+         Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
          Identifies how many times a request has been made.
 
@@ -54,7 +54,7 @@ Creates a request for password reset that must have the matching data to reset t
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name to be reset.
+         Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
          Identifies how many times a request has been made.
 
@@ -76,7 +76,7 @@ Creates a request for password reset that must have the matching data to reset t
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name to be reset.
+         Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
          Identifies how many times a request has been made.
 

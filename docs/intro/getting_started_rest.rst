@@ -11,7 +11,7 @@ Before we get started!
 ----------------------
 Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>`_.
 
-Once we verify our account we want to gather our Public Key from our default tenant under Clients.
+Once we verify our account, we want to gather our Public Key from our default tenant under Clients.
 
 .. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
            :alt: Public Key under Clients default tenant
@@ -91,7 +91,7 @@ All data interaction must be done on behalf of a user. To start interacting with
             password=nopassword&
             scope=meshy.api offline_access
 
-      (Form-encoding removed and line breaks added for readability)
+      (Form-encoding removed, and line breaks added for readability)
 
       |parameters|
 
@@ -159,7 +159,7 @@ Example Response:
 -----------
 Update data
 -----------
-If we need to make a modificaiton let's update our Mesh!
+If we need to make a modification let's update our Mesh!
 
 .. tabs::
 
@@ -185,7 +185,7 @@ If we need to make a modificaiton let's update our Mesh!
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to replace.
+         Identifies location of what Mesh data to replace.
 
 Example Response:
 
@@ -271,7 +271,7 @@ We are now done with our data, so let us clean up after ourselves.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to replace.
+         Identifies location of what Mesh data to replace.
 
 --------
 Sign out

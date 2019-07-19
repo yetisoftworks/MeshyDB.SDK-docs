@@ -38,7 +38,7 @@ Retrieve single item from Mesh collection.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to retrieve.
+         Identifies location of what Mesh data to retrieve.
 
    .. group-tab:: C#
    
@@ -69,7 +69,7 @@ Retrieve single item from Mesh collection.
       mesh : :type:`string`, default: class name
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to retrieve.
+         Identifies location of what Mesh data to retrieve.
 
     .. group-tab:: NodeJS
       
@@ -96,7 +96,7 @@ Retrieve single item from Mesh collection.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to retrieve.
+         Identifies location of what Mesh data to retrieve.
 
 Example Response:
 

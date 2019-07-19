@@ -27,7 +27,7 @@ Using the token request made to generate an access token, a refresh token will a
             refresh_token={refresh_token}
 
         
-      (Form-encoding removed and line breaks added for readability)
+      (Form-encoding removed, and line breaks added for readability)
 
       |parameters|
 

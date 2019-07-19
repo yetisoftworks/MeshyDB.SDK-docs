@@ -32,7 +32,7 @@ Permanently remove Mesh data from collection.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to replace.
+         Identifies location of what Mesh data to replace.
 
    .. group-tab:: C#
    
@@ -56,7 +56,7 @@ Permanently remove Mesh data from collection.
       meshName : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to replace.
+         Identifies location of what Mesh data to replace.
 		 
    .. group-tab:: NodeJS
       
@@ -83,4 +83,4 @@ Permanently remove Mesh data from collection.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to delete. In this case it will be from the Person mesh.
+         Identifies location of what Mesh data to delete. In this case it will be from the Person mesh.

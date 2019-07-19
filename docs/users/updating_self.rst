@@ -61,19 +61,19 @@ Update details about the logged in user.
       lastName : :type:`string`
          Last name of user.
       verified : :type:`boolean`
-         Identifies whether or not the user is verified.
+         Identifies whether the user is verified.
       isActive : :type:`boolean`
          Identifies whether or not the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of user.
+         Phone number of the user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of user.
+         Email address of the user.
       roles : :type:`string[]`
          Collection of roles user has access.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
       anonymous : :type:`boolean`
-         Identifies whether or not the user is anonymous.
+         Identifies whether the user is anonymous.
 
    .. group-tab:: C#
    
@@ -103,19 +103,19 @@ Update details about the logged in user.
       lastName : :type:`string`
          Last name of user.
       verified : :type:`boolean`
-         Identifies whether or not the user is verified.
+         Identifies whether the user is verified.
       isActive : :type:`boolean`
          Identifies whether or not the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of user.
+         Phone number of the user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of user.
+         Email address of the user.
       roles : :type:`string[]`
          Collection of roles user has access.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
       anonymous : :type:`boolean`
-         Identifies whether or not the user is anonymous.
+         Identifies whether the user is anonymous.
 
    .. group-tab:: NodeJS
       
@@ -158,19 +158,19 @@ Update details about the logged in user.
       lastName : :type:`string`
          Last name of user.
       verified : :type:`boolean`
-         Identifies whether or not the user is verified.
+         Identifies whether the user is verified.
       isActive : :type:`boolean`
          Identifies whether or not the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of user.
+         Phone number of the user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of user.
+         Email address of the user.
       roles : :type:`string[]`
          Collection of roles user has access.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
       anonymous : :type:`boolean`
-         Identifies whether or not the user is anonymous.
+         Identifies whether the user is anonymous.
          
 Example Response:
 

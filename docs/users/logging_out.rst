@@ -25,7 +25,7 @@ Log user out.
           token_type_hint=refresh_token&
           client_id={publicKey}
 
-        (Form-encoding removed and line breaks added for readability)
+        (Form-encoding removed, and line breaks added for readability)
 
       |parameters|
       

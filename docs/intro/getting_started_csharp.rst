@@ -11,7 +11,7 @@ Before we get started!
 ----------------------
 Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>`_.
 
-Once we verify our account we want to gather our Public Key from our default tenant under Clients.
+Once we verify our account, we want to gather our Public Key from our default tenant under Clients.
 
 .. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
            :alt: Public Key under Clients default tenant
@@ -126,7 +126,7 @@ Example Response:
     "refresh_token": "ab23cd3343e9328g"
   }
  
-Once we login we can access our connection staticly.
+Once we login we can access our connection through a static member.
 
 .. tabs::
 

@@ -38,7 +38,7 @@ Update Mesh data in collection by id.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to replace.
+         Identifies location of what Mesh data to replace.
 
    .. group-tab:: C#
    
@@ -65,7 +65,7 @@ Update Mesh data in collection by id.
       mesh : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to replace.
+         Identifies location of what Mesh data to replace.
 
 
    .. group-tab:: NodeJS
@@ -98,7 +98,7 @@ Update Mesh data in collection by id.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Idenfities location of what Mesh data to replace.
+         Identifies location of what Mesh data to replace.
          
 Example Response:
 

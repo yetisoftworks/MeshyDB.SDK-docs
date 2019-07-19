@@ -63,13 +63,13 @@ Creates a new user that can log into the system.
       lastName : :type:`string`
          Last name of user.
       verified : :type:`boolean`
-         Identifies whether or not the user is verified.
+         Identifies whether the user is verified.
       isActive : :type:`boolean`
          Identifies whether or not the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of user.
+         Phone number of the user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of user.
+         Email address of the user.
       roles : :type:`string[]`
          Collection of roles user has access.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
@@ -104,13 +104,13 @@ Creates a new user that can log into the system.
       lastName : :type:`string`
          Last name of user.
       verified : :type:`boolean`
-         Identifies whether or not the user is verified.
+         Identifies whether the user is verified.
       isActive : :type:`boolean`
          Identifies whether or not the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of user.
+         Phone number of the user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of user.
+         Email address of the user.
       roles : :type:`string[]`
          Collection of roles user has access.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
@@ -156,13 +156,13 @@ Creates a new user that can log into the system.
       lastName : :type:`string`
          Last name of user.
       verified : :type:`boolean`
-         Identifies whether or not the user is verified.
+         Identifies whether the user is verified.
       isActive : :type:`boolean`
          Identifies whether or not the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of user.
+         Phone number of the user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of user.
+         Email address of the user.
       roles : :type:`string[]`
          Collection of roles user has access.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*

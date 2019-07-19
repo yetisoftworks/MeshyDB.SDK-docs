@@ -10,7 +10,7 @@
 Generating Token
 ----------------
 
-Create a shortlived access token to be used for authorized API calls. Typically a token will last 3600 seconds(one hour).
+Create a short lived access token to be used for authorized API calls. Typically a token will last 3600 seconds(one hour).
 
 .. tabs::
 
@@ -29,7 +29,7 @@ Create a shortlived access token to be used for authorized API calls. Typically 
             scope=meshy.api offline_access
 
         
-      (Form-encoding removed and line breaks added for readability)
+      (Form-encoding removed, and line breaks added for readability)
 
       |parameters|
 

@@ -70,8 +70,7 @@ Create a short lived access token to be used for authorized API calls. Typically
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
 
-         client.login(username,password)
-               .then(function (meshyConnection) { });
+         var meshyConnection = await client.login(username,password);
       
       |parameters|
 

@@ -73,11 +73,9 @@ Allows the logged in user to change their password.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.login(username, password)
-               .then(function (meshyConnection){
-                     meshyConnection.updatePassword(previousPassword, newPassword)
-                                    .then(function(_) { });
-               }); 
+         var meshyConnection = await client.login(username, password);
+
+         await meshyConnection.updatePassword(previousPassword, newPassword);
       
       |parameters|
 

@@ -76,12 +76,12 @@ Retrieve single item from Mesh collection.
         .. code-block:: javascript
          
             var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+            
+            var anonymousUser = await client.registerAnonymousUser();
 
-            client.loginAnonymously(username)
-                  .then(function (meshyConnection){
-                            var refreshToken = meshyConnection.meshes.get(meshName, id)
-                                                                     .then(function(result) { });
-                  }); 
+            var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+            var meshData = await meshyConnection.meshes.get(meshName, id);
 
       |parameters|
 

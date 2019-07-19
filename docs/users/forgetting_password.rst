@@ -65,8 +65,7 @@ Creates a request for password reset that must have the matching data to reset t
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.forgotPassword(username, attempt)
-               .then(function(passwordResetHash) { });
+         await client.forgotPassword(username, attempt);
       
       |parameters|
 

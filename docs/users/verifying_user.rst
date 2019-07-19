@@ -89,15 +89,14 @@ Marks user as verified.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.verify({
+         await client.verify({
                            username: username,
                            attempt: attempt:
                            hash: hash,
                            expires: expires,
                            hint: hint,
                            verificationCode: verificationCode
-						    })
-               .then(function(_) { });
+						    });
       
       |parameters|
 

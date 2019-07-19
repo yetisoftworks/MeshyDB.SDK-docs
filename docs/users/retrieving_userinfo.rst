@@ -55,11 +55,12 @@ Retrieve user information.
       .. code-block:: javascript
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
          
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                        meshyConnection.getMyUserInfo().then(function(info) { });
-               }); 
+         var info = await meshyConnection.getMyUserInfo();
       
       |parameters|
 

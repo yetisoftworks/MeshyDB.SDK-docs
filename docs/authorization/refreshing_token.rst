@@ -71,13 +71,11 @@ Using the token request made to generate an access token, a refresh token will a
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
 
-         client.login(username,password)
-               .then(function (meshyConnection){
-                        var refreshToken = meshyConnection.retrievePersistanceToken();
+         var meshyConnection = await client.login(username,password);
 
-                        client.loginWithPersistance(refreshToken)
-                              .then(function(refreshedMeshyConnection) { });
-               });
+         var refreshToken = meshyConnection.retrievePersistanceToken();
+
+         var refreshedMeshyConnection = await client.loginWithPersistance(refreshToken);
       
       |parameters|
 

@@ -81,18 +81,18 @@ Filter Mesh data from collection based on query parameters.
       .. code-block:: javascript
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         
+         var anonymousUser = await client.registerAnonymousUser();
 
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                  meshyConnection.meshes.search(meshName, 
-                                                {
-                                                   filter: filter,
-                                                   orderby: orderby,
-                                                   pageNumber: page,
-                                                   pageSize: pageSize
-                                                })
-                                        .then(function(results){ });
-               }); 
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         var pagedResults = await meshyConnection.meshes.search(meshName, 
+                                                               {
+                                                                  filter: filter,
+                                                                  orderby: orderby,
+                                                                  pageNumber: page,
+                                                                  pageSize: pageSize
+                                                               });
       
       |parameters|
       tenant : :type:`string`, :required:`required`

@@ -56,11 +56,11 @@ Retrieve details about the logged in user.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                        meshyConnection.usersService.getSelf()
-                                                    .then(function(self) { });
-               }); 
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         var self = await meshyConnection.usersService.getSelf();
       
       |parameters|
 

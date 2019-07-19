@@ -74,16 +74,16 @@ Update Mesh data in collection by id.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                     meshyConnection.meshes.update(meshName, 
-                                                   {
-                                                      firstName:"Bob",
-                                                      lastName:"Bobberson"
-                                                   },
-                                                   id)
-                                           .then(function(result){ });
-               }); 
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         var meshData = await meshyConnection.meshes.update(meshName, 
+                                                            {
+                                                               firstName:"Bob",
+                                                               lastName:"Bobberson"
+                                                            },
+                                                            id);
       
       |parameters|
 

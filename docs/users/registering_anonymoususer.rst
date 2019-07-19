@@ -62,8 +62,7 @@ Creates an anonymous user that can log into the system.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.registerAnonymousUser(username)
-               .then(function(anonymousUser) { });
+         var anonymousUser = await client.registerAnonymousUser(username);
       
       |parameters|
 

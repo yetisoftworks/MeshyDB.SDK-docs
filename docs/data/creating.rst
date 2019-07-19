@@ -76,15 +76,15 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
 
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                        var refreshToken = meshyConnection.meshes.create(meshName, 
-                                                                        {
-                                                                           firstName:"Bob",
-                                                                           lastName:"Bobberson"
-                                                                        })
-                                                                 .then(function(result) { });
-               }); 
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         var createdMesh = await meshyConnection.meshes.create(meshName, 
+                                                         {
+                                                            firstName:"Bob",
+                                                            lastName:"Bobberson"
+                                                         });
       
       |parameters|
 

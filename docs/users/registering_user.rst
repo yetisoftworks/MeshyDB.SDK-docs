@@ -122,20 +122,19 @@ Creates a new user that can log into the system.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.registerUser({
-                               username: username,
-                               newPassword: newPassword,
-                               id: id,
-                               firstName: firstName,
-                               lastName: lastName,
-                               verified: verified,
-                               isActive: isActive,
-                               phoneNumber: phoneNumber,
-                               emailAddress: emailAddress,
-                               roles: roles,
-                               securityQuestions: securityQuestions
-                             })
-               .then(function(user) { });
+         var user = await client.registerUser({
+                                                username: username,
+                                                newPassword: newPassword,
+                                                id: id,
+                                                firstName: firstName,
+                                                lastName: lastName,
+                                                verified: verified,
+                                                isActive: isActive,
+                                                phoneNumber: phoneNumber,
+                                                emailAddress: emailAddress,
+                                                roles: roles,
+                                                securityQuestions: securityQuestions
+                                             });
       
       |parameters|
 

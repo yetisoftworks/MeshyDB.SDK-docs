@@ -64,11 +64,11 @@ Log user out.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
 
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                        meshyConnection.signout()
-                                       .then(function(result) { });
-               }); 
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         await meshyConnection.signout();
       
       |parameters|
 

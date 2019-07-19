@@ -123,23 +123,23 @@ Update details about the logged in user.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                        meshyConnection.usersService.updateSelf({
-                                                                  username: username,
-                                                                  id: id,
-                                                                  firstName: firstName,
-                                                                  lastName: lastName,
-                                                                  verified:  verified,
-                                                                  isActive: isActive,
-                                                                  phoneNumber: phoneNumber,
-                                                                  emailAddress: emailAddress,
-                                                                  roles: roles,
-															                     securityQuestions: securityQuestions,
-															                     anonymous:  anonymous
-                                                               })
-                                                    .then(function(self) { });
-               }); 
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         var self = await meshyConnection.usersService.updateSelf({
+                                                               username: username,
+                                                               id: id,
+                                                               firstName: firstName,
+                                                               lastName: lastName,
+                                                               verified:  verified,
+                                                               isActive: isActive,
+                                                               phoneNumber: phoneNumber,
+                                                               emailAddress: emailAddress,
+                                                               roles: roles,
+                                                               securityQuestions: securityQuestions,
+                                                               anonymous:  anonymous
+                                                            });
       
       |parameters|
 

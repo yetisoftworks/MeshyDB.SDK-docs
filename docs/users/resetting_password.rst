@@ -75,11 +75,9 @@ Uses result from Forgot password to allow a user to reset their password.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.forgotPassword(username)
-                .then(function(passwordResetHash){
-                        database.resetPassword(passwordResetHash, newPassword)
-                                .then(function(_) { });
-                });
+         var passwordResetHash = await client.forgotPassword(username);
+         
+         await client.resetPassword(passwordResetHash, newPassword)
       
       |parameters|
 

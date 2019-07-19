@@ -64,11 +64,11 @@ Permanently remove Mesh data from collection.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                        meshyConnection.meshes.delete(meshName, id)
-                                              .then(function(_){ });
-               }); 
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         await meshyConnection.meshes.delete(meshName, id);
       
       |parameters|
 

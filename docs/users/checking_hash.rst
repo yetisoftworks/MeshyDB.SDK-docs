@@ -89,15 +89,14 @@ Verifies user verification hash request.
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.checkHash({
-                               username: username,
-                               attempt: attempt:
-                               hash: hash,
-                               expires: expires,
-                               hint: hint,
-                               verificationCode: verificationCode
-						    })
-               .then(function(isValid) { });
+         await client.checkHash({
+                                    username: username,
+                                    attempt: attempt:
+                                    hash: hash,
+                                    expires: expires,
+                                    hint: hint,
+                                    verificationCode: verificationCode
+                               });
       
       |parameters|
 

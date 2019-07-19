@@ -75,13 +75,11 @@ Update security questions about the logged in user. This is only available if Qu
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-         client.loginAnonymously(username)
-               .then(function (meshyConnection){
-                        meshyConnection.usersService.updateSelf({
-                                                                    securityQuestions: securityQuestions
-                                                               })
-                                                    .then(function(self) { });
-               }); 
+         var meshyConnection = await client.login(username, password);
+               
+         await meshyConnection.usersService.updateSecurityQuestion({
+                                                                     securityQuestions: securityQuestions
+                                                                  }); 
       
       |parameters|
 

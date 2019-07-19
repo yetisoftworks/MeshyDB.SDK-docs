@@ -1,16 +1,19 @@
+=======
 Welcome
 =======
 
-Meshy DB is a relational json solution as a backend for rapid and flexible implementation.
+----------------------
+Before we get started!
+----------------------
+We need to make a free account at `https://meshydb.com <https://meshydb.com/>`_.
 
-| **Authorization**
-| Utilize OpenID Connect authentication to allow access to your application.
+--------------
+What is Meshy?
+--------------
 
-| **Data Management**
-| Create, Update, Retrieval and Deletion of your tenanted data.
+MeshyDB gives you a fully functional API backend in minutes. We take care of the bulky time-consuming API, letting you focus on the front-end design. Build apps faster by leveraging the MeshyDB backend.
 
-| **User Management**
-| Create new users to allow access. Allow logged in users to manage their information and passwords.
+This repository is meant for managing documentation related to the MeshyDB.SDKs.
 
 .. toctree::
     :maxdepth: 1

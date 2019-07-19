@@ -34,15 +34,15 @@ Create a short lived access token to be used for authorized API calls. Typically
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       password : :type:`string`, :required:`required`
-         User password.
+         User secret credentials for login. When anonymous it is static as nopassword.
    
    .. group-tab:: C#
    
@@ -54,36 +54,36 @@ Create a short lived access token to be used for authorized API calls. Typically
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       password : :type:`string`, :required:`required`
-         User password.
+         User secret credentials for login. When anonymous it is static as nopassword.
 
    .. group-tab:: NodeJS
       
       .. code-block:: javascript
          
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
-
+         
          var meshyConnection = await client.login(username,password);
       
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       password : :type:`string`, :required:`required`
-         User password.
+         User secret credentials for login. When anonymous it is static as nopassword.
    
 Example Response:
 

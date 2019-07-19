@@ -32,7 +32,7 @@ Using the token request made to generate an access token, a refresh token will a
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -53,15 +53,15 @@ Using the token request made to generate an access token, a refresh token will a
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       password : :type:`string`, :required:`required`
-         User password.
+         User secret credentials for login. When anonymous it is static as nopassword.
       refreshToken : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
          
@@ -80,15 +80,15 @@ Using the token request made to generate an access token, a refresh token will a
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       password : :type:`string`, :required:`required`
-         User password.
+         User secret credentials for login. When anonymous it is static as nopassword.
       refreshToken : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
          

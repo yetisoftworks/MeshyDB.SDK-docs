@@ -29,13 +29,13 @@ Creates an anonymous user that can log into the system.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
 
    .. group-tab:: C#
    
@@ -48,13 +48,13 @@ Creates an anonymous user that can log into the system.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
 		
    .. group-tab:: NodeJS
       
@@ -67,13 +67,13 @@ Creates an anonymous user that can log into the system.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
          
 Example Response:
 

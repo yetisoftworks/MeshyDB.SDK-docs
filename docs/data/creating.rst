@@ -30,7 +30,7 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -60,13 +60,13 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
       mesh : :type:`string`, default: class name
          Identifies name of mesh collection. e.g. person.
 
@@ -89,13 +89,13 @@ Create new data into Mesh collection. If it is the first time this Mesh is being
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
          

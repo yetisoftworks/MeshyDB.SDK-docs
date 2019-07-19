@@ -31,17 +31,17 @@ Uses result from Forgot password to allow a user to reset their password.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       username : :type:`string`, :required:`required`
-        User name that is being reset.
+        Unique identifier for user or device.
       expires : :type:`date`, :required:`required`
-        Expiration of hash.
+        Defines when hash will expire before it needs to be regenerated.
       hash : :type:`string`, :required:`required`
-        Forgot password hash.
+        Hash result of forgot password to verify request for password reset.
       newPassword : :type:`string`, :required:`required`
-        New password of user.
+        New user secret credentials for login.
         
    .. group-tab:: C#
    
@@ -54,7 +54,7 @@ Uses result from Forgot password to allow a user to reset their password.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -62,11 +62,11 @@ Uses result from Forgot password to allow a user to reset their password.
       username : :type:`string`, :required:`required`
         User name that is being reset.
       expires : :type:`date`, :required:`required`
-        Expiration of hash.
+        Defines when hash will expire before it needs to be regenerated.
       hash : :type:`string`, :required:`required`
-        Forgot password hash.
+        Hash result of forgot password to verify request for password reset.
       newPassword : :type:`string`, :required:`required`
-        New password of user.
+        New user secret credentials for login.
 
 
    .. group-tab:: NodeJS
@@ -76,13 +76,13 @@ Uses result from Forgot password to allow a user to reset their password.
          var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
          var passwordResetHash = await client.forgotPassword(username);
-         
+
          await client.resetPassword(passwordResetHash, newPassword)
       
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -90,8 +90,8 @@ Uses result from Forgot password to allow a user to reset their password.
       username : :type:`string`, :required:`required`
         User name that is being reset.
       expires : :type:`date`, :required:`required`
-        Expiration of hash.
+        Defines when hash will expire before it needs to be regenerated.
       hash : :type:`string`, :required:`required`
-        Forgot password hash.
+        Hash result of forgot password to verify request for password reset.
       newPassword : :type:`string`, :required:`required`
-        New password of user.
+        New user secret credentials for login.

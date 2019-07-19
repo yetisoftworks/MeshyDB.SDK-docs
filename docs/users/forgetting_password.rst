@@ -29,13 +29,13 @@ Creates a request for password reset that must have the matching data to reset t
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       username : :type:`string`, :required:`required`
          User name to be reset.
       attempt : :type:`integer`, :required:`required`
-         Identifies which number of times of request.
+         Identifies how many times a request has been made.
 
    .. group-tab:: C#
    
@@ -48,7 +48,7 @@ Creates a request for password reset that must have the matching data to reset t
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -56,7 +56,7 @@ Creates a request for password reset that must have the matching data to reset t
       username : :type:`string`, :required:`required`
          User name to be reset.
       attempt : :type:`integer`, :required:`required`
-         Identifies which number of times of request.
+         Identifies how many times a request has been made.
 
 
    .. group-tab:: NodeJS
@@ -70,7 +70,7 @@ Creates a request for password reset that must have the matching data to reset t
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -78,7 +78,7 @@ Creates a request for password reset that must have the matching data to reset t
       username : :type:`string`, :required:`required`
          User name to be reset.
       attempt : :type:`integer`, :required:`required`
-         Identifies which number of times of request.
+         Identifies how many times a request has been made.
 
          
 Example Response:

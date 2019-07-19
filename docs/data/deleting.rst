@@ -24,7 +24,7 @@ Permanently remove Mesh data from collection.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -32,7 +32,7 @@ Permanently remove Mesh data from collection.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Identifies location of what Mesh data to replace.
+         Identifies unique record of Mesh data to remove.
 
    .. group-tab:: C#
    
@@ -46,17 +46,17 @@ Permanently remove Mesh data from collection.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       meshName : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Identifies location of what Mesh data to replace.
+         Identifies unique record of Mesh data to remove.
 		 
    .. group-tab:: NodeJS
       
@@ -73,14 +73,14 @@ Permanently remove Mesh data from collection.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Identifies location of what Mesh data to delete. In this case it will be from the Person mesh.
+         Identifies unique record of Mesh data to remove.

@@ -100,9 +100,9 @@ All data interaction must be done on behalf of a user. To start interacting with
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Identifies user to allow login.
+         Unique identifier for user or device.
       password : :type:`string`, :required:`required`
-         User credentials to login. When anonymous it is static as nopassword.
+         User secret credentials for login. When anonymous it is static as nopassword.
    
 Example Response:
 
@@ -185,7 +185,7 @@ If we need to make a modification let's update our Mesh!
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Identifies location of what Mesh data to replace.
+         Identifies unique record of Mesh data to replace.
 
 Example Response:
 
@@ -225,11 +225,11 @@ Let's see if we can find Bobbo.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
-         Filter criteria for search. Uses MongoDB format.
+         Criteria provided in a MongoDB format to limit results.
       orderby : :type:`string`
-         How to order results. Uses MongoDB format.
+         Defines which fields need to be sorted and direction in a MongoDB format.
       page : :type:`integer`
-         Page number of users to bring back.
+         Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
@@ -271,7 +271,7 @@ We are now done with our data, so let us clean up after ourselves.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Identifies location of what Mesh data to replace.
+         Identifies unique record of Mesh data to remove.
 
 --------
 Sign out

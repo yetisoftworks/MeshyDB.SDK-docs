@@ -30,15 +30,15 @@ Allows the logged in user to change their password.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token: :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generate Access Token <auth.html#generate-access-token>`_.
       previousPassword : :type:`string`, :required:`required`
-        Previous password of user.
+        Previous user secret credentials for login.
       newPassword : :type:`string`, :required:`required`
-        New password of user.
+        New user secret credentials for login.
 
    .. group-tab:: C#
    
@@ -52,19 +52,19 @@ Allows the logged in user to change their password.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       password : :type:`string`, :required:`required`
-         User password.
+         User secret credentials for login. When anonymous it is static as nopassword.
       previousPassword : :type:`string`, :required:`required`
-        Previous password of user.
+        Previous user secret credentials for login.
       newPassword : :type:`string`, :required:`required`
-        New password of user.
+        New user secret credentials for login.
 
 
    .. group-tab:: NodeJS
@@ -80,16 +80,16 @@ Allows the logged in user to change their password.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       password : :type:`string`, :required:`required`
-         User password.
+         User secret credentials for login. When anonymous it is static as nopassword.
       previousPassword : :type:`string`, :required:`required`
-        Previous password of user.
+        Previous user secret credentials for login.
       newPassword : :type:`string`, :required:`required`
-        New password of user.
+        New user secret credentials for login.

@@ -29,7 +29,7 @@ Filter Mesh data from collection based on query parameters.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -37,11 +37,11 @@ Filter Mesh data from collection based on query parameters.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
-         Filter criteria for search. Uses MongoDB format.
+         Criteria provided in a MongoDB format to limit results.
       orderby : :type:`string`
-         How to order results. Uses MongoDB format.
+         Defines which fields need to be sorted and direction in a MongoDB format.
       page : :type:`integer`
-         Page number of users to bring back.
+         Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
@@ -57,21 +57,21 @@ Filter Mesh data from collection based on query parameters.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         User name.
+         Unique identifier for user or device.
       mesh : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
-         Filter criteria for search. Uses MongoDB format.
+         Criteria provided in a MongoDB format to limit results.
       orderby : :type:`string`
-         How to order results. Uses MongoDB format.
+         Defines which fields need to be sorted and direction in a MongoDB format.
       page : :type:`integer`
-         Page number of users to bring back.
+         Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
@@ -96,7 +96,7 @@ Filter Mesh data from collection based on query parameters.
       
       |parameters|
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -104,13 +104,13 @@ Filter Mesh data from collection based on query parameters.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       username : :type:`string`
-         User name.
+         Unique identifier for user or device.
       filter : :type:`string`
-         Filter criteria for search. Uses MongoDB format.
+         Criteria provided in a MongoDB format to limit results.
       orderby : :type:`string`
-         How to order results. Uses MongoDB format.
+         Defines which fields need to be sorted and direction in a MongoDB format.
       page : :type:`integer`
-         Page number of users to bring back.
+         Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
          

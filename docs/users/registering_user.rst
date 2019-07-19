@@ -23,7 +23,6 @@ Creates a new user that can log into the system.
         tenant: {tenant}
          
           {
-            "id": "5c78cc81dd870827a8e7b6c4",
             "username": "username_testermctesterson",
             "firstName": "Tester",
             "lastName": "McTesterton",
@@ -47,31 +46,29 @@ Creates a new user that can log into the system.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
       newPassword : :type:`string`, :required:`required`
-         Password of user to use for login.
-      id : :type:`string`
-         Identifier of user.
+         New user secret credentials for login.
       firstName : :type:`string`
-         First name of user.
+         Provides details about a user's first name.
       lastName : :type:`string`
-         Last name of user.
+         Provides details about a user's last name.
       verified : :type:`boolean`
          Identifies whether the user is verified.
       isActive : :type:`boolean`
-         Identifies whether or not the user is active.
+         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of the user.
+         Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of the user.
+         Provides details about a user's email address.
       roles : :type:`string[]`
-         Collection of roles user has access.
+         Provides collection of roles to define permissions set of a user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
 
@@ -88,31 +85,29 @@ Creates a new user that can log into the system.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
       newPassword : :type:`string`, :required:`required`
-         Password of user to use for login.
-      id : :type:`string`
-         Identifier of user.
+         New user secret credentials for login.
       firstName : :type:`string`
-         First name of user.
+         Provides details about a user's first name.
       lastName : :type:`string`
-         Last name of user.
+         Provides details about a user's last name.
       verified : :type:`boolean`
          Identifies whether the user is verified.
       isActive : :type:`boolean`
-         Identifies whether or not the user is active.
+         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of the user.
+         Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of the user.
+         Provides details about a user's email address.
       roles : :type:`string[]`
-         Collection of roles user has access.
+         Provides collection of roles to define permissions set of a user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
 		
@@ -125,7 +120,6 @@ Creates a new user that can log into the system.
          var user = await client.registerUser({
                                                 username: username,
                                                 newPassword: newPassword,
-                                                id: id,
                                                 firstName: firstName,
                                                 lastName: lastName,
                                                 verified: verified,
@@ -139,31 +133,29 @@ Creates a new user that can log into the system.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
       newPassword : :type:`string`, :required:`required`
-         Password of user to use for login.
-      id : :type:`string`
-         Identifier of user.
+         New user secret credentials for login.
       firstName : :type:`string`
-         First name of user.
+         Provides details about a user's first name.
       lastName : :type:`string`
-         Last name of user.
+         Provides details about a user's last name.
       verified : :type:`boolean`
          Identifies whether the user is verified.
       isActive : :type:`boolean`
-         Identifies whether or not the user is active.
+         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of the user.
+         Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of the user.
+         Provides details about a user's email address.
       roles : :type:`string[]`
-         Collection of roles user has access.
+         Provides collection of roles to define permissions set of a user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
          

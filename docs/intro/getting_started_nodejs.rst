@@ -115,7 +115,7 @@ All data interaction must be done on behalf of a user. To start interacting with
       |parameters|
 
       username : :type:`string`, :required:`required`
-         Identifies user to allow login.
+         Unique identifier for user or device.
 
 
 Example Response:
@@ -198,7 +198,7 @@ If we need to make a modification let's update our Mesh!
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Identifies location of what Mesh data to replace.
+         Identifies unique record of Mesh data to replace.
 
 
 Example Response:
@@ -238,11 +238,11 @@ Let's see if we can find Bobbo.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
-         Filter criteria for search. Uses MongoDB format.
+         Criteria provided in a MongoDB format to limit results.
       orderby : :type:`string`
-         How to order results. Uses MongoDB format.
+         Defines which fields need to be sorted and direction in a MongoDB format.
       page : :type:`integer`
-         Page number of users to bring back.
+         Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
@@ -282,7 +282,7 @@ We are now done with our data, so let us clean up after ourselves.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
-         Identifies location of what Mesh data to replace.
+         Identifies unique record of Mesh data to remove.
 
 --------
 Sign out
@@ -300,6 +300,6 @@ Now the user is complete. Let us sign out so someone else can have a try.
       
       |parameters|
 
-      No parameters provided. The client is aware of who needs to be signed out.
+      No parameters provided. The connection is aware of who needs to be signed out.
 
 Upon signing out we will clear our connection allowing another user to now be logged in.

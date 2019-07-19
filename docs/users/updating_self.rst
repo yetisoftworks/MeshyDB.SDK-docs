@@ -47,29 +47,29 @@ Update details about the logged in user.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
       id : :type:`string`
-         Identifier of user.
+         Identifies unique record of user data.
       firstName : :type:`string`
-         First name of user.
+         Provides details about a user's first name.
       lastName : :type:`string`
-         Last name of user.
+         Provides details about a user's last name.
       verified : :type:`boolean`
          Identifies whether the user is verified.
       isActive : :type:`boolean`
-         Identifies whether or not the user is active.
+         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of the user.
+         Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of the user.
+         Provides details about a user's email address.
       roles : :type:`string[]`
-         Collection of roles user has access.
+         Provides collection of roles to define permissions set of a user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
       anonymous : :type:`boolean`
@@ -89,29 +89,29 @@ Update details about the logged in user.
       |parameters|
       
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
       id : :type:`string`
-         Identifier of user.
+         Identifies unique record of user data.
       firstName : :type:`string`
-         First name of user.
+         Provides details about a user's first name.
       lastName : :type:`string`
-         Last name of user.
+         Provides details about a user's last name.
       verified : :type:`boolean`
          Identifies whether the user is verified.
       isActive : :type:`boolean`
-         Identifies whether or not the user is active.
+         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of the user.
+         Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of the user.
+         Provides details about a user's email address.
       roles : :type:`string[]`
-         Collection of roles user has access.
+         Provides collection of roles to define permissions set of a user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
       anonymous : :type:`boolean`
@@ -144,29 +144,29 @@ Update details about the logged in user.
       |parameters|
 
       tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, it will use the configured default.
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       username : :type:`string`, :required:`required`
-         Username of user.
+         Unique identifier for user or device.
       id : :type:`string`
-         Identifier of user.
+         Identifies unique record of user data.
       firstName : :type:`string`
-         First name of user.
+         Provides details about a user's first name.
       lastName : :type:`string`
-         Last name of user.
+         Provides details about a user's last name.
       verified : :type:`boolean`
          Identifies whether the user is verified.
       isActive : :type:`boolean`
-         Identifies whether or not the user is active.
+         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of the user.
+         Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of the user.
+         Provides details about a user's email address.
       roles : :type:`string[]`
-         Collection of roles user has access.
+         Provides collection of roles to define permissions set of a user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          Collection of questions and answers used for password recovery if question security is configured.
       anonymous : :type:`boolean`

@@ -27,18 +27,18 @@ Retrieve single item from Mesh collection.
                   "lastName": "Bobberson"
                }
             
-         |parameters|
+      |parameters|
 
-         tenant : :type:`string`, :required:`required`
-            Indicates which tenant data to use. If not provided, the system will assume to use the default client.
-         accountName : :type:`string`, :required:`required`
-            Indicates which account you are connecting for authentication.
-         access_token : :type:`string`, :required:`required`
-            Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-         mesh : :type:`string`, :required:`required`
-            Identifies name of mesh collection. e.g. person.
-         id : :type:`string`, :required:`required`
-            Identifies location of what Mesh data to retrieve.
+      tenant : :type:`string`, :required:`required`
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+      id : :type:`string`, :required:`required`
+         Identifies location of what Mesh data to retrieve.
 
    .. group-tab:: C#
    
@@ -56,20 +56,20 @@ Retrieve single item from Mesh collection.
          
          var person = await connection.Meshes.GetData<Person>(id);
 
-         |parameters|
+      |parameters|
 
-         tenant : :type:`string`, :required:`required`
-            Indicates which tenant data to use. If not provided, the system will assume to use the default client.
-         accountName : :type:`string`, :required:`required`
-            Indicates which account you are connecting for authentication.
-         publicKey : :type:`string`, :required:`required`
-            Public accessor for application.
-         username : :type:`string`, :required:`required`
-            Unique identifier for user or device.
-         mesh : :type:`string`, default: class name
-            Identifies name of mesh collection. e.g. person.
-         id : :type:`string`, :required:`required`
-            Identifies location of what Mesh data to retrieve.
+      tenant : :type:`string`, :required:`required`
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      publicKey : :type:`string`, :required:`required`
+         Public accessor for application.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      mesh : :type:`string`, default: class name
+         Identifies name of mesh collection. e.g. person.
+      id : :type:`string`, :required:`required`
+         Identifies location of what Mesh data to retrieve.
 
       .. group-tab:: NodeJS
       
@@ -83,20 +83,20 @@ Retrieve single item from Mesh collection.
 
             var meshData = await meshyConnection.meshes.get(meshName, id);
 
-         |parameters|
+      |parameters|
 
-         tenant : :type:`string`, :required:`required`
-            Indicates which tenant data to use. If not provided, the system will assume to use the default client.
-         accountName : :type:`string`, :required:`required`
-            Indicates which account you are connecting for authentication.
-         publicKey : :type:`string`, :required:`required`
-            Public accessor for application.
-         username : :type:`string`, :required:`required`
-            Unique identifier for user or device.
-         meshName : :type:`string`, :required:`required`
-            Identifies name of mesh collection. e.g. person.
-         id : :type:`string`, :required:`required`
-            Identifies location of what Mesh data to retrieve.
+      tenant : :type:`string`, :required:`required`
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      publicKey : :type:`string`, :required:`required`
+         Public accessor for application.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      meshName : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+      id : :type:`string`, :required:`required`
+         Identifies location of what Mesh data to retrieve.
 
 Example Response:
 

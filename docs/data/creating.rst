@@ -9,7 +9,7 @@
 --------
 Creating
 --------
-Create new data into Mesh collection. If it is the first time this Mesh is being used a new collection will be created automatically.
+Create new custom mesh data into specified mesh name.
 
 .. tabs::
 

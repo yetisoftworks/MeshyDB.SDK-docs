@@ -71,17 +71,17 @@ Retrieve single item from Mesh collection.
       id : :type:`string`, :required:`required`
          Identifies location of what Mesh data to retrieve.
 
-      .. group-tab:: NodeJS
+   .. group-tab:: NodeJS
       
-         .. code-block:: javascript
+      .. code-block:: javascript
+      
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
          
-            var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
-            
-            var anonymousUser = await client.registerAnonymousUser();
+         var anonymousUser = await client.registerAnonymousUser();
 
-            var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
 
-            var meshData = await meshyConnection.meshes.get(meshName, id);
+         var meshData = await meshyConnection.meshes.get(meshName, id);
 
       |parameters|
 

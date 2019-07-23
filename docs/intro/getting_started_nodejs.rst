@@ -9,14 +9,16 @@ NodeJS
 ----------------------
 Before we get started!
 ----------------------
-Let's go to create a free account at `https://meshydb.com <https://meshydb.com/>`_.
+This documentation assumes you have an active MeshyDB account. If you do not, please create a free account at `https://meshydb.com <https://meshydb.com/>`_.
 
-Once we verify our account, we want to gather our Public Key from our default tenant under Clients.
+.. |publicKey| raw:: html
+
+    <code>Public Key</code>
+
+Once your account is verified, you will need to gather your |publicKey| from the Clients page under your default tenant. See image below:
 
 .. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
            :alt: Public Key under Clients default tenant
-
-|gettingStarted|
 
 In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
 

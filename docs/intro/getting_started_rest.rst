@@ -20,6 +20,8 @@ Once your account is verified, you will need to gather your |publicKey| from the
 .. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
            :alt: Public Key under Clients default tenant
 
+|gettingStarted|
+
 In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
 
 Now that we have the required information let's jump in and see how easy it is to start with MeshyDB.

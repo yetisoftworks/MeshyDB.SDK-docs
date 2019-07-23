@@ -30,8 +30,9 @@ Next Steps
 ----------
 
 Now that you have your public key, you can begin with any of our language specific quick starts:
-    * `NodeJS <https://docs.meshydb.com/en/latest/intro/getting_started_rest.html#rest>`_
-    * `REST <https://docs.meshydb.com/en/latest/intro/getting_started_nodejs.html#install-sdk>`_
+
+    * `NodeJS <https://docs.meshydb.com/en/latest/intro/getting_started_nodejs.html#install-sdk>`_
+    * `REST <https://docs.meshydb.com/en/latest/intro/getting_started_rest.html#registering-anonymous-user>`_
     * `C# <https://docs.meshydb.com/en/latest/intro/getting_started_csharp.html#install-sdk>`_
 
 .. toctree::

@@ -6,9 +6,9 @@
 
    <h4>Parameters</h4>
    
---------------
-Retieving Self
---------------
+---------------
+Retrieving Self
+---------------
 Retrieve details about the logged in user.
 
 .. tabs::

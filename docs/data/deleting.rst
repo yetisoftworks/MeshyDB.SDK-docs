@@ -6,9 +6,10 @@
 
    <h4>Parameters</h4>
    
---------
-Deleting
---------
+-------------
+Deleting Data
+-------------
+
 Permanently remove Mesh data from collection.
 
 .. tabs::

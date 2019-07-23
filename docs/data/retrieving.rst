@@ -6,9 +6,10 @@
 
    <h4>Parameters</h4>
    
---------
-Retrieving
---------
+---------------
+Retrieving Data
+---------------
+
 Retrieve single item from Mesh collection.
 
 .. tabs::

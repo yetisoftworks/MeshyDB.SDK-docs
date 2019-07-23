@@ -23,25 +23,10 @@ Update details about the logged in user.
          tenant: {tenant}
          
            {
-             "id": "5c78cc81dd870827a8e7b6c4",
-             "username": "username_testermctesterson",
              "firstName": "Tester",
              "lastName": "McTesterton",
-             "verified": true,
-             "isActive": true,
              "phoneNumber": "+15555555555",
              "emailAddress": "test@test.com"
-             "roles": [
-                         "admin",
-                         "test"
-                      ],
-             "securityQuestions": [
-                                    {
-                                        "question": "What would you say to this question?",
-                                        "answer": "..."
-                                    }
-                                  ],
-             "anonymous": false
            }
 
       |parameters|
@@ -52,28 +37,14 @@ Update details about the logged in user.
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      id : :type:`string`
-         Identifies unique record of user data.
       firstName : :type:`string`
          Provides details about a user's first name.
       lastName : :type:`string`
          Provides details about a user's last name.
-      verified : :type:`boolean`
-         Identifies whether the user is verified.
-      isActive : :type:`boolean`
-         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
          Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
          Provides details about a user's email address.
-      roles : :type:`string[]`
-         Provides collection of roles to define permissions set of a user.
-      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         Collection of questions and answers used for password recovery if question security is configured.
-      anonymous : :type:`boolean`
-         Identifies whether the user is anonymous.
 
    .. group-tab:: C#
    
@@ -94,28 +65,14 @@ Update details about the logged in user.
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      id : :type:`string`
-         Identifies unique record of user data.
       firstName : :type:`string`
          Provides details about a user's first name.
       lastName : :type:`string`
          Provides details about a user's last name.
-      verified : :type:`boolean`
-         Identifies whether the user is verified.
-      isActive : :type:`boolean`
-         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
          Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
          Provides details about a user's email address.
-      roles : :type:`string[]`
-         Provides collection of roles to define permissions set of a user.
-      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         Collection of questions and answers used for password recovery if question security is configured.
-      anonymous : :type:`boolean`
-         Identifies whether the user is anonymous.
 
    .. group-tab:: NodeJS
       
@@ -128,17 +85,10 @@ Update details about the logged in user.
          var meshyConnection = await client.loginAnonymously(anonymousUser.username);
 
          var self = await meshyConnection.usersService.updateSelf({
-                                                               username: username,
-                                                               id: id,
                                                                firstName: firstName,
                                                                lastName: lastName,
-                                                               verified:  verified,
-                                                               isActive: isActive,
                                                                phoneNumber: phoneNumber,
-                                                               emailAddress: emailAddress,
-                                                               roles: roles,
-                                                               securityQuestions: securityQuestions,
-                                                               anonymous:  anonymous
+                                                               emailAddress: emailAddress
                                                             });
       
       |parameters|
@@ -149,28 +99,14 @@ Update details about the logged in user.
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      id : :type:`string`
-         Identifies unique record of user data.
       firstName : :type:`string`
          Provides details about a user's first name.
       lastName : :type:`string`
          Provides details about a user's last name.
-      verified : :type:`boolean`
-         Identifies whether the user is verified.
-      isActive : :type:`boolean`
-         Identifies whether the user is active.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
          Provides details about a user's phone number.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
          Provides details about a user's email address.
-      roles : :type:`string[]`
-         Provides collection of roles to define permissions set of a user.
-      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         Collection of questions and answers used for password recovery if question security is configured.
-      anonymous : :type:`boolean`
-         Identifies whether the user is anonymous.
          
 Example Response:
 
@@ -192,7 +128,7 @@ Example Response:
     "securityQuestions": [
                             {
                                "question": "What would you say to this question?",
-                               "answer": "mceasy123"
+                               "answer": "..."
                             }
                          ],
     "anonymous": false

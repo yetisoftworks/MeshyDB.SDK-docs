@@ -2,23 +2,37 @@
 Welcome
 =======
 
+--------------
+What is Meshy?
+--------------
+
+MeshyDB gives you a fully functional API backend in minutes. We take care of the bulky time-consuming API, letting you focus on the front-end design. Build apps faster by leveraging the MeshyDB backend.
+
 ----------------------
 Before we get started!
 ----------------------
-We need to make a free account at `https://meshydb.com <https://meshydb.com/>`_.
 
-Once we verify our account, we want to gather our Public Key from our default tenant under Clients.
+This documentation assumes you have an active MeshyDB account. If you do not, please create a free account at `https://meshydb.com <https://meshydb.com/>`_.
+
+.. |publicKey| raw:: html
+
+    <code>Public Key</code>
+
+Once your account is verified, you will need to gather your |publicKey| from the Clients page under your default tenant. See image below:
 
 .. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
            :alt: Public Key under Clients default tenant
 
 |gettingStarted|
 
---------------
-What is Meshy?
---------------
+----------
+Next Steps
+----------
 
-MeshyDB gives you a fully functional API backend in minutes. We take care of the bulky time-consuming API, letting you focus on the front-end design. Build apps faster by leveraging the MeshyDB backend.
+Now that you have your public key, you can begin with any of our language specific quick starts:
+    * `NodeJS <https://docs.meshydb.com/en/latest/intro/getting_started_rest.html#rest/>`_
+    * `REST <https://docs.meshydb.com/en/latest/intro/getting_started_nodejs.html#install-sdk/>`_
+    * `C# <https://docs.meshydb.com/en/latest/intro/getting_started_csharp.html#install-sdk/>`_
 
 .. toctree::
     :maxdepth: 1

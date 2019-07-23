@@ -9,8 +9,16 @@
 --------------
 Verifying User
 --------------
-Marks user as verified.
 
+When the tenant requires verification a hash will be generated when `registering a user <./registering_user.html>`_.
+
+When verifying a verification code must also be present with the request. This can be pre-checked before making a verify call by using Check Hash.
+
+^^^^^^
+Verify
+^^^^^^
+
+The following will be used to identify a user is verified with the correct verification code.
 
 .. tabs::
 
@@ -118,3 +126,122 @@ Marks user as verified.
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
+
+^^^^^^^^^^
+Check Hash
+^^^^^^^^^^
+
+Performs a check against the generated hash object with the verification code to ensure correctness before resetting a password or verifying a user.
+
+.. tabs::
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
+        Content-Type: application/json
+        tenant: {tenant}
+         
+          {
+             "username": "username_testermctesterson",
+             "attempt": 1,
+             "hash": "...",
+             "expires": "1/1/1900",
+             "hint": "...",
+             "verificationCode": "...",
+          }
+
+      |parameters|
+      
+      tenant : :type:`string`, :required:`required`
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+        var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+
+        var check = new UserVerificationCheck();
+		
+        var isValid = await client.CheckHashAsync(check);
+
+      |parameters|
+      
+      tenant : :type:`string`, :required:`required`
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      publicKey : :type:`string`, :required:`required`
+         Public accessor for application.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
+		
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         
+         await client.checkHash({
+                                    username: username,
+                                    attempt: attempt:
+                                    hash: hash,
+                                    expires: expires,
+                                    hint: hint,
+                                    verificationCode: verificationCode
+                               });
+      
+      |parameters|
+
+      tenant : :type:`string`, :required:`required`
+         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      publicKey : :type:`string`, :required:`required`
+         Public accessor for application.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
+		
+Example Response:
+
+.. code-block:: boolean
+
+	true

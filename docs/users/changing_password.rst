@@ -9,7 +9,7 @@
 -----------------
 Changing Password
 -----------------
-Allows the logged in user to change their password.
+Allows the authenticated user to change their password.
 
 .. tabs::
 

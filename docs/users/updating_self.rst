@@ -10,7 +10,7 @@
 Updating Self
 -------------
 
-Updating self allows the ability to update the currently logged in user's information.
+Updating self allows the ability to update the authenticated user's information.
 
 This might be personal or security questions for `password recovery <./forgetting_password.html>`_ at a later time.
 
@@ -18,7 +18,7 @@ This might be personal or security questions for `password recovery <./forgettin
 Personal Information
 ^^^^^^^^^^^^^^^^^^^^
 
-The following can be used to update a logged in user's personal information such as name, phone number, and email address.
+The following can be used to update an authenticated user's personal information such as name, phone number, and email address.
 
 .. tabs::
 
@@ -44,13 +44,13 @@ The following can be used to update a logged in user's personal information such
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       firstName : :type:`string`
-         Provides details about a user's first name.
+         First name of authenticated user.
       lastName : :type:`string`
-         Provides details about a user's last name.
+         Last name of authenticated user.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Provides details about a user's phone number.
+         Phone number of authenticated user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Provides details about a user's email address.
+         Email address of authenticated user.
 
    .. group-tab:: C#
    
@@ -70,13 +70,13 @@ The following can be used to update a logged in user's personal information such
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       firstName : :type:`string`
-         Provides details about a user's first name.
+         First name of authenticated user.
       lastName : :type:`string`
-         Provides details about a user's last name.
+         Last name of authenticated user.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Provides details about a user's phone number.
+         Phone number of authenticated user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Provides details about a user's email address.
+         Email address of authenticated user.
 
    .. group-tab:: NodeJS
       
@@ -102,13 +102,13 @@ The following can be used to update a logged in user's personal information such
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       firstName : :type:`string`
-         Provides details about a user's first name.
+         First name of authenticated user.
       lastName : :type:`string`
-         Provides details about a user's last name.
+         Last name of authenticated user.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Provides details about a user's phone number.
+         Phone number of authenticated user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Provides details about a user's email address.
+         Email address of authenticated user.
          
 Example Response:
 
@@ -140,7 +140,7 @@ Example Response:
 Security Questions
 ^^^^^^^^^^^^^^^^^^
 
-The following can be used to change the currently logged in user's security questions to be used for `password recovery <./forgetting_password.html>`_.
+The following can be used to change the authenticated user's security questions to be used for `password recovery <./forgetting_password.html>`_.
 
 .. tabs::
 
@@ -168,7 +168,7 @@ The following can be used to change the currently logged in user's security ques
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       securityQuestions : :type:`object[]`, :required:`required`
-         Collection of questions and answers used for password recovery if question security is configured.
+         New set of questions and answers for authenticated user in password recovery.
 
    .. group-tab:: C#
    
@@ -193,7 +193,7 @@ The following can be used to change the currently logged in user's security ques
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       securityQuestions : :type:`object[]`, :required:`required`
-         Collection of questions and answers used for password recovery if question security is configured.
+         New set of questions and answers for authenticated user in password recovery.
 
    .. group-tab:: NodeJS
       

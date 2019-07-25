@@ -11,7 +11,6 @@ Registering User
 ----------------
 Creates a new user that can log into the system.
 
-
 .. tabs::
 
    .. group-tab:: REST
@@ -25,14 +24,8 @@ Creates a new user that can log into the system.
             "username": "username_testermctesterson",
             "firstName": "Tester",
             "lastName": "McTesterton",
-            "verified": true,
-            "isActive": true,
             "phoneNumber": "+15555555555",
             "emailAddress": "test@test.com",
-            "roles": [
-                        "admin",
-                        "test"
-                     ],
             "securityQuestions": [
                                     {
                                        "question": "What would you say to this question?",
@@ -53,21 +46,15 @@ Creates a new user that can log into the system.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
-         Provides details about a user's first name.
+         First name of registering user.
       lastName : :type:`string`
-         Provides details about a user's last name.
-      verified : :type:`boolean`
-         Identifies whether the user is verified.
-      isActive : :type:`boolean`
-         Identifies whether the user is active.
+         Last name of registering user.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Provides details about a user's phone number.
+         Phone number of registering user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Provides details about a user's email address.
-      roles : :type:`string[]`
-         Provides collection of roles to define permissions set of a user.
+         Email address of registering user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         Collection of questions and answers used for password recovery if question security is configured.
+         New set of questions and answers for registering user in password recovery.
 
    .. group-tab:: C#
    
@@ -90,21 +77,15 @@ Creates a new user that can log into the system.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
-         Provides details about a user's first name.
+         First name of registering user.
       lastName : :type:`string`
-         Provides details about a user's last name.
-      verified : :type:`boolean`
-         Identifies whether the user is verified.
-      isActive : :type:`boolean`
-         Identifies whether the user is active.
+         Last name of registering user.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Provides details about a user's phone number.
+         Phone number of registering user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Provides details about a user's email address.
-      roles : :type:`string[]`
-         Provides collection of roles to define permissions set of a user.
+         Email address of registering user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         Collection of questions and answers used for password recovery if question security is configured.
+         New set of questions and answers for registering user in password recovery.
 		
    .. group-tab:: NodeJS
       
@@ -117,11 +98,8 @@ Creates a new user that can log into the system.
                                                 newPassword: newPassword,
                                                 firstName: firstName,
                                                 lastName: lastName,
-                                                verified: verified,
-                                                isActive: isActive,
                                                 phoneNumber: phoneNumber,
                                                 emailAddress: emailAddress,
-                                                roles: roles,
                                                 securityQuestions: securityQuestions
                                              });
       
@@ -136,21 +114,15 @@ Creates a new user that can log into the system.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
-         Provides details about a user's first name.
+         First name of registering user.
       lastName : :type:`string`
-         Provides details about a user's last name.
-      verified : :type:`boolean`
-         Identifies whether the user is verified.
-      isActive : :type:`boolean`
-         Identifies whether the user is active.
+         Last name of registering user.
       phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Provides details about a user's phone number.
+         Phone number of registering user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Provides details about a user's email address.
-      roles : :type:`string[]`
-         Provides collection of roles to define permissions set of a user.
+         Email address of registering user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         Collection of questions and answers used for password recovery if question security is configured.
+         New set of questions and answers for registering user in password recovery.
          
 Example Response:
 

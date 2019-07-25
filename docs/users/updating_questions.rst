@@ -9,7 +9,7 @@
 ------------------
 Updating Questions
 ------------------
-Update security questions about the logged in user. This is only available if Question verification has been configured.
+Update security questions about the authenticated user. This is only available if Question verification has been configured.
 
 .. tabs::
 
@@ -37,7 +37,7 @@ Update security questions about the logged in user. This is only available if Qu
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       securityQuestions : :type:`object[]`, :required:`required`
-         Collection of questions and answers used for password recovery if question security is configured.
+         New set of questions and answers for authenticated user in password recovery.
 
    .. group-tab:: C#
    
@@ -62,7 +62,7 @@ Update security questions about the logged in user. This is only available if Qu
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       securityQuestions : :type:`object[]`, :required:`required`
-         Collection of questions and answers used for password recovery if question security is configured.
+         New set of questions and answers for authenticated user in password recovery.
 
    .. group-tab:: NodeJS
       
@@ -83,7 +83,7 @@ Update security questions about the logged in user. This is only available if Qu
       publicKey : :type:`string`, :required:`required`
          Public accessor for application.
       securityQuestions : :type:`object[]`, :required:`required`
-         Collection of questions and answers used for password recovery if question security is configured.
+         New set of questions and answers for authenticated user in password recovery.
          
 Example Response:
 

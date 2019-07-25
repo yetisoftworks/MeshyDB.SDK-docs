@@ -122,7 +122,7 @@ Example Response:
 -----------
 Create data
 -----------
-Now that we are logged in we can use our Bearer token to authenticate requests with MeshyDB and create some data.
+Now that we are authenticated we can use our Bearer token to authenticate requests with MeshyDB and create some data.
 
 The data object can whatever information you would like to capture. The following example will have some data fields with example data.
 

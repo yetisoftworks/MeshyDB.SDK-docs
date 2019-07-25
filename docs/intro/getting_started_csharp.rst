@@ -287,4 +287,4 @@ Now the user is complete. Let us sign out so someone else can have a try.
 
       No parameters provided. The connection is aware of who needs to be signed out.
 
-Upon signing out we will clear our connection allowing another user to now be logged in.
+Upon signing out we will clear our connection allowing another user to now be authenticated.

@@ -51,6 +51,7 @@ Now that you have your public key, you can begin with any of our language specif
 
     authorization/generating_token
     authorization/refreshing_token
+    authorization/retrieving_userinfo
    
 .. toctree::
     :maxdepth: 3
@@ -75,7 +76,6 @@ Now that you have your public key, you can begin with any of our language specif
     users/forgetting_password
     users/resetting_password
     users/changing_password
-    users/retrieving_userinfo
     users/logging_out
     users/verifying_user
 ..    users/checking_hash

@@ -9,7 +9,7 @@
 ---------------
 Retrieving Self
 ---------------
-Retrieve details about the logged in user.
+Retrieve details about the authenticated user.
 
 .. tabs::
 

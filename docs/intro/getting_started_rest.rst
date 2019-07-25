@@ -7,7 +7,7 @@ REST
 ====
 
 ----------------------
-Before we get started!
+Before you get started!
 ----------------------
 This documentation assumes you have an active MeshyDB account. If you do not, please create a free account at `https://meshydb.com <https://meshydb.com/>`_.
 
@@ -143,9 +143,9 @@ The data object can whatever information you would like to capture. The followin
 
       |parameters|
 
-      accountName: :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
-      access_token: :type:`string`, :required:`required`
+      access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
@@ -182,9 +182,9 @@ If we need to make a modification let's update our Mesh!
 
       |parameters|
 
-      accountName: :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
-      access_token: :type:`string`, :required:`required`
+      access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
@@ -222,9 +222,9 @@ Let's see if we can find Bobbo.
 
       |parameters|
 
-      accountName: :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
-      access_token: :type:`string`, :required:`required`
+      access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
@@ -268,9 +268,9 @@ We are now done with our data, so let us clean up after ourselves.
          
       |parameters|
 
-      accountName: :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
-      access_token: :type:`string`, :required:`required`
+      access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
@@ -300,7 +300,7 @@ Now the user is complete. Let us sign out so someone else can have a try.
          
       |parameters|
 
-      accountName: :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
-      refresh_token: :type:`string`, :required:`required`
+      refresh_token : :type:`string`, :required:`required`
         Token to allow reauthorization with MeshyDB after the access token expires requested during `Login`_.

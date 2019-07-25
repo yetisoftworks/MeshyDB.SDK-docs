@@ -20,7 +20,6 @@ Update security questions about the logged in user. This is only available if Qu
          POST https://api.meshydb.com/{accountName}/users/me/questions HTTP/1.1
          Authentication: Bearer {access_token}
          Content-Type: application/json
-         tenant: {tenant}
          
            {
              "securityQuestions": [
@@ -33,8 +32,6 @@ Update security questions about the logged in user. This is only available if Qu
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -46,7 +43,7 @@ Update security questions about the logged in user. This is only available if Qu
    
       .. code-block:: c#
       
-         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
 
          var questions = new UserSecurityQuestionUpdate();
@@ -60,8 +57,6 @@ Update security questions about the logged in user. This is only available if Qu
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -73,7 +68,7 @@ Update security questions about the logged in user. This is only available if Qu
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          var meshyConnection = await client.login(username, password);
                
@@ -83,8 +78,6 @@ Update security questions about the logged in user. This is only available if Qu
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

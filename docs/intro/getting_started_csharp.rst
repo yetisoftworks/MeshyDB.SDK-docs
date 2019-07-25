@@ -7,7 +7,7 @@ C#
 ===
 
 ----------------------
-Before we get started!
+Before you get started!
 ----------------------
 This documentation assumes you have an active MeshyDB account. If you do not, please create a free account at `https://meshydb.com <https://meshydb.com/>`_.
 

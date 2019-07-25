@@ -22,7 +22,6 @@ Once the token expires the refresh token can be used to generate a new set of cr
       
          POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
          Content-Type: application/x-www-form-urlencoded
-         tenant: {tenant}
 
             client_id={publicKey}&
             grant_type=refresh_token&
@@ -33,8 +32,6 @@ Once the token expires the refresh token can be used to generate a new set of cr
 
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -46,7 +43,7 @@ Once the token expires the refresh token can be used to generate a new set of cr
    
       .. code-block:: c#
 
-        var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+        var client = MeshyClient.Initialize(accountName, publicKey);
         var connection = client.LoginWithPassword(username, password);
         var refreshToken = connection.RetrievePersistanceToken();
         
@@ -54,8 +51,6 @@ Once the token expires the refresh token can be used to generate a new set of cr
 
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -71,7 +66,7 @@ Once the token expires the refresh token can be used to generate a new set of cr
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
 
          var meshyConnection = await client.login(username,password);
 
@@ -81,8 +76,6 @@ Once the token expires the refresh token can be used to generate a new set of cr
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

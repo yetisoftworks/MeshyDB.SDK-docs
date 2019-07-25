@@ -28,7 +28,6 @@ The following will be used to identify a user is verified with the correct verif
       
         POST https://api.meshydb.com/{accountName}/users/verify HTTP/1.1
         Content-Type: application/json
-        tenant: {tenant}
          
           {
              "username": "username_testermctesterson",
@@ -41,8 +40,6 @@ The following will be used to identify a user is verified with the correct verif
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -64,7 +61,7 @@ The following will be used to identify a user is verified with the correct verif
    
       .. code-block:: c#
       
-        var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+        var client = MeshyClient.Initialize(accountName, publicKey);
 
         var check = new UserVerificationCheck();
 		
@@ -72,8 +69,6 @@ The following will be used to identify a user is verified with the correct verif
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -95,7 +90,7 @@ The following will be used to identify a user is verified with the correct verif
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          await client.verify({
                            username: username,
@@ -108,8 +103,6 @@ The following will be used to identify a user is verified with the correct verif
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -141,7 +134,6 @@ Performs a check against the generated hash object with the verification code to
       
         POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
         Content-Type: application/json
-        tenant: {tenant}
          
           {
              "username": "username_testermctesterson",
@@ -154,8 +146,6 @@ Performs a check against the generated hash object with the verification code to
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -177,7 +167,7 @@ Performs a check against the generated hash object with the verification code to
    
       .. code-block:: c#
       
-        var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+        var client = MeshyClient.Initialize(accountName, publicKey);
 
         var check = new UserVerificationCheck();
 		
@@ -185,8 +175,6 @@ Performs a check against the generated hash object with the verification code to
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -208,7 +196,7 @@ Performs a check against the generated hash object with the verification code to
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          await client.checkHash({
                                     username: username,
@@ -221,8 +209,6 @@ Performs a check against the generated hash object with the verification code to
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

@@ -21,7 +21,6 @@ Create new custom mesh data into specified mesh name.
          POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
          Authentication: Bearer {access_token}
          Content-Type: application/json
-         tenant: {tenant}
          
             {
                "firstName": "Bob",
@@ -30,8 +29,6 @@ Create new custom mesh data into specified mesh name.
             
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -50,7 +47,7 @@ Create new custom mesh data into specified mesh name.
            public string LastName { get; set; }
          }
 
-         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
          
          var person = await connection.Meshes.CreateAsync(new Person(){
@@ -60,8 +57,6 @@ Create new custom mesh data into specified mesh name.
 
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -75,7 +70,7 @@ Create new custom mesh data into specified mesh name.
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
 
          var anonymousUser = await client.registerAnonymousUser();
 
@@ -89,8 +84,6 @@ Create new custom mesh data into specified mesh name.
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

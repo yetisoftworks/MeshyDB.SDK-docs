@@ -20,7 +20,6 @@ Allows the logged in user to change their password.
          POST https://api.meshydb.com/{accountName}/users/me/password HTTP/1.1
          Authentication: Bearer {access_token}
          Content-Type: application/json
-         tenant: {tenant}
          
            {
              "newPassword": "newPassword",
@@ -29,8 +28,6 @@ Allows the logged in user to change their password.
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token: :type:`string`, :required:`required`
@@ -44,15 +41,13 @@ Allows the logged in user to change their password.
    
       .. code-block:: c#
       
-         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginWithPasswordAsync(username, password);
 
          await connection.UpdatePasswordAsync(previousPassword, newPassword);
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -71,7 +66,7 @@ Allows the logged in user to change their password.
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          var meshyConnection = await client.login(username, password);
 
@@ -79,8 +74,6 @@ Allows the logged in user to change their password.
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

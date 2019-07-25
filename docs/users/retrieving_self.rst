@@ -19,13 +19,10 @@ Retrieve details about the logged in user.
       
          GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
          Authentication: Bearer {access_token}
-         tenant: {tenant}
          
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
-      accountName: :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
@@ -34,15 +31,13 @@ Retrieve details about the logged in user.
    
       .. code-block:: c#
       
-         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
 
          await connection.Users.GetLoggedInUserAsync();
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -54,7 +49,7 @@ Retrieve details about the logged in user.
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          var anonymousUser = await client.registerAnonymousUser();
 
@@ -64,8 +59,6 @@ Retrieve details about the logged in user.
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -92,7 +85,7 @@ Example Response:
     "securityQuestions": [
                             {
                                "question": "What would you say to this question?",
-                               "answer": "mceasy123"
+                               "answer": "..."
                             }
                          ],
     "anonymous": true

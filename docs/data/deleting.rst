@@ -20,12 +20,9 @@ Permanently remove Mesh data from collection.
       
          DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
          Authentication: Bearer {access_token}
-         tenant: {tenant}
          
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -39,15 +36,13 @@ Permanently remove Mesh data from collection.
    
       .. code-block:: c#
          
-         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
       
          await connection.Meshes.DeleteAsync(person);
 
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -63,7 +58,7 @@ Permanently remove Mesh data from collection.
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          var anonymousUser = await client.registerAnonymousUser();
 
@@ -73,8 +68,6 @@ Permanently remove Mesh data from collection.
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

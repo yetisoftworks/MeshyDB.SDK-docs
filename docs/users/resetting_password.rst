@@ -19,7 +19,6 @@ Uses result from Forgot password to allow a user to reset their password.
       
          POST https://api.meshydb.com/{accountName}/users/resetpassword  HTTP/1.1
          Content-Type: application/json
-         tenant: {tenant}
          
            {
              "username": "username_testermctesterson",
@@ -30,9 +29,7 @@ Uses result from Forgot password to allow a user to reset their password.
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
-      accountName : :type:`string`, :required:`required`
+     accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       username : :type:`string`, :required:`required`
         Unique identifier for user or device.
@@ -47,14 +44,12 @@ Uses result from Forgot password to allow a user to reset their password.
    
       .. code-block:: c#
       
-         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.Initialize(accountName, publicKey);
 
          await client.ResetPasswordAsync(resetHash, newPassword);
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -73,7 +68,7 @@ Uses result from Forgot password to allow a user to reset their password.
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          var passwordResetHash = await client.forgotPassword(username);
 
@@ -81,8 +76,6 @@ Uses result from Forgot password to allow a user to reset their password.
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

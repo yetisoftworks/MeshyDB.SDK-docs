@@ -29,7 +29,6 @@ The following can be used to update a logged in user's personal information such
          PUT https://api.meshydb.com/{accountName}/users/me HTTP/1.1
          Authentication: Bearer {access_token}
          Content-Type: application/json
-         tenant: {tenant}
          
            {
              "firstName": "Tester",
@@ -40,8 +39,6 @@ The following can be used to update a logged in user's personal information such
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -59,7 +56,7 @@ The following can be used to update a logged in user's personal information such
    
       .. code-block:: c#
       
-         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
 
          var user = new User();
@@ -68,8 +65,6 @@ The following can be used to update a logged in user's personal information such
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -87,7 +82,7 @@ The following can be used to update a logged in user's personal information such
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          var anonymousUser = await client.registerAnonymousUser();
 
@@ -102,8 +97,6 @@ The following can be used to update a logged in user's personal information such
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -158,7 +151,6 @@ The following can be used to change the currently logged in user's security ques
          POST https://api.meshydb.com/{accountName}/users/me/questions HTTP/1.1
          Authentication: Bearer {access_token}
          Content-Type: application/json
-         tenant: {tenant}
          
            {
              "securityQuestions": [
@@ -171,8 +163,6 @@ The following can be used to change the currently logged in user's security ques
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       access_token : :type:`string`, :required:`required`
@@ -184,7 +174,7 @@ The following can be used to change the currently logged in user's security ques
    
       .. code-block:: c#
       
-         var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
 
          var questions = new UserSecurityQuestionUpdate();
@@ -198,8 +188,6 @@ The following can be used to change the currently logged in user's security ques
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -211,7 +199,7 @@ The following can be used to change the currently logged in user's security ques
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
          
          var meshyConnection = await client.login(username, password);
                
@@ -221,8 +209,6 @@ The following can be used to change the currently logged in user's security ques
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

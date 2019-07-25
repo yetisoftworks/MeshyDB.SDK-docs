@@ -19,7 +19,6 @@ Log user out.
       
         POST https://api.meshydb.com/{accountName}/connect/revocation HTTP/1.1
         Content-Type: application/x-www-form-urlencoded
-        tenant: {tenant}
          
           token={refresh_token}&
           token_type_hint=refresh_token&
@@ -29,8 +28,6 @@ Log user out.
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       refresh_token  : :type:`string`, :required:`required`
@@ -42,15 +39,13 @@ Log user out.
    
       .. code-block:: c#
       
-        var client = MeshyClient.InitializeWithTenant(accountName, tenant, publicKey);
+        var client = MeshyClient.Initialize(accountName, publicKey);
         var connection = await client.LoginAnonymouslyAsync(username);
 
         await connection.SignoutAsync();
 
       |parameters|
       
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`
@@ -62,7 +57,7 @@ Log user out.
       
       .. code-block:: javascript
          
-         var client = MeshyClient.initializeWithTenant(accountName, tenant, publicKey);
+         var client = MeshyClient.initialize(accountName, publicKey);
 
          var anonymousUser = await client.registerAnonymousUser();
 
@@ -72,8 +67,6 @@ Log user out.
       
       |parameters|
 
-      tenant : :type:`string`, :required:`required`
-         Indicates which tenant data to use. If not provided, the system will assume to use the default client.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       publicKey : :type:`string`, :required:`required`

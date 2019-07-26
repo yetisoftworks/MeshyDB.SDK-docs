@@ -10,11 +10,17 @@
 Creating Users
 --------------
 
+A user can be authenticated with the system for ensuring they are authorized to interact with the system.
+
+You can either generate an anonymous user, or device user with limited functionality. Otherwise you can register a new user with full credentials.
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Registering Anonymous User
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-Creates an anonymous user that can log into the system.
 
+An anonymous user can identify a device or unique user without requring user interaction.
+
+This kind of user has limited functionality such as not having the ability to be verified or be assigned roles.
 
 .. tabs::
 
@@ -93,7 +99,12 @@ Example Response:
 ^^^^^^^^^^^^^^^^
 Registering User
 ^^^^^^^^^^^^^^^^
-Creates a new user that can log into the system.
+
+Registering a user allows user defined credentials to access the system.
+
+If email or text verification is configured they will be prompted to verify their account.
+
+The user will not be able to be authenticated until verification has been completed. The verification request lasts one hour before it expires.
 
 .. tabs::
 
@@ -220,117 +231,14 @@ Example Response:
       "hint": "..."
    }
 
-^^^^^^
-Verify
-^^^^^^
-
-The following will be used to identify a user is verified with the correct verification code.
-
-.. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-        POST https://api.meshydb.com/{accountName}/users/verify HTTP/1.1
-        Content-Type: application/json
-         
-          {
-             "username": "username_testermctesterson",
-             "attempt": 1,
-             "hash": "...",
-             "expires": "1/1/1900",
-             "hint": "...",
-             "verificationCode": "...",
-          }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
-         Identifies which attempt hash was generated against.
-      hash : :type:`string`, :required:`required`
-         Generated hash from verification request.
-      expires : :type:`date`, :required:`required`
-         Identifies when the request expires.
-      hint : :type:`string`, :required:`required`
-         Hint for verification code was generated.
-      verificationCode : :type:`string`, :required:`required`
-         Value to verify against verification request.
-
-   .. group-tab:: C#
-   
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-
-        var check = new UserVerificationCheck();
-		
-        await client.VerifyAsync(check);
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
-      publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
-         Identifies which attempt hash was generated against.
-      hash : :type:`string`, :required:`required`
-         Generated hash from verification request.
-      expires : :type:`date`, :required:`required`
-         Identifies when the request expires.
-      hint : :type:`string`, :required:`required`
-         Hint for verification code was generated.
-      verificationCode : :type:`string`, :required:`required`
-         Value to verify against verification request.
-		
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-         var client = MeshyClient.initialize(accountName, publicKey);
-         
-         await client.verify({
-                           username: username,
-                           attempt: attempt:
-                           hash: hash,
-                           expires: expires,
-                           hint: hint,
-                           verificationCode: verificationCode
-						    });
-      
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
-      publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
-         Identifies which attempt hash was generated against.
-      hash : :type:`string`, :required:`required`
-         Generated hash from verification request.
-      expires : :type:`date`, :required:`required`
-         Identifies when the request expires.
-      hint : :type:`string`, :required:`required`
-         Hint for verification code was generated.
-      verificationCode : :type:`string`, :required:`required`
-         Value to verify against verification request.
 
 ^^^^^^^^^^
 Check Hash
 ^^^^^^^^^^
 
-Performs a check against the generated hash object with the verification code to ensure correctness before resetting a password or verifying a user.
+Optionally, before verifying the request you can choose to check if the verification code provided is valid.
+
+You may want to provide this flow if you still need to collect more information about the user before finalizing verification.
 
 .. tabs::
 
@@ -437,3 +345,109 @@ Example Response:
 .. code-block:: boolean
 
 	true
+
+^^^^^^
+Verify
+^^^^^^
+
+If email or text verification is configured the registered user must be verified. The resulting request lasts one hour.
+
+.. tabs::
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+        POST https://api.meshydb.com/{accountName}/users/verify HTTP/1.1
+        Content-Type: application/json
+         
+          {
+             "username": "username_testermctesterson",
+             "attempt": 1,
+             "hash": "...",
+             "expires": "1/1/1900",
+             "hint": "...",
+             "verificationCode": "...",
+          }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+
+        var check = new UserVerificationCheck();
+		
+        await client.VerifyAsync(check);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      publicKey : :type:`string`, :required:`required`
+         Public accessor for application.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
+		
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         await client.verify({
+                           username: username,
+                           attempt: attempt:
+                           hash: hash,
+                           expires: expires,
+                           hint: hint,
+                           verificationCode: verificationCode
+						    });
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting for authentication.
+      publicKey : :type:`string`, :required:`required`
+         Public accessor for application.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.

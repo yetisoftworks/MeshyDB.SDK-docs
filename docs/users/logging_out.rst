@@ -9,7 +9,7 @@
 -------------
 Logging Out
 -------------
-Log user out.
+Log authenticated user out.
 
 .. tabs::
 

@@ -12,7 +12,7 @@ Updating Self
 
 Updating self allows the ability to update the authenticated user's information.
 
-This might be personal or security questions for `password recovery <./forgetting_password.html>`_ at a later time.
+This might be personal or security questions for password recovery at a later time.
 
 ^^^^^^^^^^^^^^^^^^^^
 Personal Information
@@ -140,7 +140,7 @@ Example Response:
 Security Questions
 ^^^^^^^^^^^^^^^^^^
 
-The following can be used to change the authenticated user's security questions to be used for `password recovery <./forgetting_password.html>`_.
+The following can be used to change the authenticated user's security questions to be used for password recovery.
 
 .. tabs::
 

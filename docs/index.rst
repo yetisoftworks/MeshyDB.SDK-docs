@@ -69,8 +69,6 @@ Now that you have your public key, you can begin with any of our language specif
     :hidden:
     :caption: Users
 
-..    users/registering_user
-..    users/registering_anonymoususer
 
     users/creating_users
     users/retrieving_self
@@ -78,6 +76,8 @@ Now that you have your public key, you can begin with any of our language specif
     users/password_recovery
     users/logging_out
 
+..    users/registering_user
+..    users/registering_anonymoususer
 ..    users/forgetting_password
 ..    users/resetting_password
 

@@ -69,14 +69,20 @@ Now that you have your public key, you can begin with any of our language specif
     :hidden:
     :caption: Users
 
-    users/registering_user
-    users/registering_anonymoususer
+..    users/registering_user
+..    users/registering_anonymoususer
+
+    users/creating_users
     users/retrieving_self
     users/updating_self
-    users/forgetting_password
-    users/resetting_password
-    users/changing_password
+    users/password_recovery
     users/logging_out
-    users/verifying_user
+
+..    users/forgetting_password
+..    users/resetting_password
+
+..    users/changing_password
+
+..    users/verifying_user
 ..    users/checking_hash
 ..    users/updating_questions

@@ -12,7 +12,7 @@ Updating Self
 
 Updating self allows the ability to update the authenticated user's information.
 
-This might be personal or security questions for password recovery at a later time.
+This might be personal or security questions for password recovery later.
 
 ^^^^^^^^^^^^^^^^^^^^
 Personal Information

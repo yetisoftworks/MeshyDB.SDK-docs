@@ -18,7 +18,7 @@ You can either generate an anonymous user, or device user with limited functiona
 Registering Anonymous User
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An anonymous user can identify a device or unique user without requring user interaction.
+An anonymous user can identify a device or unique user without requiring user interaction.
 
 This kind of user has limited functionality such as not having the ability to be verified or be assigned roles.
 
@@ -102,7 +102,7 @@ Registering User
 
 Registering a user allows user defined credentials to access the system.
 
-If email or text verification is configured they will be prompted to verify their account.
+If email or text verification is configured, they will be prompted to verify their account.
 
 The user will not be able to be authenticated until verification has been completed. The verification request lasts one hour before it expires.
 

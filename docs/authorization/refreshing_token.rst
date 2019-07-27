@@ -45,9 +45,9 @@ Once the token expires the refresh token can be used to generate a new set of cr
 
         var client = MeshyClient.Initialize(accountName, publicKey);
         var connection = client.LoginWithPassword(username, password);
-        var refreshToken = connection.RetrievePersistanceToken();
+        var refreshToken = connection.RetrievePersistenceToken();
         
-        connection = await client.LoginWithPersistanceAsync(refreshToken);
+        connection = await client.LoginWithPersistenceAsync(refreshToken);
 
       |parameters|
 
@@ -70,9 +70,9 @@ Once the token expires the refresh token can be used to generate a new set of cr
 
          var meshyConnection = await client.login(username,password);
 
-         var refreshToken = meshyConnection.retrievePersistanceToken();
+         var refreshToken = meshyConnection.retrievePersistenceToken();
 
-         var refreshedMeshyConnection = await client.loginWithPersistance(refreshToken);
+         var refreshedMeshyConnection = await client.loginWithPersistence(refreshToken);
       
       |parameters|
 

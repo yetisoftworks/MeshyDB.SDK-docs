@@ -78,39 +78,36 @@ This kind of user has limited functionality such as not having the ability to be
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
          
-Response
-~~~~~~~~
 
-Example
-*******
-
-.. code-block:: json
-
-  {
-    "id": "5c78cc81dd870827a8e7b6c4",
-    "username": "username_testermctesterson",
-    "firstName": null,
-    "lastName": null,
-    "verified": false,
-    "isActive": true,
-    "phoneNumber": null,
-    "emailAddress": null,
-    "roles": [],
-    "securityQuestions": [],
-    "anonymous": true
-  }
-
-Codes
-*****
+Responses
+*********
 
 201 : Created
    * New user has been registered and is now available for use.
+
+      Example Result
+
+      .. code-block:: json
+
+      {
+         "id": "5c78cc81dd870827a8e7b6c4",
+         "username": "username_testermctesterson",
+         "firstName": null,
+         "lastName": null,
+         "verified": false,
+         "isActive": true,
+         "phoneNumber": null,
+         "emailAddress": null,
+         "roles": [],
+         "securityQuestions": [],
+         "anonymous": true
+      }
 
 400 : Bad request
    * Username must be unique.
 
 429 : Too many request
-   * You have have either hit your API or Database size limit. Please review your account.
+   * You have have either hit your API or Database limit. Please review your account.
 
 ''''''''''''''''
 Registering User
@@ -235,7 +232,8 @@ The user will not be able to be authenticated until verification has been comple
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          New set of questions and answers for registering user in password recovery.
          
-Example Response:
+Response
+~~~~~~~~
 
 .. code-block:: json
 
@@ -246,7 +244,6 @@ Example Response:
       "expires": "1/1/1900",
       "hint": "..."
    }
-
 
 ''''''''''
 Check Hash

@@ -78,7 +78,8 @@ This kind of user has limited functionality such as not having the ability to be
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
          
-Example Response:
+Example Response
+^^^^^^^^^^^^^^^^
 
 .. code-block:: json
 
@@ -93,8 +94,20 @@ Example Response:
     "emailAddress": null,
     "roles": [],
     "securityQuestions": [],
-	 "anonymous": true
+    "anonymous": true
   }
+
+Possible Responses
+^^^^^^^^^^^^^^^^^^
+
+201 : Created
+   * New user has been registered and is now available for use.
+
+400 : Bad request
+   * Username must be unique.
+
+429 : Too many request
+   * You have have either hit your API or Database size limit. Please review your account.
 
 ''''''''''''''''
 Registering User

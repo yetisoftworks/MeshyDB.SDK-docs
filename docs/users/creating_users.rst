@@ -14,9 +14,9 @@ A user can be authenticated with the system for ensuring they are authorized to 
 
 You can either generate an anonymous user, or device user with limited functionality. Otherwise you can register a new user with full credentials.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+''''''''''''''''''''''''''
 Registering Anonymous User
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+''''''''''''''''''''''''''
 
 An anonymous user can identify a device or unique user without requiring user interaction.
 
@@ -96,9 +96,9 @@ Example Response:
 	 "anonymous": true
   }
 
-^^^^^^^^^^^^^^^^
+''''''''''''''''
 Registering User
-^^^^^^^^^^^^^^^^
+''''''''''''''''
 
 Registering a user allows user defined credentials to access the system.
 
@@ -232,9 +232,9 @@ Example Response:
    }
 
 
-^^^^^^^^^^
+''''''''''
 Check Hash
-^^^^^^^^^^
+''''''''''
 
 Optionally, before verifying the request you can choose to check if the verification code provided is valid.
 
@@ -346,9 +346,9 @@ Example Response:
 
 	true
 
-^^^^^^
+''''''
 Verify
-^^^^^^
+''''''
 
 If email or text verification is configured the registered user must be verified. The resulting request lasts one hour.
 

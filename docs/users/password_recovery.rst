@@ -16,9 +16,9 @@ They will first need to request a forgot password before they are able to reset 
 
 Depending on your verification flow, whether it be email, text or security questions the user will need to either provide a code or answer to question to prove their knowledge of the request.
 
-^^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''
 Forgetting Password
-^^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''
 
 Creates a request for password reset that must have the matching data to reset to ensure request parity.
 
@@ -101,9 +101,9 @@ Example Response:
 		"hint": "xxxx"
 	}
 
-^^^^^^^^^^
+''''''''''
 Check Hash
-^^^^^^^^^^
+''''''''''
 
 Optionally, before the user's password is reset you can check if the verification code, they provide is valid.
 
@@ -215,9 +215,9 @@ Example Response:
 
 	true
 
-^^^^^^^^^^^^^^^^^^
+''''''''''''''''''
 Resetting Password
-^^^^^^^^^^^^^^^^^^
+''''''''''''''''''
 
 Take result from forgot password and application verification code generated from email/text or security question answer, along with a new password to be used for login.
 

@@ -14,9 +14,9 @@ Updating self allows the ability to update the authenticated user's information.
 
 This might be personal or security questions for password recovery later.
 
-^^^^^^^^^^^^^^^^^^^^
+''''''''''''''''''''
 Personal Information
-^^^^^^^^^^^^^^^^^^^^
+''''''''''''''''''''
 
 The following can be used to update an authenticated user's personal information such as name, phone number, and email address.
 
@@ -136,9 +136,9 @@ Example Response:
     "anonymous": false
   }
 
-^^^^^^^^^^^^^^^^^^
+''''''''''''''''''
 Security Questions
-^^^^^^^^^^^^^^^^^^
+''''''''''''''''''
 
 The following can be used to change the authenticated user's security questions to be used for password recovery.
 
@@ -242,9 +242,10 @@ Example Response:
     "anonymous": false
   }
 
-^^^^^^^^^^^^^^^^^
+'''''''''''''''''
 Changing Password
-^^^^^^^^^^^^^^^^^
+'''''''''''''''''
+
 Allows the authenticated user to change their password.
 
 .. tabs::

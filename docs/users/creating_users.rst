@@ -78,8 +78,11 @@ This kind of user has limited functionality such as not having the ability to be
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
          
-Example Response
-^^^^^^^^^^^^^^^^
+Response
+~~~~~~~~
+
+Example
+*******
 
 .. code-block:: json
 
@@ -97,8 +100,8 @@ Example Response
     "anonymous": true
   }
 
-Possible Responses
-^^^^^^^^^^^^^^^^^^
+Codes
+*****
 
 201 : Created
    * New user has been registered and is now available for use.

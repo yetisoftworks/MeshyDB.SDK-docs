@@ -85,7 +85,13 @@ We will register an anonymous user using our initialized client.
       username : :type:`string`
          Unique identifier for user or device. If it is not provided a username will be automatically generated.
 
-Example Response:
+Responses
+~~~~~~~~~
+
+201 : Created
+   * New user has been registered and is now available for use.
+
+Example Result
 
 .. code-block:: json
 
@@ -122,7 +128,13 @@ All data interaction must be done on behalf of a user. To start interacting with
          Unique identifier for user or device.
 
 
-Example Response:
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Generates new credentials for authorized user.
+
+Example Result
 
 .. code-block:: json
 
@@ -170,7 +182,13 @@ The data object can whatever information you would like to capture. The followin
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
 
-Example Response:
+Responses
+~~~~~~~~~
+
+201 : Created
+   * Result of newly created mesh data.
+
+Example Result
 
 .. code-block:: json
 
@@ -205,7 +223,13 @@ If we need to make a modification let's update our Mesh!
          Identifies unique record of Mesh data to replace.
 
 
-Example Response:
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Result of updated mesh data.
+
+Example Result
 
 .. code-block:: json
 
@@ -250,7 +274,13 @@ Let's see if we can find Bobbo.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-Example Response:
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Mesh data found with given search criteria.
+
+Example Result
 
 .. code-block:: json
 
@@ -288,6 +318,12 @@ We are now done with our data, so let us clean up after ourselves.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to remove.
 
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Mesh has been deleted successfully.
+
 --------
 Sign out
 --------
@@ -306,4 +342,10 @@ Now the user is complete. Let us sign out so someone else can have a try.
 
       No parameters provided. The connection is aware of who needs to be signed out.
 
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Identifies successful logout.
+   
 Upon signing out we will clear our connection allowing another user to now be authenticated.

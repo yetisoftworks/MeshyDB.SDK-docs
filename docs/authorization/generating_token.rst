@@ -87,6 +87,7 @@ Responses
 Example Result
 
 .. code-block:: json
+
    {
       "access_token": "ey...",
       "expires_in": 3600,

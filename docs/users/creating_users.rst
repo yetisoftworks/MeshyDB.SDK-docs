@@ -238,7 +238,7 @@ Responses
 ~~~~~~~~~
 
 201 : Created
-   * New user has been registered and is now available for use.
+   * New user has been registered and must be verified before use.
 
 Example Result
 
@@ -253,7 +253,7 @@ Example Result
    }
 
 204 : No Content
-   * New user has been registered and must be verified before use.
+   * New user has been registered and is now available for use.
 
 400 : Bad request
    * Public registration is not enabled.

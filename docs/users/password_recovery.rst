@@ -103,7 +103,7 @@ Example Result
 
 	{
 		"username": "username_testermctesterson",
-		"attempt": 1:
+		"attempt": 1,
 		"hash": "...",
 		"expires": "1900-01-01T00:00:00.000Z",
 		"hint": "xxxx"

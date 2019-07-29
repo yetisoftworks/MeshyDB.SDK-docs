@@ -85,23 +85,23 @@ Responses
 201 : Created
    * New user has been registered and is now available for use.
 
-      Example Result
+   Example Result
 
-      .. code-block:: json
+   .. code-block:: json
 
-      {
-         "id": "5c78cc81dd870827a8e7b6c4",
-         "username": "username_testermctesterson",
-         "firstName": null,
-         "lastName": null,
-         "verified": false,
-         "isActive": true,
-         "phoneNumber": null,
-         "emailAddress": null,
-         "roles": [],
-         "securityQuestions": [],
-         "anonymous": true
-      }
+   {
+      "id": "5c78cc81dd870827a8e7b6c4",
+      "username": "username_testermctesterson",
+      "firstName": null,
+      "lastName": null,
+      "verified": false,
+      "isActive": true,
+      "phoneNumber": null,
+      "emailAddress": null,
+      "roles": [],
+      "securityQuestions": [],
+      "anonymous": true
+   }
 
 400 : Bad request
    * Username must be unique.

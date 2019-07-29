@@ -77,14 +77,31 @@ Create a short lived access token to be used for authorized API calls. Typically
          Unique identifier for user or device.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
-   
-Example Response:
+
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Generates new credentials for authorized user.
+
+Example Result
 
 .. code-block:: json
-
    {
       "access_token": "ey...",
       "expires_in": 3600,
       "token_type": "Bearer",
       "refresh_token": "ab23cd3343e9328g"
    }
+
+400 : Bad request
+   * Token is invalid.
+   * Client id is invalid.
+   * Grant type is invalid.
+   * User is no longer active.
+   * Invalid Scope.
+   * Username is invalid.
+   * Password is invalid.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

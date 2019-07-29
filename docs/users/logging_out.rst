@@ -73,3 +73,17 @@ Log authenticated user out.
          Public accessor for application.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
+
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Identifies successful logout.
+
+400 : Bad request
+   * Invalid client id.
+   * Token is missing.
+   * Unsupported Token type.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

@@ -97,3 +97,29 @@ Example Response:
       "token_type": "Bearer",
       "refresh_token": "ab23cd3343e9328g"
    }
+
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Generates new refresh credentials for authorized user.
+
+Example Result
+
+.. code-block:: json
+   {
+      "access_token": "ey...",
+      "expires_in": 3600,
+      "token_type": "Bearer",
+      "refresh_token": "ab23cd3343e9328g"
+   }
+
+400 : Bad request
+   * Token is invalid.
+   * Client id is invalid.
+   * Grant type is invalid.
+   * User is no longer active.
+   * Refresh token is expired.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

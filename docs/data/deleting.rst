@@ -78,3 +78,21 @@ Permanently remove Mesh data from collection.
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to remove.
+
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Mesh has been deleted successfully.
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+   
+404 : Not Found
+   * Mesh data was not found.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

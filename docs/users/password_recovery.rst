@@ -88,8 +88,16 @@ The attempt will load the question into the hint field to be asked of the user.
       attempt : :type:`integer`, :required:`required`
          Identifies how many times a request has been made.
 
-         
-Example Response:
+
+Responses
+~~~~~~~~~
+
+Example Result
+
+200 : OK
+   * Generates forgot password response to be used for password reset.
+
+Example Result
 
 .. code-block:: json
 
@@ -100,6 +108,16 @@ Example Response:
 		"expires": "1900-01-01T00:00:00.000Z",
 		"hint": "xxxx"
 	}
+
+400 : Bad request
+   * Username is required.
+   * Anonymous user cannot recover password.
+
+404 : Not Found
+   * User was not found.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 ''''''''''
 Check Hash
@@ -209,11 +227,26 @@ This would allow a user to verify their code before requiring a reset.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
 		
-Example Response:
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Identifies if hash with verification code is valid.
+
+Example Result
 
 .. code-block:: boolean
 
 	true
+
+400 : Bad request
+   * Username is required.
+   * Hash is required.
+   * Expires is required.
+   * Verification code is required.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 ''''''''''''''''''
 Resetting Password
@@ -299,3 +332,23 @@ Take result from forgot password and application verification code generated fro
         Hash result of forgot password to verify request for password reset.
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
+
+Responses
+~~~~~~~~~
+
+204 : No Content
+   * Identifies password reset is successful.
+
+400 : Bad request
+   * Username is required.
+   * Hash is required.
+   * Expires is required.
+   * Verification code is required.
+   * Hash is expired.
+   * New password is required.
+   * Anonymous user cannot be reset.
+   * User has already been verified.
+   * Request hash is invalid.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

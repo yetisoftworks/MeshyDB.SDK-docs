@@ -65,8 +65,14 @@ Retrieve details about the authenticated user.
          Public accessor for application.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
-		 
-Example Response:
+
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Retrieves information about the authorized user.
+
+Example Result
 
 .. code-block:: json
 
@@ -90,3 +96,9 @@ Example Response:
                          ],
     "anonymous": true
   }
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

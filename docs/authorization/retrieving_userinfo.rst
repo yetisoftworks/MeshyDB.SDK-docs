@@ -79,3 +79,28 @@ Example Response:
        "rate_limit": "10",
        "role": "admin"
    }
+
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Retrieves authorized user's information.
+
+Example Result
+
+.. code-block:: json
+   {
+       "sub": "5c990a772a8fc94ec4b3dc20",
+       "name": "",
+       "given_name": "",
+       "family_name": "",
+       "id": "login@email.com",
+       "rate_limit": "10",
+       "role": "admin"
+   }
+
+400 : Bad request
+   * Invalid token.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

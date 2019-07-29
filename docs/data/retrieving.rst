@@ -92,12 +92,30 @@ Retrieve single item from Mesh collection.
       id : :type:`string`, :required:`required`
          Identifies location of what Mesh data to retrieve.
 
-Example Response:
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Mesh data found with given identifier.
+
+Example Result
 
 .. code-block:: json
 
-    {
-        "_id":"5c78cc81dd870827a8e7b6c4",
-        "firstName": "Bob",
-        "lastName": "Bobberson"
-    }
+   {
+      "_id":"5c78cc81dd870827a8e7b6c4",
+      "firstName": "Bob",
+      "lastName": "Bobberson"
+   }
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+   
+404 : Not Found
+   * Mesh data was not found.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

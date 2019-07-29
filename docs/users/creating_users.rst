@@ -80,30 +80,32 @@ This kind of user has limited functionality such as not having the ability to be
          
 
 Responses
-*********
+~~~~~~~~~
 
 201 : Created
    * New user has been registered and is now available for use.
 
-   Example Result
+Example Result
 
-   .. code-block:: json
+.. code-block:: json
 
-      {
-         "id": "5c78cc81dd870827a8e7b6c4",
-         "username": "username_testermctesterson",
-         "firstName": null,
-         "lastName": null,
-         "verified": false,
-         "isActive": true,
-         "phoneNumber": null,
-         "emailAddress": null,
-         "roles": [],
-         "securityQuestions": [],
-         "anonymous": true
-      }
+   {
+      "id": "5c78cc81dd870827a8e7b6c4",
+      "username": "username_testermctesterson",
+      "firstName": null,
+      "lastName": null,
+      "verified": false,
+      "isActive": true,
+      "phoneNumber": null,
+      "emailAddress": null,
+      "roles": [],
+      "securityQuestions": [],
+      "anonymous": true
+   }
 
 400 : Bad request
+   * Username is a required field.
+   * Anonymous registration is not enabled.
    * Username must be unique.
 
 429 : Too many request
@@ -231,9 +233,14 @@ The user will not be able to be authenticated until verification has been comple
          Email address of registering user.
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          New set of questions and answers for registering user in password recovery.
-         
-Response
-~~~~~~~~
+
+Responses
+~~~~~~~~~
+
+201 : Created
+   * New user has been registered and is now available for use.
+
+Example Result
 
 .. code-block:: json
 
@@ -244,6 +251,22 @@ Response
       "expires": "1/1/1900",
       "hint": "..."
    }
+
+204 : No Content
+   * New user has been registered and must be verified before use.
+
+400 : Bad request
+   * Public registration is not enabled.
+   * Email address is required when Email recovery is enabled.
+   * Phone number is required when Text recovery is enabled.
+   * At least one Security Questions is required when Question recovery is enabled.
+   * Username is a required field.
+   * Email address must be in a valid format.
+   * Phone number must be in an international format.
+   * Username must be unique.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 ''''''''''
 Check Hash
@@ -352,12 +375,27 @@ You may want to provide this flow if you still need to collect more information 
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
-		
-Example Response:
+
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Identifies if hash with verification code is valid.
+
+Example Result
 
 .. code-block:: boolean
 
 	true
+
+400 : Bad request
+   * Username is required.
+   * Hash is required.
+   * Expires is required.
+   * Verification code is required.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 ''''''
 Verify
@@ -464,3 +502,22 @@ If email or text verification is configured the registered user must be verified
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
+
+Responses
+~~~~~~~~~
+
+204 : No Content
+   * User has been verified successfully.
+
+400 : Bad request
+   * Username is required.
+   * Hash is required.
+   * Expires is required.
+   * Verification code is required.
+   * Hash is expired.
+   * Anonymous user cannot be verified.
+   * User has already been verified.
+   * Request hash is invalid.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

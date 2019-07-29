@@ -93,8 +93,14 @@ Update Mesh data in collection by id.
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.
-         
-Example Response:
+
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Result of updated mesh data.
+
+Example Result
 
 .. code-block:: json
 
@@ -103,3 +109,13 @@ Example Response:
       "firstName": "Bobbo",
       "lastName": "Bobberson"
    }
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh property cannot begin with '$' or contain '.'.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

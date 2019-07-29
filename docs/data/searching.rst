@@ -109,7 +109,13 @@ Filter Mesh data from collection based on query parameters.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
          
-Example Response:
+Responses
+~~~~~~~~~
+
+200 : OK
+   * Mesh data found with given search criteria.
+
+Example Result
 
 .. code-block:: json
 
@@ -123,3 +129,14 @@ Example Response:
                  }],
       "totalRecords": 1
    }
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Filter is in an invalid format. It must be in a valid Mongo DB format.
+   * Order by is in an invalid format. It must be in a valid Mongo DB format.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+   
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

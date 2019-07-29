@@ -109,9 +109,15 @@ The following can be used to update an authenticated user's personal information
          Phone number of authenticated user.
       emailAddress : :type:`string`, :required:`required` *if using email verification*
          Email address of authenticated user.
-         
-Example Response:
 
+Responses
+~~~~~~~~~
+
+Example Result
+
+200 : OK
+   Updated information of updated authorized user.
+   
 .. code-block:: json
 
   {
@@ -135,6 +141,20 @@ Example Response:
                          ],
     "anonymous": false
   }
+
+400 : Bad request
+   * Email address is required when Email recovery is enabled and the user is not anonymous.
+   * Phone number is required when Text recovery is enabled and the user is not anonymous.
+   * Username is a required field.
+   * Email address must be in a valid format.
+   * Phone number must be in an international format.
+   * Unable to change user roles via API.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 ''''''''''''''''''
 Security Questions
@@ -215,32 +235,27 @@ The following can be used to change the authenticated user's security questions 
          Public accessor for application.
       securityQuestions : :type:`object[]`, :required:`required`
          Collection of questions and answers used for password recovery if question security is configured.
-         
-Example Response:
 
-.. code-block:: json
+Responses
+~~~~~~~~~
 
-  {
-    "id": "5c78cc81dd870827a8e7b6c4",
-    "username": "username_testermctesterson",
-    "firstName": "Tester",
-    "lastName": "McTesterton",
-    "verified": true,
-    "isActive": true,
-    "phoneNumber": "+15555555555",
-    "emailAddress": "test@test.com",
-    "roles": [
-                "admin",
-                "test"
-             ],
-    "securityQuestions": [
-                            {
-                               "question": "What would you say to this question?",
-                               "answer": "mceasy123"
-                            }
-                         ],
-    "anonymous": false
-  }
+Example Result
+
+204 : No Content
+   * Updated information of updated authorized user.
+
+400 : Bad request
+   * Unable to update security questions if question verification is not configured.
+   * Anonymous user cannot have security questions.
+   * At least one question is required.
+   * Question text is required.
+   * Answer is required.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 '''''''''''''''''
 Changing Password
@@ -323,3 +338,23 @@ Allows the authenticated user to change their password.
         Previous user secret credentials for login.
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
+
+Responses
+~~~~~~~~~
+
+Example Result
+
+204 : No Content
+   * Identifies password was updated successfully.
+
+400 : Bad request
+   * Anonymous user cannot change password.
+   * New password is required.
+   * Previous password is required.
+   * Previous password does not match existing password.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

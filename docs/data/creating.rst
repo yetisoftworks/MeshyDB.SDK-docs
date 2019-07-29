@@ -92,8 +92,14 @@ Create new custom mesh data into specified mesh name.
          Unique identifier for user or device.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
-         
-Example Response:
+   
+Responses
+~~~~~~~~~
+
+201 : Created
+   * Result of newly created mesh data.
+
+Example Result
 
 .. code-block:: json
 
@@ -102,3 +108,13 @@ Example Response:
       "firstName": "Bob",
       "lastName": "Bobberson"
    }
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh property cannot begin with '$' or contain '.'.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

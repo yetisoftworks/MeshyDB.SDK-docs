@@ -87,19 +87,19 @@ Example Response:
 
 .. code-block:: json
 
-  {
-    "id": "5c...",
-    "username": "2d4c2a18-2596-4ba9-b657-3413d5974502",
-    "firstName": null,
-    "lastName": null,
-    "verified": false,
-    "isActive": true,
-    "phoneNumber": null,
-    "emailAddress": null,
-    "roles": [],
-    "securityQuestions": [],
-	 "anonymous": true
-  }
+   {
+      "id": "5c...",
+      "username": "2d4c2a18-2596-4ba9-b657-3413d5974502",
+      "firstName": null,
+      "lastName": null,
+      "verified": false,
+      "isActive": true,
+      "phoneNumber": null,
+      "emailAddress": null,
+      "roles": [],
+      "securityQuestions": [],
+      "anonymous": true
+   }
 
 -----
 Login
@@ -174,11 +174,11 @@ Example Response:
 
 .. code-block:: json
 
-  {
-    "_id":"5c78cc81dd870827a8e7b6c4",
-    "firstName": "Bob",
-    "lastName": "Bobberson"
-  }
+   {
+      "_id":"5c78cc81dd870827a8e7b6c4",
+      "firstName": "Bob",
+      "lastName": "Bobberson"
+   }
 
 -----------
 Update data
@@ -203,11 +203,11 @@ Example Response:
 
 .. code-block:: json
 
-  {
-    "_id":"5c78cc81dd870827a8e7b6c4",
-    "firstName": "Bobbo",
-    "lastName": "Bobberson"
-  }
+   {
+      "_id":"5c78cc81dd870827a8e7b6c4",
+      "firstName": "Bobbo",
+      "lastName": "Bobberson"
+   }
 
 -----------
 Search data
@@ -242,16 +242,16 @@ Example Response:
 
 .. code-block:: json
 
-  {
-    "page": 1,
-    "pageSize": 25,
-    "results": [{
-                 "_id":"5c78cc81dd870827a8e7b6c4",
-                 "firstName": "Bobbo",
-                 "lastName": "Bobberson"
-               }],
-    "totalRecords": 1
-  }
+   {
+      "page": 1,
+      "pageSize": 25,
+      "results":  [{
+                     "_id":"5c78cc81dd870827a8e7b6c4",
+                     "firstName": "Bobbo",
+                     "lastName": "Bobberson"
+                  }],
+      "totalRecords": 1
+   }
 
 -----------
 Delete data

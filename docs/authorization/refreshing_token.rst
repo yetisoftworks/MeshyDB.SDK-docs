@@ -86,17 +86,6 @@ Once the token expires the refresh token can be used to generate a new set of cr
          User secret credentials for login. When anonymous it is static as nopassword.
       refreshToken : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
-         
-Example Response:
-
-.. code-block:: json
-
-   {
-      "access_token": "ey...",
-      "expires_in": 3600,
-      "token_type": "Bearer",
-      "refresh_token": "ab23cd3343e9328g"
-   }
 
 Responses
 ~~~~~~~~~

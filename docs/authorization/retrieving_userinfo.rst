@@ -65,20 +65,6 @@ Retrieve user information.
          Public accessor for application.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
-		 
-Example Response:
-
-.. code-block:: json
-
-   {
-       "sub": "5c990a772a8fc94ec4b3dc20",
-       "name": "",
-       "given_name": "",
-       "family_name": "",
-       "id": "login@email.com",
-       "rate_limit": "10",
-       "role": "admin"
-   }
 
 Responses
 ~~~~~~~~~

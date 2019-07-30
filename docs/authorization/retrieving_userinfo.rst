@@ -75,6 +75,7 @@ Responses
 Example Result
 
 .. code-block:: json
+
    {
        "sub": "5c990a772a8fc94ec4b3dc20",
        "name": "",

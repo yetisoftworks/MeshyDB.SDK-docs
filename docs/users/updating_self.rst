@@ -113,11 +113,11 @@ The following can be used to update an authenticated user's personal information
 Responses
 ~~~~~~~~~
 
-Example Result
-
 200 : OK
    Updated information of updated authorized user.
    
+Example Result
+
 .. code-block:: json
 
   {
@@ -239,8 +239,6 @@ The following can be used to change the authenticated user's security questions 
 Responses
 ~~~~~~~~~
 
-Example Result
-
 204 : No Content
    * Updated information of updated authorized user.
 
@@ -341,8 +339,6 @@ Allows the authenticated user to change their password.
 
 Responses
 ~~~~~~~~~
-
-Example Result
 
 204 : No Content
    * Identifies password was updated successfully.

@@ -92,8 +92,6 @@ The attempt will load the question into the hint field to be asked of the user.
 Responses
 ~~~~~~~~~
 
-Example Result
-
 200 : OK
    * Generates forgot password response to be used for password reset.
 
@@ -273,16 +271,16 @@ Take result from forgot password and application verification code generated fro
 
       |parameters|
       
-     accountName : :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting for authentication.
       username : :type:`string`, :required:`required`
-        Unique identifier for user or device.
+         Unique identifier for user or device.
       expires : :type:`date`, :required:`required`
-        Defines when hash will expire before it needs to be regenerated.
+         Defines when hash will expire before it needs to be regenerated.
       hash : :type:`string`, :required:`required`
-        Hash result of forgot password to verify request for password reset.
+         Hash result of forgot password to verify request for password reset.
       newPassword : :type:`string`, :required:`required`
-        New user secret credentials for login.
+         New user secret credentials for login.
         
    .. group-tab:: C#
    

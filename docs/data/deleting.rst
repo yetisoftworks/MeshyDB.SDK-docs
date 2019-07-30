@@ -82,7 +82,7 @@ Permanently remove Mesh data from collection.
 Responses
 ~~~~~~~~~
 
-200 : OK
+204 : No Content
    * Mesh has been deleted successfully.
 
 400 : Bad request
@@ -90,7 +90,7 @@ Responses
 
 401 : Unauthorized
    * User is not authorized to make call.
-   
+
 404 : Not Found
    * Mesh data was not found.
 

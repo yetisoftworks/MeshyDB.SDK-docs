@@ -40,8 +40,7 @@ release = ''
 # ones.
 extensions = [
     'sphinx_tabs.tabs',
-    'sphinxcontrib.httpdomain',
-    'sphinx-copybutton'
+    'sphinxcontrib.httpdomain'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

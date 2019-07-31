@@ -23,7 +23,7 @@ Retrieve details about the authenticated user.
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
 
@@ -39,9 +39,9 @@ Retrieve details about the authenticated user.
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
 
@@ -60,9 +60,9 @@ Retrieve details about the authenticated user.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
 

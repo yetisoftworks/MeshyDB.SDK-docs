@@ -38,7 +38,7 @@ This kind of user has limited functionality such as not having the ability to be
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
@@ -55,9 +55,9 @@ This kind of user has limited functionality such as not having the ability to be
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
 		
@@ -72,9 +72,9 @@ This kind of user has limited functionality such as not having the ability to be
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
          
@@ -148,7 +148,7 @@ The user will not be able to be authenticated until verification has been comple
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
@@ -179,9 +179,9 @@ The user will not be able to be authenticated until verification has been comple
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       newPassword : :type:`string`, :required:`required`
@@ -216,9 +216,9 @@ The user will not be able to be authenticated until verification has been comple
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       newPassword : :type:`string`, :required:`required`
@@ -297,7 +297,7 @@ You may want to provide this flow if you still need to collect more information 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
@@ -326,9 +326,9 @@ You may want to provide this flow if you still need to collect more information 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
@@ -360,9 +360,9 @@ You may want to provide this flow if you still need to collect more information 
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
@@ -424,7 +424,7 @@ If email or text verification is configured the registered user must be verified
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
@@ -453,9 +453,9 @@ If email or text verification is configured the registered user must be verified
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
@@ -487,9 +487,9 @@ If email or text verification is configured the registered user must be verified
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`

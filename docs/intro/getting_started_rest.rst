@@ -53,7 +53,7 @@ To get started we need a user to log in with. We will make an anonymous user to 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
 
@@ -106,9 +106,9 @@ All data interaction must be done on behalf of a user. To start interacting with
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       password : :type:`string`, :required:`required`
@@ -156,7 +156,7 @@ The data object can whatever information you would like to capture. The followin
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
       meshName : :type:`string`, :required:`required`
@@ -201,7 +201,7 @@ If we need to make a modification let's update our Mesh!
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
       meshName : :type:`string`, :required:`required`
@@ -247,7 +247,7 @@ Let's see if we can find Bobbo.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
       meshName : :type:`string`, :required:`required`
@@ -299,7 +299,7 @@ We are now done with our data, so let us clean up after ourselves.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Login`_.
       meshName : :type:`string`, :required:`required`
@@ -337,7 +337,7 @@ Now the user is complete. Let us sign out so someone else can have a try.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       refresh_token : :type:`string`, :required:`required`
         Token to allow reauthorization with MeshyDB after the access token expires requested during `Login`_.
 

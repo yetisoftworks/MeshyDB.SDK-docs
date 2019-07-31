@@ -40,7 +40,7 @@ The following can be used to update an authenticated user's personal information
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       firstName : :type:`string`
@@ -66,9 +66,9 @@ The following can be used to update an authenticated user's personal information
       |parameters|
       
       accountName  : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       firstName : :type:`string`
          First name of authenticated user.
       lastName : :type:`string`
@@ -98,9 +98,9 @@ The following can be used to update an authenticated user's personal information
       |parameters|
 
       accountName  : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       firstName : :type:`string`
          First name of authenticated user.
       lastName : :type:`string`
@@ -184,7 +184,7 @@ The following can be used to change the authenticated user's security questions 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       securityQuestions : :type:`object[]`, :required:`required`
@@ -209,9 +209,9 @@ The following can be used to change the authenticated user's security questions 
       |parameters|
       
       accountName  : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       securityQuestions : :type:`object[]`, :required:`required`
          New set of questions and answers for authenticated user in password recovery.
 
@@ -230,9 +230,9 @@ The following can be used to change the authenticated user's security questions 
       |parameters|
 
       accountName  : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       securityQuestions : :type:`object[]`, :required:`required`
          Collection of questions and answers used for password recovery if question security is configured.
 
@@ -279,7 +279,7 @@ Allows the authenticated user to change their password.
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token: :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generate Access Token <auth.html#generate-access-token>`_.
       previousPassword : :type:`string`, :required:`required`
@@ -299,9 +299,9 @@ Allows the authenticated user to change their password.
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       password : :type:`string`, :required:`required`
@@ -325,9 +325,9 @@ Allows the authenticated user to change their password.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       password : :type:`string`, :required:`required`

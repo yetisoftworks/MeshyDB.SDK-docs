@@ -33,9 +33,9 @@ Once the token expires the refresh token can be used to generate a new set of cr
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       refresh_token : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
 
@@ -52,9 +52,9 @@ Once the token expires the refresh token can be used to generate a new set of cr
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       password : :type:`string`, :required:`required`
@@ -77,9 +77,9 @@ Once the token expires the refresh token can be used to generate a new set of cr
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       password : :type:`string`, :required:`required`

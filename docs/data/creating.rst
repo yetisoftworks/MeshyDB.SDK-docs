@@ -30,7 +30,7 @@ Create new custom mesh data into specified mesh name.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       mesh : :type:`string`, :required:`required`
@@ -58,9 +58,9 @@ Create new custom mesh data into specified mesh name.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       mesh : :type:`string`, default: class name
@@ -85,9 +85,9 @@ Create new custom mesh data into specified mesh name.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       meshName : :type:`string`, :required:`required`

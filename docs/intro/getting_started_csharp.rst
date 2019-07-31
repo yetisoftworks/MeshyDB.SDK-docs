@@ -26,7 +26,6 @@ Identify Account Name
 
 Your |accountName| can be found under the Account page. See image below:
 
-
 .. |gettingStartedAccount| image:: https://cdn.meshydb.com/images/getting-started-account.png
            :alt: Account Name under Account
 
@@ -75,16 +74,17 @@ The client is used to establish a connection to the API. You will need to provid
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
 
 -----------------------
 Register Anonymous User
 -----------------------
-Anonymous users are great for associating data to people without having them go through any type of user registration. Simply create the user behind the scenes with a unique identifier and begin recording data for that user.
 
-We will register an anonymous user using our initialized client.
+Anonymous users are great for associating data to people or devices without having them go through any type of user registration.
+
+The example below shows registering an anonymous user.
 
 .. tabs::
    
@@ -92,7 +92,7 @@ We will register an anonymous user using our initialized client.
    
       .. code-block:: c#
 
-         string username = null;
+         string username = "TestUser";
 
          var anonymousUser = await client.RegisterAnonymousUserAsync(username);
          
@@ -128,7 +128,10 @@ Example Result
 -----
 Login
 -----
-All data interaction must be done on behalf of a user. To start interacting with data establish a connection as that user.
+
+All data interaction must be done on behalf of a user. This is done to ensure proper authorized access of your data.
+
+The example below shows logging in an anonymous user.
 
 .. tabs::
    
@@ -136,7 +139,7 @@ All data interaction must be done on behalf of a user. To start interacting with
    
       .. code-block:: c#
 
-         var  connection = await client.LoginAnonymouslyAsync(anonymousUser.Username);
+         var  connection = await client.LoginAnonymouslyAsync(username);
          
       |parameters|
 
@@ -173,9 +176,15 @@ Once we login we can access our connection through a static member.
 -----------
 Create data
 -----------
-We can use our newly authenticated user to make requests with MeshyDB and create some data.
+Now that we have an connection we can begin making API requests.
 
-The data object can whatever information you would like to capture. The following example will have some data fields with example data.
+.. |meshData| raw:: html
+
+    <code>MeshData</code>
+    
+The MeshyDB SDK requires all data extend the |meshData| class. 
+
+The example below shows a Person represented by a first name, last name and user id.
 
 .. tabs::
    
@@ -189,11 +198,23 @@ The data object can whatever information you would like to capture. The followin
          {
            public string FirstName { get; set; }
            public string LastName { get; set; }
+           public string UserId { get; set; }
          }
 
+Now that we have a representation of a person we can start making data to write to the API.
+
+The example below shows committing a new person.
+
+.. tabs::
+   
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+
          var person = await MeshyClient.CurrentConnection.Meshes.CreateAsync(new Person() {
-           FirstName="Bob",
-           LastName="Bobberson"
+           FirstName = "Bob",
+           LastName = "Bobson",
+           UserId = anonymousUser.Id
          });
 
       |parameters|
@@ -213,13 +234,18 @@ Example Result
    {
       "_id":"5c78cc81dd870827a8e7b6c4",
       "firstName": "Bob",
-      "lastName": "Bobberson"
+      "lastName": "Bobson",
+      "userName": "5c..."
    }
 
 -----------
 Update data
 -----------
-If we need to make a modification let's update our Mesh! 
+The API allows you to make updates to specific |meshData| by targeting the id.
+
+The SDK makes this even simpler since the id can be derived from the object itself along with all it's modifications.
+
+The example below shows modifying the first name and committing those changes to the API.
 
 .. tabs::
 
@@ -227,7 +253,7 @@ If we need to make a modification let's update our Mesh!
    
       .. code-block:: c#
 
-         person.FirstName = "Bobbo";
+         person.FirstName = "Robert";
 
          person = await MeshyClient.CurrentConnection.Meshes.UpdateAsync(person);
 
@@ -247,14 +273,17 @@ Example Result
 
    {
       "_id":"5c78cc81dd870827a8e7b6c4",
-      "firstName": "Bobbo",
-      "lastName": "Bobberson"
+      "firstName": "Robert",
+      "lastName": "Bobson"
    }
 
 -----------
 Search data
 -----------
-Let's see if we can find Bobbo.
+
+The API allows you to search |meshData| using a Linq expression.
+
+The example below shows searching based where the first name starts with Rob.
 
 .. tabs::
 
@@ -262,12 +291,17 @@ Let's see if we can find Bobbo.
    
       .. code-block:: c#
 
-         var filter = "{ \"firstName\": \"Bobbo\" }";
+         var filter = "{ \"firstName\": \"^Rob\" }";
          var sort = "";
          var page = 1;
          var pageSize = 25;
 
-         var pagedPersonResult = await MeshyClient.CurrentConnection.Meshes.SearchAsync<Person>(filter, sort, page, pageSize);
+         var pagedPersonResult = await MeshyClient.CurrentConnection
+                                                  .Meshes
+                                                  .SearchAsync<Person>(filter, 
+                                                                       sort, 
+                                                                       page, 
+                                                                       pageSize);
 
       |parameters|
 
@@ -295,16 +329,27 @@ Example Result
       "pageSize": 25,
       "results":  [{
                      "_id":"5c78cc81dd870827a8e7b6c4",
-                     "firstName": "Bobbo",
-                     "lastName": "Bobberson"
+                     "firstName": "Robert",
+                     "lastName": "Bobson"
                   }],
       "totalRecords": 1
    }
 
+..  In some cases you may need more control on your filtering or sorting. You can optionally provide this criteria in a MongoDB format.
+
 -----------
 Delete data
 -----------
-We are now done with our data, so let us clean up after ourselves.
+
+The API allows you to delete a specific |meshData| by targeting the id.
+
+The example below shows deleting the data from the API by providing the object.
+
+.. |softDelete| raw::html
+   
+   <code>Soft Delete</code>
+
+*Deleted* data is not able to be recovered. If you anticipate the need to recover this data please implementing a |softDelete|.
 
 .. tabs::
 
@@ -312,7 +357,7 @@ We are now done with our data, so let us clean up after ourselves.
    
       .. code-block:: c#
       
-         await MeshyClient.CurrentConnection.Meshes.DeleteAsync(person);
+         await MeshyClient.CurrentConnection.Meshes.DeleteAsync(person.Id);
 
       |parameters|
 
@@ -327,7 +372,14 @@ Responses
 --------
 Sign out
 --------
-Now the user is complete. Let us sign out so someone else can have a try.
+
+The MeshyDB SDK manages a single connection to the API. 
+
+The Meshy SDK handles token management, this includes refresh tokens used to maintain a user's connection.
+
+As a result it is recommended to implement Sign Out to ensure the current user is logged out and all refresh tokens are revoked.
+
+The example below shows signing out of the currently established connection.
 
 .. tabs::
 
@@ -347,4 +399,4 @@ Responses
 200 : OK
    * Identifies successful logout.
 
-Upon signing out we will clear our connection allowing another user to now be authenticated.
+Not seeing something you need? Feel free to give us a chat or contact us at support@meshydb.com.

@@ -43,7 +43,7 @@ The attempt will load the question into the hint field to be asked of the user.
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
@@ -60,9 +60,9 @@ The attempt will load the question into the hint field to be asked of the user.
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
@@ -80,9 +80,9 @@ The attempt will load the question into the hint field to be asked of the user.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
@@ -146,7 +146,7 @@ This would allow a user to verify their code before requiring a reset.
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       access_token : :type:`string`, :required:`required`
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
@@ -175,9 +175,9 @@ This would allow a user to verify their code before requiring a reset.
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
@@ -209,9 +209,9 @@ This would allow a user to verify their code before requiring a reset.
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`
@@ -272,7 +272,7 @@ Take result from forgot password and application verification code generated fro
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       expires : :type:`date`, :required:`required`
@@ -293,9 +293,9 @@ Take result from forgot password and application verification code generated fro
       |parameters|
       
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
         User name that is being reset.
       expires : :type:`date`, :required:`required`
@@ -319,9 +319,9 @@ Take result from forgot password and application verification code generated fro
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
         User name that is being reset.
       expires : :type:`date`, :required:`required`

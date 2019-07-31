@@ -59,9 +59,9 @@ Let's start with initializing our MeshyDB Client. This will allow us to register
       |parameters|
 
       accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting for authentication.
+         Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
-         Public accessor for application.
+         Public identifier of connecting service.
 
 -----------------------
 Register Anonymous User

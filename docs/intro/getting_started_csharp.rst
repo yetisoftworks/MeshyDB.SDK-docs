@@ -15,16 +15,34 @@ This documentation assumes you have an active MeshyDB account. If you do not, pl
 
     <code>Public Key</code>
 
-Once your account is verified, you will need to gather your |publicKey| from the Clients page under your default tenant. See image below:
+.. |accountName| raw:: html
 
-.. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
+    <code>Account Name</code>
+
+Once you verify your account you will need to gather your |accountName| and |publicKey|.
+
+Identify Account Name
+~~~~~~~~~~~~~~~~~~~~~
+
+Your |accountName| can be found under the Account page. See image below:
+
+
+.. |gettingStartedAccount| image:: https://cdn.meshydb.com/images/getting-started-account.png
+           :alt: Account Name under Account
+
+|gettingStartedAccount|
+
+Identify  Public Key
+~~~~~~~~~~~~~~~~~~~~
+
+Your |publicKey| can be found under the Clients page under your default tenant. See image below:
+
+.. |gettingStartedClient| image:: https://cdn.meshydb.com/images/getting-started-client.png
            :alt: Public Key under Clients default tenant
 
-|gettingStarted|
+|gettingStartedClient|
 
 In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
-
-Now that we have the required information let's jump in and see how easy it is to start with MeshyDB.
 
 .. |parameters| raw:: html
 
@@ -44,7 +62,7 @@ Let's install the `MeshyDB.SDK <https://www.nuget.org/packages/MeshyDB.SDK/>`_ N
 ----------
 Initialize
 ----------
-Let's start with initializing our MeshyDB Client. This will allow us to register a new user next! 
+The client is used to establish a connection to the API. You will need to provide your |accountName| and |publicKey| from your account and client.
 
 .. tabs::
    

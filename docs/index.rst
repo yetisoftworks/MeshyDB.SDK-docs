@@ -37,7 +37,6 @@ Now that you have your public key, you can begin with any of our language specif
 
 .. toctree::
     :maxdepth: 1
-    :hidden:
     :caption: Getting Started
 
     intro/getting_started_rest

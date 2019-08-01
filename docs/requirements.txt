@@ -1,4 +1,4 @@
+sphinx-copybutton
 sphinx_rtd_theme
 sphinx-tabs
 sphinxcontrib.httpdomain
-pip install sphinx-copybutton

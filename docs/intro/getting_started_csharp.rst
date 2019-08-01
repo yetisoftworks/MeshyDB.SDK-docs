@@ -13,15 +13,11 @@ This documentation assumes you have an active MeshyDB account. If you do not, pl
 
 .. |publicKey| raw:: html
 
-    <code>Public Key</code>
-
-.. |accountNameText| replace::
-
-   `Account Name <identify-account-name>`_
+    <code><a href="#identify-public-key">Public Key</a></code>
 
 .. |accountName| raw:: html
 
-    <code>|accountNameText|</code>
+    <code><a href="#identify-account-name">Account Name</a></code>
 
 Once you verify your account you will need to gather your |accountName| and |publicKey|.
 

@@ -305,7 +305,7 @@ Let's see if we can find Bobbo.
          Criteria provided in a MongoDB format to limit results.
       orderby : :type:`string`
          Defines which fields need to be sorted and direction in a MongoDB format.
-      page : :type:`integer`
+      page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.

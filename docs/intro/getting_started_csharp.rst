@@ -101,8 +101,7 @@ The example below shows registering an anonymous user.
       username : :type:`string`
          Unique identifier for user or device. If it is not provided a username will be automatically generated.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 201 : Created
    * New user has been registered and is now available for use.
@@ -146,8 +145,7 @@ The example below shows logging in an anonymous user.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Generates new credentials for authorized user.
@@ -221,8 +219,7 @@ The example below shows committing a new person.
 
       No parameters provided.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 201 : Created
    * Result of newly created mesh data.
@@ -261,8 +258,7 @@ The example below shows modifying the first name and committing those changes to
 
       No parameters provided.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Result of updated mesh data.
@@ -314,8 +310,7 @@ The example below shows searching based where the first name starts with Rob.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Mesh data found with given search criteria.
@@ -363,8 +358,7 @@ The example below shows deleting the data from the API by providing the object.
 
       No parameters provided.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Mesh has been deleted successfully.
@@ -393,8 +387,7 @@ The example below shows signing out of the currently established connection.
 
       No parameters provided. The connection is aware of who needs to be signed out.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Identifies successful logout.

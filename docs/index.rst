@@ -37,6 +37,7 @@ Now that you have your public key, you can begin with any of our language specif
 
 .. toctree::
     :maxdepth: 1
+    :hidden:
     :caption: Getting Started
 
     intro/getting_started_rest
@@ -44,7 +45,6 @@ Now that you have your public key, you can begin with any of our language specif
     intro/getting_started_nodejs
    
 .. toctree::
-    :maxdepth: 2
     :hidden:
     :caption: Authorization
 
@@ -53,7 +53,6 @@ Now that you have your public key, you can begin with any of our language specif
     authorization/retrieving_userinfo
 
 .. toctree::
-    :maxdepth: 2
     :hidden:
     :caption: Users
 
@@ -64,7 +63,6 @@ Now that you have your public key, you can begin with any of our language specif
     users/logging_out
 
 .. toctree::
-    :maxdepth: 2
     :hidden:
     :caption: Data
 

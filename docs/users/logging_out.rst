@@ -74,8 +74,7 @@ Log authenticated user out.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Identifies successful logout.

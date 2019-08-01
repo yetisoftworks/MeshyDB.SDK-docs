@@ -89,8 +89,7 @@ The attempt will load the question into the hint field to be asked of the user.
          Identifies how many times a request has been made.
 
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Generates forgot password response to be used for password reset.
@@ -225,8 +224,7 @@ This would allow a user to verify their code before requiring a reset.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
 		
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Identifies if hash with verification code is valid.
@@ -331,8 +329,7 @@ Take result from forgot password and application verification code generated fro
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 204 : No Content
    * Identifies password reset is successful.

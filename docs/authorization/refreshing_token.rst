@@ -87,8 +87,7 @@ Once the token expires the refresh token can be used to generate a new set of cr
       refreshToken : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Generates new refresh credentials for authorized user.

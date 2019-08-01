@@ -66,8 +66,7 @@ Retrieve user information.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Retrieves authorized user's information.

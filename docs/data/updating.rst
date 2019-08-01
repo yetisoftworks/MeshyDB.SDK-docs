@@ -94,8 +94,7 @@ Update Mesh data in collection by id.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Result of updated mesh data.

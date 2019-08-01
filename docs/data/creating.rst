@@ -93,8 +93,7 @@ Create new custom mesh data into specified mesh name.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
    
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 201 : Created
    * Result of newly created mesh data.

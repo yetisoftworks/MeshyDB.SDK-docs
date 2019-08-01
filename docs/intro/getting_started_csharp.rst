@@ -124,6 +124,14 @@ Example Result
       "anonymous": true
    }
 
+400 : Bad request
+   * Username is a required field.
+   * Anonymous registration is not enabled.
+   * Username must be unique.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
 -----
 Login
 -----
@@ -161,6 +169,18 @@ Example Result
     "refresh_token": "ab23cd3343e9328g"
   }
  
+400 : Bad request
+   * Token is invalid.
+   * Client id is invalid.
+   * Grant type is invalid.
+   * User is no longer active.
+   * Invalid Scope.
+   * Username is invalid.
+   * Password is invalid.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
 Once we login we can access our connection through a static member.
 
 .. tabs::
@@ -235,6 +255,16 @@ Example Result
       "userName": "5c..."
    }
 
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh property cannot begin with '$' or contain '.'.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
 -----------
 Update data
 -----------
@@ -272,6 +302,16 @@ Example Result
       "firstName": "Robert",
       "lastName": "Bobson"
    }
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh property cannot begin with '$' or contain '.'.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 -----------
 Search data
@@ -330,6 +370,17 @@ Example Result
       "totalRecords": 1
    }
 
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Filter is in an invalid format. It must be in a valid Mongo DB format.
+   * Order by is in an invalid format. It must be in a valid Mongo DB format.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+   
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
 ..  In some cases you may need more control on your filtering or sorting. You can optionally provide this criteria in a MongoDB format.
 
 -----------
@@ -360,8 +411,20 @@ The example below shows deleting the data from the API by providing the object.
 
 .. rubric:: Responses
 
-200 : OK
+204 : No Content
    * Mesh has been deleted successfully.
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+404 : Not Found
+   * Mesh data was not found.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 --------
 Sign out
@@ -391,5 +454,13 @@ The example below shows signing out of the currently established connection.
 
 200 : OK
    * Identifies successful logout.
+
+400 : Bad request
+   * Invalid client id.
+   * Token is missing.
+   * Unsupported Token type.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 Not seeing something you need? Feel free to give us a chat or contact us at support@meshydb.com.

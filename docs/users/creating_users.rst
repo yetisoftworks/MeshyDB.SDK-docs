@@ -79,8 +79,7 @@ This kind of user has limited functionality such as not having the ability to be
          Unique identifier for user or device.
          
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 201 : Created
    * New user has been registered and is now available for use.
@@ -234,8 +233,7 @@ The user will not be able to be authenticated until verification has been comple
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          New set of questions and answers for registering user in password recovery.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 201 : Created
    * New user has been registered and must be verified before use.
@@ -376,8 +374,7 @@ You may want to provide this flow if you still need to collect more information 
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Identifies if hash with verification code is valid.
@@ -503,8 +500,7 @@ If email or text verification is configured the registered user must be verified
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 204 : No Content
    * User has been verified successfully.

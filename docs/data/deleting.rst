@@ -79,8 +79,7 @@ Permanently remove Mesh data from collection.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to remove.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 204 : No Content
    * Mesh has been deleted successfully.

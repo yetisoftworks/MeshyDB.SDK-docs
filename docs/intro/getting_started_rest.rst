@@ -57,8 +57,7 @@ To get started we need a user to log in with. We will make an anonymous user to 
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 201 : Created
    * New user has been registered and is now available for use.
@@ -81,6 +80,14 @@ Example Result
       "anonymous": true
    }
    
+400 : Bad request
+   * Username is a required field.
+   * Anonymous registration is not enabled.
+   * Username must be unique.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
 -----
 Login
 -----
@@ -114,8 +121,7 @@ All data interaction must be done on behalf of a user. To start interacting with
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
    
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Generates new credentials for authorized user.
@@ -130,7 +136,19 @@ Example Result
       "token_type": "Bearer",
       "refresh_token": "ab23cd3343e9328g"
    }
- 
+
+400 : Bad request
+   * Token is invalid.
+   * Client id is invalid.
+   * Grant type is invalid.
+   * User is no longer active.
+   * Invalid Scope.
+   * Username is invalid.
+   * Password is invalid.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
 -----------
 Create data
 -----------
@@ -162,8 +180,7 @@ The data object can whatever information you would like to capture. The followin
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 201 : Created
    * Result of newly created mesh data.
@@ -177,7 +194,17 @@ Example Result
       "firstName": "Bob",
       "lastName": "Bobberson"
    }
-  
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh property cannot begin with '$' or contain '.'.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
 -----------
 Update data
 -----------
@@ -209,8 +236,7 @@ If we need to make a modification let's update our Mesh!
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Result of updated mesh data.
@@ -224,6 +250,16 @@ Example Result
       "firstName": "Bobbo",
       "lastName": "Bobberson"
    }
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh property cannot begin with '$' or contain '.'.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 -----------
 Search data
@@ -261,8 +297,7 @@ Let's see if we can find Bobbo.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Mesh data found with given search criteria.
@@ -281,6 +316,17 @@ Example Result
                   }],
       "totalRecords": 1
    }
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+   * Filter is in an invalid format. It must be in a valid Mongo DB format.
+   * Order by is in an invalid format. It must be in a valid Mongo DB format.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+   
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 -----------
 Delete data
@@ -307,11 +353,22 @@ We are now done with our data, so let us clean up after ourselves.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to remove.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
-200 : OK
+204 : No Content
    * Mesh has been deleted successfully.
+
+400 : Bad request
+   * Mesh name is invalid and must contain alpha numeric.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+404 : Not Found
+   * Mesh data was not found.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
 
 --------
 Sign out
@@ -341,8 +398,15 @@ Now the user is complete. Let us sign out so someone else can have a try.
       refresh_token : :type:`string`, :required:`required`
         Token to allow reauthorization with MeshyDB after the access token expires requested during `Login`_.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Identifies successful logout.
+
+400 : Bad request
+   * Invalid client id.
+   * Token is missing.
+   * Unsupported Token type.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.

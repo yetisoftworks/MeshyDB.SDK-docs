@@ -109,8 +109,7 @@ Filter Mesh data from collection based on query parameters.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
          
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Mesh data found with given search criteria.

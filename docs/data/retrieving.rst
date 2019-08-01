@@ -92,8 +92,7 @@ Retrieve single item from Mesh collection.
       id : :type:`string`, :required:`required`
          Identifies location of what Mesh data to retrieve.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Mesh data found with given identifier.

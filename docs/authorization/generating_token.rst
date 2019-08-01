@@ -78,8 +78,7 @@ Create a short lived access token to be used for authorized API calls. Typically
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
 
-Responses
-~~~~~~~~~
+.. rubric:: Responses
 
 200 : OK
    * Generates new credentials for authorized user.

@@ -13,11 +13,11 @@ This documentation assumes you have an active MeshyDB account. If you do not, pl
 
 .. |publicKey| raw:: html
 
-    <code>`Public Key<Identify Public Key>`_</code>
+    <code>`Public Key <Identify Public Key>`_</code>
 
 .. |accountName| raw:: html
 
-    <code>`Account Name<Identify Account Name>`_</code>
+    <code>`Account Name <Identify Account Name>`_</code>
 
 Once you verify your account you will need to gather your |accountName| and |publicKey|.
 

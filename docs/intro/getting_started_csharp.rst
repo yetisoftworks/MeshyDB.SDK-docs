@@ -13,11 +13,11 @@ This documentation assumes you have an active MeshyDB account. If you do not, pl
 
 .. |publicKey| raw:: html
 
-    <code>Public Key</code>
+    <code>`Public Key<Identify Public Key>`_</code>
 
 .. |accountName| raw:: html
 
-    <code>Account Name</code>
+    <code>`Account Name<Identify Account Name>`_</code>
 
 Once you verify your account you will need to gather your |accountName| and |publicKey|.
 
@@ -31,8 +31,8 @@ Your |accountName| can be found under the Account page. See image below:
 
 |gettingStartedAccount|
 
-Identify  Public Key
-~~~~~~~~~~~~~~~~~~~~
+Identify Public Key
+~~~~~~~~~~~~~~~~~~~
 
 Your |publicKey| can be found under the Clients page under your default tenant. See image below:
 

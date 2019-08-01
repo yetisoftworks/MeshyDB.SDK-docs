@@ -45,16 +45,27 @@ Now that you have your public key, you can begin with any of our language specif
     intro/getting_started_nodejs
    
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :hidden:
     :caption: Authorization
 
     authorization/generating_token
     authorization/refreshing_token
     authorization/retrieving_userinfo
-   
+
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
+    :hidden:
+    :caption: Users
+
+    users/creating_users
+    users/retrieving_self
+    users/updating_self
+    users/password_recovery
+    users/logging_out
+
+.. toctree::
+    :maxdepth: 2
     :hidden:
     :caption: Data
 
@@ -64,14 +75,3 @@ Now that you have your public key, you can begin with any of our language specif
     data/searching
     data/deleting
    
-.. toctree::
-    :maxdepth: 3
-    :hidden:
-    :caption: Users
-
-
-    users/creating_users
-    users/retrieving_self
-    users/updating_self
-    users/password_recovery
-    users/logging_out

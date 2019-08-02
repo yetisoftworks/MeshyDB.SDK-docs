@@ -146,8 +146,6 @@ This would allow a user to verify their code before requiring a reset.
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`

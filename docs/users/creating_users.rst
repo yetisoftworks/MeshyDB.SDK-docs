@@ -14,6 +14,81 @@ A user can be authenticated with the system for ensuring they are authorized to 
 
 You can either generate an anonymous user, or device user with limited functionality. Otherwise you can register a new user with full credentials.
 
+'''''''''''''''''''''''''''
+Checking Username Available
+'''''''''''''''''''''''''''
+
+Before identifying a device or unique user you can check to see if they already were registered.
+
+.. tabs::
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+         
+        GET https://api.meshydb.com//{accountName}/users/{username}/exists HTTP/1.1
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+
+        var userExists = await client.CheckUserExistAsync(username);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+		
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         var userExists = await client.checkUserExist(username);
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+         
+
+.. rubric:: Responses
+
+201 : Created
+   * Identifies if username already exists.
+
+Example Result
+
+.. code-block:: json
+
+   {
+      "exists": false
+   }
+
+400 : Bad request
+   * Username is required.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
 ''''''''''''''''''''''''''
 Registering Anonymous User
 ''''''''''''''''''''''''''

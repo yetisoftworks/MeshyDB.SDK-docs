@@ -196,7 +196,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Mesh property cannot begin with '$' or contain '.'.
 
 401 : Unauthorized
@@ -252,7 +252,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Mesh property cannot begin with '$' or contain '.'.
 
 401 : Unauthorized
@@ -318,7 +318,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Filter is in an invalid format. It must be in a valid Mongo DB format.
    * Order by is in an invalid format. It must be in a valid Mongo DB format.
 
@@ -359,7 +359,7 @@ We are now done with our data, so let us clean up after ourselves.
    * Mesh has been deleted successfully.
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
 
 401 : Unauthorized
    * User is not authorized to make call.

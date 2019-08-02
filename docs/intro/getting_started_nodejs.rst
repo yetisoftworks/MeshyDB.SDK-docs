@@ -13,28 +13,43 @@ This documentation assumes you have an active MeshyDB account. If you do not, pl
 
 .. |publicKey| raw:: html
 
-    <code>Public Key</code>
+    <code><a href="#identify-public-key">Public Key</a></code>
 
-Once your account is verified, you will need to gather your |publicKey| from the Clients page under your default tenant. See image below:
+.. |accountName| raw:: html
 
-.. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
+    <code><a href="#identify-account-name">Account Name</a></code>
+
+Once you verify your account you will need to gather your |accountName| and |publicKey|.
+
+Identify Account Name
+~~~~~~~~~~~~~~~~~~~~~
+
+Your |accountName| can be found under the Account page. See image below:
+
+.. |gettingStartedAccount| image:: https://cdn.meshydb.com/images/getting-started-account.png
+           :alt: Account Name under Account
+
+|gettingStartedAccount|
+
+Identify  Public Key
+~~~~~~~~~~~~~~~~~~~~
+
+Your |publicKey| can be found under the Clients page under your default tenant. See image below:
+
+.. |gettingStartedClient| image:: https://cdn.meshydb.com/images/getting-started-client.png
            :alt: Public Key under Clients default tenant
 
-|gettingStarted|
+|gettingStartedClient|
 
 In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
-
-Now that we have the required information let's jump in and see how easy it is to start with MeshyDB.
 
 .. |parameters| raw:: html
 
    <h4>Parameters</h4>
-  
+
 -----------
 Install SDK
 -----------
-Now that we have the required information let's start coding!
-
 The supporting SDK is open source and you are able to use a browser or NodeJS application.
 
 Let's install the `MeshyDB.SDK <https://www.npmjs.com/package/@meshydb/sdk/>`_ NPM package with the following command:
@@ -46,7 +61,8 @@ Let's install the `MeshyDB.SDK <https://www.npmjs.com/package/@meshydb/sdk/>`_ N
 ----------
 Initialize
 ----------
-Let's start with initializing our MeshyDB Client. This will allow us to register a new anonymous user next! 
+
+The client is used to establish a connection to the API. You will need to provide your |accountName| and |publicKey| from your account and client.
 
 .. tabs::
    
@@ -66,9 +82,10 @@ Let's start with initializing our MeshyDB Client. This will allow us to register
 -----------------------
 Register Anonymous User
 -----------------------
-Anonymous users are great for associating data to people without having them go through any type of user registration. Simply create the user behind the scenes with a unique identifier and begin recording data for that user.
 
-We will register an anonymous user using our initialized client.
+Anonymous users are great for associating data to people or devices without having them go through any type of user registration.
+
+The example below shows verifying a username is available and registering an anonymous user if the username does not exist.
 
 .. tabs::
    
@@ -76,9 +93,13 @@ We will register an anonymous user using our initialized client.
    
       .. code-block:: javascript
 
-         var username = null;
+         var username = "mctesterton";
 
-         var anonymousUser = await client.registerAnonymousUser(username);
+         var userExists = await client.checkUserExist(username);
+
+         if (!userExists.exists) {
+            await client.registerAnonymousUser(username);
+         }
 
       |parameters|
 
@@ -95,8 +116,8 @@ Example Result
 .. code-block:: json
 
    {
-      "id": "5c...",
-      "username": "2d4c2a18-2596-4ba9-b657-3413d5974502",
+      "id": "5c78cc81dd870827a8e7b6c4",
+      "username": "mctesterton",
       "firstName": null,
       "lastName": null,
       "verified": false,
@@ -119,21 +140,23 @@ Example Result
 -----
 Login
 -----
-All data interaction must be done on behalf of a user. To start interacting with data establish a connection as that user.
+
+All data interaction must be done on behalf of a user. This is done to ensure proper authorized access of your data.
+
+The example below shows logging in an anonymous user.
 
 .. tabs::
    
    .. group-tab:: NodeJS
-      
+   
       .. code-block:: javascript
-      
-         var connection = await client.loginAnonymously(anonymousUser.username);
+
+         var connection = await client.loginAnonymously(username);
 
       |parameters|
 
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
-
 
 .. rubric:: Responses
 
@@ -144,13 +167,13 @@ Example Result
 
 .. code-block:: json
 
-   {
-      "access_token": "ey...",
-      "expires_in": 3600,
-      "token_type": "Bearer",
-      "refresh_token": "ab23cd3343e9328g"
-   }
-
+  {
+    "access_token": "ey...",
+    "expires_in": 3600,
+    "token_type": "Bearer",
+    "refresh_token": "ab23cd3343e9328g"
+  }
+ 
 400 : Bad request
    * Token is invalid.
    * Client id is invalid.
@@ -163,42 +186,118 @@ Example Result
 429 : Too many request
    * You have have either hit your API or Database limit. Please review your account.
 
-Once we login we can access our connection staticly after we ensure a successful login.
+Once we login we can access our connection through a static member.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: NodeJS
 
-      .. code-block:: c#
+      .. code-block:: javascript
 
-         connection = MeshyClient.CurrentConnection;
+         connection = MeshyClient.currentConnection;
 
+---------------
+Retrieving Self
+---------------
+
+When a user is created they have some profile information that helps identify them. We can use this information to link their id back to data that has been created.
+
+The example below shows retrieving information of the user.
+
+.. tabs::
+
+   .. group-tab:: NodeJS
+   
+      .. code-block:: javascript
+      
+         var user = await connection.usersService.getSelf();
+
+      |parameters|
+      
+      No parameters provided. The connection is aware of who needs to be signed out.
+
+.. rubric:: Responses
+
+200 : OK
+   * Retrieves information about the authorized user.
+
+Example Result
+
+.. code-block:: json
+
+   {
+      "id": "5c78cc81dd870827a8e7b6c4",
+      "username": "mctesterton",
+      "firstName": null,
+      "lastName": null,
+      "verified": false,
+      "isActive": true,
+      "phoneNumber": null,
+      "emailAddress": null,
+      "roles": [],
+      "securityQuestions": [],
+      "anonymous": true
+   }
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+   
 -----------
 Create data
 -----------
-We can use our newly authenticated user to make requests with MeshyDB and create some data.
 
-The data object can whatever information you would like to capture. The following example will have some data fields with example data.
+Now that we have an connection we can begin making API requests.
+
+.. |meshData| raw:: html
+
+    <code>IMeshData</code>
+    
+The MeshyDB SDK requires all data extend the |meshData| interface. 
+
+The example below shows a Person represented by a first name, last name and user id.
 
 .. tabs::
    
    .. group-tab:: NodeJS
-      
+   
       .. code-block:: javascript
-        
-         var person = {
-                        firstName:"Bob",
-                        lastName:"Bobberson"
-                      };
          
+         class Person implements IMeshData {
+            _id?: string | undefined;
+            firstName: string;
+            lastName: string;
+            userId: string;
+         }
+
+Now that we have a representation of a person we can start making data to write to the API.
+
+The example below shows committing a new person.
+
+.. tabs::
+   
+   .. group-tab:: NodeJS
+   
+      .. code-block:: javascript
+
+         var model = new Person();
+
+         model.firstName = "Bob";
+         model.lastName = "Bobson";
+         model.userId = user.id;
+
          var meshName = "person";
-         
-         var person = await MeshyClient.currentConnection.meshesService.create(meshName, person);
+
+         model = await connection.meshesService.create(meshName, model);
 
       |parameters|
 
       meshName : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
+         Identifies which mesh collection to manage.
+      model : :type:`object`, :required:`required`
+         Representation of data that *must* extend |meshData|.
 
 .. rubric:: Responses
 
@@ -212,11 +311,12 @@ Example Result
    {
       "_id":"5c78cc81dd870827a8e7b6c4",
       "firstName": "Bob",
-      "lastName": "Bobberson"
+      "lastName": "Bobson",
+      "userName": "5c..."
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Mesh property cannot begin with '$' or contain '.'.
 
 401 : Unauthorized
@@ -228,27 +328,29 @@ Example Result
 -----------
 Update data
 -----------
-If we need to make a modification let's update our Mesh! 
+
+The API allows you to make updates to specific |meshData| by targeting the id.
+
+The SDK makes this even simpler since the id can be derived from the object itself along with all it's modifications.
+
+The example below shows modifying the first name and committing those changes to the API.
 
 .. tabs::
 
    .. group-tab:: NodeJS
-      
+   
       .. code-block:: javascript
 
-        person.firstName = "Bobbo";
-        
-        await MeshyClient.currentConnection
-                         .meshes
-                         .update(meshName, person, person._id);
-      
+         model.firstName = "Robert";
+
+         model = await connection.meshesService.update(meshName, model);
+
       |parameters|
 
       meshName : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-      id : :type:`string`, :required:`required`
-         Identifies unique record of Mesh data to replace.
-
+         Identifies which mesh collection to manage.
+      model : :type:`object`, :required:`required`
+         Representation of data that *must* extend |meshData|.
 
 .. rubric:: Responses
 
@@ -261,12 +363,12 @@ Example Result
 
    {
       "_id":"5c78cc81dd870827a8e7b6c4",
-      "firstName": "Bobbo",
-      "lastName": "Bobberson"
+      "firstName": "Robert",
+      "lastName": "Bobson"
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Mesh property cannot begin with '$' or contain '.'.
 
 401 : Unauthorized
@@ -278,37 +380,28 @@ Example Result
 -----------
 Search data
 -----------
-Let's see if we can find Bobbo.
+
+The API allows you to search |meshData| using a MongoDB expression.
+
+The example below shows searching based where the first name starts with Rob.
 
 .. tabs::
 
    .. group-tab:: NodeJS
-      
+   
       .. code-block:: javascript
-         
+	  
+         var filter = { 'firstName': { "$regex": "^Rob" } };
 
-         var people  = await MeshyClient.currentConnection
-                                        .meshes
-                                        .search(meshName, 
-                                                {
-                                                   filter: { "firstName": "Bobbo" },
-                                                   orderby: null,
-                                                   pageNumber: 1,
-                                                   pageSize: 25
-                                                });
-      
+         var pagedPersonResult = await connection.meshesService
+                                                 .search(meshName, { filter: filter });
+
       |parameters|
 
       meshName : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-      filter : :type:`string`
-         Criteria provided in a MongoDB format to limit results.
-      orderby : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
-      page : :type:`integer`, default: 1
-         Page number of results to bring back.
-      pageSize : :type:`integer`, max: 200, default: 25
-         Number of results to bring back per page.
+         Identifies which mesh collection to manage.
+      filter : :type:`object`
+         Criteria provided in a MongoDB expression to limit results.
 
 .. rubric:: Responses
 
@@ -324,14 +417,14 @@ Example Result
       "pageSize": 25,
       "results":  [{
                      "_id":"5c78cc81dd870827a8e7b6c4",
-                     "firstName": "Bobbo",
-                     "lastName": "Bobberson"
+                     "firstName": "Robert",
+                     "lastName": "Bobson"
                   }],
       "totalRecords": 1
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Filter is in an invalid format. It must be in a valid Mongo DB format.
    * Order by is in an invalid format. It must be in a valid Mongo DB format.
 
@@ -344,25 +437,33 @@ Example Result
 -----------
 Delete data
 -----------
-We are now done with our data, so let us clean up after ourselves.
+
+The API allows you to delete a specific |meshData| by targeting the id.
+
+The example below shows deleting the data from the API by providing the object.
+
+.. |softDelete| raw:: html
+   
+   <code>Soft Delete</code>
+
+*Deleted* data is not able to be recovered. If you anticipate the need to recover this data please implementing a |softDelete|.
 
 .. tabs::
 
-
    .. group-tab:: NodeJS
-      
+   
       .. code-block:: javascript
-         
-         await MeshyClient.currentConnection
-                          .meshes
-                          .delete(meshName, person._id);
-         
-      |parameters|
+      
+         var id = model._id;
 
+         await connection.meshesService.delete(meshName, id);
+
+      |parameters|
+      
       meshName : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
+         Identifies which mesh collection to manage.
       id : :type:`string`, :required:`required`
-         Identifies unique record of Mesh data to remove.
+         Identifier of record that must be deleted.
 
 .. rubric:: Responses
 
@@ -370,7 +471,7 @@ We are now done with our data, so let us clean up after ourselves.
    * Mesh has been deleted successfully.
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
 
 401 : Unauthorized
    * User is not authorized to make call.
@@ -384,17 +485,23 @@ We are now done with our data, so let us clean up after ourselves.
 --------
 Sign out
 --------
-Now the user is complete. Let us sign out so someone else can have a try.
+
+The MeshyDB SDK manages a single connection to the API. 
+
+The Meshy SDK handles token management, this includes refresh tokens used to maintain a user's connection.
+
+As a result it is recommended to implement Sign Out to ensure the current user is logged out and all refresh tokens are revoked.
+
+The example below shows signing out of the currently established connection.
 
 .. tabs::
 
    .. group-tab:: NodeJS
-      
+   
       .. code-block:: javascript
 
-         await MeshyClient.currentConnection
-                          .signout();
-      
+         await connection.signout();
+         
       |parameters|
 
       No parameters provided. The connection is aware of who needs to be signed out.
@@ -412,4 +519,4 @@ Now the user is complete. Let us sign out so someone else can have a try.
 429 : Too many request
    * You have have either hit your API or Database limit. Please review your account.
 
-Upon signing out we will clear our connection allowing another user to now be authenticated.
+Not seeing something you need? Feel free to give us a chat or contact us at support@meshydb.com.

@@ -109,7 +109,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Mesh property cannot begin with '$' or contain '.'.
 
 401 : Unauthorized

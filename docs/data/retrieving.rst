@@ -108,7 +108,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
 
 401 : Unauthorized
    * User is not authorized to make call.

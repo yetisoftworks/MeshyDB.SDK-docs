@@ -116,7 +116,7 @@ Example Result
 .. code-block:: json
 
    {
-      "id": "5c...",
+      "id": "5c78cc81dd870827a8e7b6c4",
       "username": "mctesterton",
       "firstName": null,
       "lastName": null,
@@ -315,7 +315,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Mesh property cannot begin with '$' or contain '.'.
 
 401 : Unauthorized
@@ -365,7 +365,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Mesh property cannot begin with '$' or contain '.'.
 
 401 : Unauthorized
@@ -387,6 +387,7 @@ The example below shows searching based where the first name starts with Rob.
    .. group-tab:: C#
    
       .. code-block:: c#
+
             Expression<Func<Person, bool>> filter = (Person x) => x.FirstName.StartsWith("Rob");
 
             var pagedPersonResult = await connection.Meshes
@@ -395,7 +396,7 @@ The example below shows searching based where the first name starts with Rob.
       |parameters|
 
       filter : :type:`object`
-         Criteria provided in a Linq to limit results.
+         Criteria provided in a Linq expression to limit results.
 
 .. rubric:: Responses
 
@@ -418,7 +419,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Filter is in an invalid format. It must be in a valid Mongo DB format.
    * Order by is in an invalid format. It must be in a valid Mongo DB format.
 
@@ -465,7 +466,7 @@ The example below shows deleting the data from the API by providing the object.
    * Mesh has been deleted successfully.
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
 
 401 : Unauthorized
    * User is not authorized to make call.

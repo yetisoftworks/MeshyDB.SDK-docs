@@ -130,7 +130,7 @@ Example Result
    }
 
 400 : Bad request
-   * Mesh name is invalid and must contain alpha numeric.
+   * Mesh name is invalid and must be alpha characters only.
    * Filter is in an invalid format. It must be in a valid Mongo DB format.
    * Order by is in an invalid format. It must be in a valid Mongo DB format.
 

@@ -84,7 +84,7 @@ Register Anonymous User
 
 Anonymous users are great for associating data to people or devices without having them go through any type of user registration.
 
-The example below shows registering an anonymous user.
+The example below shows verifying a username is available and registering an anonymous user if the username does not exist.
 
 .. tabs::
    
@@ -92,10 +92,15 @@ The example below shows registering an anonymous user.
    
       .. code-block:: c#
 
-         string username = "TestUser";
+         var username = "mctesterton";
 
-         var anonymousUser = await client.RegisterAnonymousUserAsync(username);
-         
+         var userExists = await client.CheckUserExistAsync(username);
+
+         if (!userExists.Exists)
+         {
+            await client.RegisterAnonymousUserAsync(username);
+         }
+
       |parameters|
 
       username : :type:`string`
@@ -112,7 +117,7 @@ Example Result
 
    {
       "id": "5c...",
-      "username": "2d4c2a18-2596-4ba9-b657-3413d5974502",
+      "username": "mctesterton",
       "firstName": null,
       "lastName": null,
       "verified": false,
@@ -146,8 +151,8 @@ The example below shows logging in an anonymous user.
    
       .. code-block:: c#
 
-         var  connection = await client.LoginAnonymouslyAsync(username);
-         
+         var connection = await client.LoginAnonymouslyAsync(username);
+
       |parameters|
 
       username : :type:`string`, :required:`required`
@@ -191,9 +196,59 @@ Once we login we can access our connection through a static member.
 
          connection = MeshyClient.CurrentConnection;
 
+---------------
+Retrieving Self
+---------------
+
+When a user is created they have some profile information that helps identify them. We can use this information to link their id back to data that has been created.
+
+The example below shows retrieving information of the user.
+
+.. tabs::
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+         var user = await connection.Users.GetSelfAsync();
+
+      |parameters|
+      
+      No parameters provided. The connection is aware of who needs to be signed out.
+
+.. rubric:: Responses
+
+200 : OK
+   * Retrieves information about the authorized user.
+
+Example Result
+
+.. code-block:: json
+
+   {
+      "id": "5c78cc81dd870827a8e7b6c4",
+      "username": "mctesterton",
+      "firstName": null,
+      "lastName": null,
+      "verified": false,
+      "isActive": true,
+      "phoneNumber": null,
+      "emailAddress": null,
+      "roles": [],
+      "securityQuestions": [],
+      "anonymous": true
+   }
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+   
 -----------
 Create data
 -----------
+
 Now that we have an connection we can begin making API requests.
 
 .. |meshData| raw:: html
@@ -214,9 +269,9 @@ The example below shows a Person represented by a first name, last name and user
          [MeshName("Person")]
          public class Person : MeshData
          {
-           public string FirstName { get; set; }
-           public string LastName { get; set; }
-           public string UserId { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string UserId { get; set; }
          }
 
 Now that we have a representation of a person we can start making data to write to the API.
@@ -229,15 +284,19 @@ The example below shows committing a new person.
    
       .. code-block:: c#
 
-         var person = await MeshyClient.CurrentConnection.Meshes.CreateAsync(new Person() {
-           FirstName = "Bob",
-           LastName = "Bobson",
-           UserId = anonymousUser.Id
-         });
+         var model = new Person()
+         {
+            FirstName = "Bob",
+            LastName = "Bobson",
+            UserId = user.Id
+         };
+
+         model = await connection.Meshes.CreateAsync(model);
 
       |parameters|
 
-      No parameters provided.
+      model : :type:`object`, :required:`required`
+         Representation of data that *must* extend |meshData|.
 
 .. rubric:: Responses
 
@@ -268,6 +327,7 @@ Example Result
 -----------
 Update data
 -----------
+
 The API allows you to make updates to specific |meshData| by targeting the id.
 
 The SDK makes this even simpler since the id can be derived from the object itself along with all it's modifications.
@@ -280,13 +340,14 @@ The example below shows modifying the first name and committing those changes to
    
       .. code-block:: c#
 
-         person.FirstName = "Robert";
+         model.FirstName = "Robert";
 
-         person = await MeshyClient.CurrentConnection.Meshes.UpdateAsync(person);
-
+         model = await connection.Meshes.UpdateAsync(model);
+      
       |parameters|
 
-      No parameters provided.
+      model : :type:`object`, :required:`required`
+         Representation of data that *must* extend |meshData|.
 
 .. rubric:: Responses
 
@@ -326,29 +387,15 @@ The example below shows searching based where the first name starts with Rob.
    .. group-tab:: C#
    
       .. code-block:: c#
+            Expression<Func<Person, bool>> filter = (Person x) => x.FirstName.StartsWith("Rob");
 
-         var filter = "{ \"firstName\": \"^Rob\" }";
-         var sort = "";
-         var page = 1;
-         var pageSize = 25;
-
-         var pagedPersonResult = await MeshyClient.CurrentConnection
-                                                  .Meshes
-                                                  .SearchAsync<Person>(filter, 
-                                                                       sort, 
-                                                                       page, 
-                                                                       pageSize);
+            var pagedPersonResult = await connection.Meshes
+                                                    .SearchAsync<Person>(filter);
 
       |parameters|
 
-      filter : :type:`string`
-         Criteria provided in a MongoDB format to limit results.
-      sort : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
-      page : :type:`integer`, default: 1
-         Page number of results to bring back.
-      pageSize : :type:`integer`, max: 200, default: 25
-         Number of results to bring back per page.
+      filter : :type:`object`
+         Criteria provided in a Linq to limit results.
 
 .. rubric:: Responses
 
@@ -381,7 +428,7 @@ Example Result
 429 : Too many request
    * You have have either hit your API or Database limit. Please review your account.
 
-..  In some cases you may need more control on your filtering or sorting. You can optionally provide this criteria in a MongoDB format.
+In some cases you may need more control on your filtering or sorting. You can optionally provide this criteria in a MongoDB format.
 
 -----------
 Delete data
@@ -391,7 +438,7 @@ The API allows you to delete a specific |meshData| by targeting the id.
 
 The example below shows deleting the data from the API by providing the object.
 
-.. |softDelete| raw::html
+.. |softDelete| raw:: html
    
    <code>Soft Delete</code>
 
@@ -403,11 +450,14 @@ The example below shows deleting the data from the API by providing the object.
    
       .. code-block:: c#
       
-         await MeshyClient.CurrentConnection.Meshes.DeleteAsync(person.Id);
+            var id = model.Id;
+
+            await connection.Meshes.DeleteAsync<Person>(id);
 
       |parameters|
 
-      No parameters provided.
+      id : :type:`string`, :required:`required`
+         Identifier of record that must be deleted.
 
 .. rubric:: Responses
 
@@ -444,7 +494,7 @@ The example below shows signing out of the currently established connection.
    
       .. code-block:: c#
 
-         await MeshyClient.CurrentConnection.SignoutAsync();
+         await connection.SignoutAsync();
          
       |parameters|
 

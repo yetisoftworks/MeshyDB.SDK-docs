@@ -88,7 +88,13 @@ html_theme = "sphinx_rtd_theme"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static', 'scripts/requirehttps.js', 'styles/parameters.css', 'scripts/insights.js', 'scripts/chat.js']
+html_static_path = ['_static', 
+                    'scripts/requirehttps.js', 
+                    'styles/parameters.css', 
+                    'scripts/insights.js', 
+                    'scripts/chat.js', 
+                    'styles/codecopy.css'
+                    ]
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -100,7 +106,7 @@ html_static_path = ['_static', 'scripts/requirehttps.js', 'styles/parameters.css
 #
 # html_sidebars = {}
 
-html_css_files = ['parameters.css']
+html_css_files = ['parameters.css', 'codecopy.css']
 
 html_js_files = ['requirehttps.js', 'insights.js', 'chat.js']
 

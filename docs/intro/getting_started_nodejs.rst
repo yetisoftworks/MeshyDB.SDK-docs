@@ -214,7 +214,7 @@ The example below shows retrieving information of the user.
 
       |parameters|
       
-      No parameters provided. The connection is aware of who needs to be signed out.
+      No parameters provided.
 
 .. rubric:: Responses
 
@@ -249,7 +249,7 @@ Example Result
 Create data
 -----------
 
-Now that we have an connection we can begin making API requests.
+Now that a user connection is established you can begin making API requests.
 
 .. |meshData| raw:: html
 
@@ -309,10 +309,10 @@ Example Result
 .. code-block:: json
 
    {
-      "_id":"5c78cc81dd870827a8e7b6c4",
+      "_id":"5d438ff23b0b7dd957a765ce",
       "firstName": "Bob",
       "lastName": "Bobson",
-      "userName": "5c..."
+      "userId": "5c78cc81dd870827a8e7b6c4"
    }
 
 400 : Bad request
@@ -362,9 +362,10 @@ Example Result
 .. code-block:: json
 
    {
-      "_id":"5c78cc81dd870827a8e7b6c4",
+      "_id":"5d438ff23b0b7dd957a765ce",
       "firstName": "Robert",
-      "lastName": "Bobson"
+      "lastName": "Bobson",
+      "userId": "5c78cc81dd870827a8e7b6c4"
    }
 
 400 : Bad request
@@ -416,9 +417,10 @@ Example Result
       "page": 1,
       "pageSize": 25,
       "results":  [{
-                     "_id":"5c78cc81dd870827a8e7b6c4",
+                     "_id":"5d438ff23b0b7dd957a765ce",
                      "firstName": "Robert",
-                     "lastName": "Bobson"
+                     "lastName": "Bobson",
+                     "userId": "5c78cc81dd870827a8e7b6c4"
                   }],
       "totalRecords": 1
    }

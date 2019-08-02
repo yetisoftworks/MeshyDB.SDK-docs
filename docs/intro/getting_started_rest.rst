@@ -13,41 +13,102 @@ This documentation assumes you have an active MeshyDB account. If you do not, pl
 
 .. |publicKey| raw:: html
 
-    <code>Public Key</code>
+    <code><a href="#identify-public-key">Public Key</a></code>
 
-Once your account is verified, you will need to gather your |publicKey| from the Clients page under your default tenant. See image below:
+.. |accountName| raw:: html
 
-.. |gettingStarted| image:: https://cdn.meshydb.com/images/getting-started-client.png
+    <code><a href="#identify-account-name">Account Name</a></code>
+
+Once you verify your account you will need to gather your |accountName| and |publicKey|.
+
+Identify Account Name
+~~~~~~~~~~~~~~~~~~~~~
+
+Your |accountName| can be found under the Account page. See image below:
+
+.. |gettingStartedAccount| image:: https://cdn.meshydb.com/images/getting-started-account.png
+           :alt: Account Name under Account
+
+|gettingStartedAccount|
+
+Identify  Public Key
+~~~~~~~~~~~~~~~~~~~~
+
+Your |publicKey| can be found under the Clients page under your default tenant. See image below:
+
+.. |gettingStartedClient| image:: https://cdn.meshydb.com/images/getting-started-client.png
            :alt: Public Key under Clients default tenant
 
-|gettingStarted|
+|gettingStartedClient|
 
 In the following we will assume no other configuration has been made to your account or tenants so we can just begin!
-
-Now that we have the required information let's jump in and see how easy it is to start with MeshyDB.
 
 .. |parameters| raw:: html
 
    <h4>Parameters</h4>
 
---------------------------
-Registering Anonymous User
---------------------------
-Anonymous users are great for associating data to people without having them go through any type of user registration. Simply create the user behind the scenes with a unique identifier and begin recording data for that user.
 
-To get started we need a user to log in with. We will make an anonymous user to authenticate with going forward.
+------------------------
+Checking Username Exists
+------------------------
+
+Checking username helps identify if a device or user has already registered.
+
+The example below shows verifying a username is available.
 
 .. tabs::
 
    .. group-tab:: REST
    
       .. code-block:: http
+         
+        GET https://api.meshydb.com//{accountName}/users/{username}/exists HTTP/1.1
+
+      |parameters|
       
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+
+.. rubric:: Responses
+
+201 : Created
+   * Identifies if username already exists.
+
+Example Result
+
+.. code-block:: json
+
+   {
+      "exists": false
+   }
+
+400 : Bad request
+   * Username is required.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
+-----------------------
+Register Anonymous User
+-----------------------
+
+Anonymous users are great for associating data to people or devices without having them go through any type of user registration.
+
+The example below shows registering an anonymous user.
+   
+.. tabs::
+   
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
         POST https://api.meshydb.com/{accountName}/users/register/anonymous HTTP/1.1
         Content-Type: application/json
          
           {
-            "username": "2d4c2a18-2596-4ba9-b657-3413d5974502"
+            "username": "mctesterton"
           }
 
       |parameters|
@@ -67,8 +128,8 @@ Example Result
 .. code-block:: json
 
    {
-      "id": "5c...",
-      "username": "2d4c2a18-2596-4ba9-b657-3413d5974502",
+      "id": "5c78cc81dd870827a8e7b6c4",
+      "username": "mctesterton",
       "firstName": null,
       "lastName": null,
       "verified": false,
@@ -79,7 +140,7 @@ Example Result
       "securityQuestions": [],
       "anonymous": true
    }
-   
+
 400 : Bad request
    * Username is a required field.
    * Anonymous registration is not enabled.
@@ -91,10 +152,13 @@ Example Result
 -----
 Login
 -----
-All data interaction must be done on behalf of a user. To start interacting with data establish a connection as that user.
+
+All data interaction must be done on behalf of a user. This is done to ensure proper authorized access of your data.
+
+The example below shows logging in an anonymous user.
 
 .. tabs::
-
+   
    .. group-tab:: REST
    
       .. code-block:: http
@@ -124,19 +188,19 @@ All data interaction must be done on behalf of a user. To start interacting with
 .. rubric:: Responses
 
 200 : OK
-   * Generates new credentials for authorized user.
+   * Generates new credentials for authorized user. The token will expire and will need to be refreshed.
 
 Example Result
 
 .. code-block:: json
 
-   {
-      "access_token": "ey...",
-      "expires_in": 3600,
-      "token_type": "Bearer",
-      "refresh_token": "ab23cd3343e9328g"
-   }
-
+  {
+    "access_token": "ey...",
+    "expires_in": 3600,
+    "token_type": "Bearer",
+    "refresh_token": "ab23cd3343e9328g"
+  }
+ 
 400 : Bad request
    * Token is invalid.
    * Client id is invalid.
@@ -149,15 +213,73 @@ Example Result
 429 : Too many request
    * You have have either hit your API or Database limit. Please review your account.
 
------------
-Create data
------------
-Now that we are authenticated we can use our Bearer token to authenticate requests with MeshyDB and create some data.
+---------------
+Retrieving Self
+---------------
 
-The data object can whatever information you would like to capture. The following example will have some data fields with example data.
+When a user is created they have some profile information that helps identify them. We can use this information to link their id back to data that has been created.
+
+The example below shows retrieving information of the user.
 
 .. tabs::
 
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
+         Authentication: Bearer {access_token}
+         
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+
+.. rubric:: Responses
+
+200 : OK
+   * Retrieves information about the authorized user.
+
+Example Result
+
+.. code-block:: json
+
+   {
+      "id": "5c78cc81dd870827a8e7b6c4",
+      "username": "mctesterton",
+      "firstName": null,
+      "lastName": null,
+      "verified": false,
+      "isActive": true,
+      "phoneNumber": null,
+      "emailAddress": null,
+      "roles": [],
+      "securityQuestions": [],
+      "anonymous": true
+   }
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
+-----------
+Create data
+-----------
+
+.. |meshData| raw:: html
+
+   <code>Mesh Data</code>
+   
+Now that a user is authorized you can begin making API requests.
+
+The example below shows committing a new |meshData| such as a person.
+
+.. tabs::
+   
    .. group-tab:: REST
    
       .. code-block:: http
@@ -168,7 +290,8 @@ The data object can whatever information you would like to capture. The followin
          
             {
                "firstName": "Bob",
-               "lastName": "Bobberson"
+               "lastName": "Bobson",
+               "userId": "5c78cc81dd870827a8e7b6c4"
             }
 
       |parameters|
@@ -180,6 +303,7 @@ The data object can whatever information you would like to capture. The followin
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
 
+
 .. rubric:: Responses
 
 201 : Created
@@ -190,9 +314,10 @@ Example Result
 .. code-block:: json
 
    {
-      "_id":"5c78cc81dd870827a8e7b6c4",
+      "_id":"5d438ff23b0b7dd957a765ce",
       "firstName": "Bob",
-      "lastName": "Bobberson"
+      "lastName": "Bobson",
+      "userId": "5c78cc81dd870827a8e7b6c4"
    }
 
 400 : Bad request
@@ -208,7 +333,10 @@ Example Result
 -----------
 Update data
 -----------
-If we need to make a modification let's update our Mesh!
+
+The API allows you to make updates to specific |meshData| by targeting the id.
+
+The example below shows modifying the first name and committing those changes to the API.
 
 .. tabs::
 
@@ -221,8 +349,8 @@ If we need to make a modification let's update our Mesh!
        Content-Type: application/json
          
           {
-             "firstName": "Bobbo",
-             "lastName": "Bobberson"
+             "firstName": "Robert",
+             "lastName": "Bobson"
           }
 
       |parameters|
@@ -236,6 +364,7 @@ If we need to make a modification let's update our Mesh!
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.
 
+
 .. rubric:: Responses
 
 200 : OK
@@ -246,9 +375,10 @@ Example Result
 .. code-block:: json
 
    {
-      "_id":"5c78cc81dd870827a8e7b6c4",
-      "firstName": "Bobbo",
-      "lastName": "Bobberson"
+      "_id":"5d438ff23b0b7dd957a765ce",
+      "firstName": "Robert",
+      "lastName": "Bobson",
+      "userId": "5c78cc81dd870827a8e7b6c4"
    }
 
 400 : Bad request
@@ -264,21 +394,21 @@ Example Result
 -----------
 Search data
 -----------
-Let's see if we can find Bobbo.
+
+The API allows you to search |meshData| using a MongoDB expression.
+
+The example below shows searching based where the first name starts with Rob.
 
 .. tabs::
 
    .. group-tab:: REST
    
       .. code-block:: http
-
-         GET https://api.meshydb.com/{accountName}/meshes/{meshName}?filter={filter}&
-                                                               orderby={orderby}&
-                                                               page={page}&
-                                                               pageSize={pageSize} HTTP/1.1
+	  
+         GET https://api.meshydb.com/{accountName}/meshes/{meshName}?filter={ 'firstName': { "$regex": "^Rob" } } HTTP/1.1
          Authentication: Bearer {access_token}
          
-      (Line breaks added for readability)
+      (Encoding removed for readability)
 
       |parameters|
 
@@ -310,9 +440,10 @@ Example Result
       "page": 1,
       "pageSize": 25,
       "results":  [{
-                     "_id":"5c78cc81dd870827a8e7b6c4",
-                     "firstName": "Bobbo",
-                     "lastName": "Bobberson"
+                     "_id":"5d438ff23b0b7dd957a765ce",
+                     "firstName": "Robert",
+                     "lastName": "Bobson",
+                     "userId": "5c78cc81dd870827a8e7b6c4"
                   }],
       "totalRecords": 1
    }
@@ -331,7 +462,16 @@ Example Result
 -----------
 Delete data
 -----------
-We are now done with our data, so let us clean up after ourselves.
+
+The API allows you to delete a specific |meshData| by targeting the id.
+
+The example below shows deleting the data from the API by providing the object.
+
+.. |softDelete| raw:: html
+   
+   <code>Soft Delete</code>
+
+*Deleted* data is not able to be recovered. If you anticipate the need to recover this data please implementing a |softDelete|.
 
 .. tabs::
 
@@ -373,13 +513,18 @@ We are now done with our data, so let us clean up after ourselves.
 --------
 Sign out
 --------
-Now the user is complete. Let us sign out so someone else can have a try.
+
+When a user is authenticated a refresh token  is generated. The refresh token allows a user to be silently authenticated.
+
+As a result it is recommended to implement Sign Out to ensure the current user is logged out and all refresh tokens are revoked.
+
+The example below shows revoking the refresh token. The access token is short lived and will expire within an hour.
 
 .. tabs::
 
    .. group-tab:: REST
    
-      .. sourcecode:: http
+      .. code-block:: http
 
          POST https://auth.meshydb.com/{accountName}/connect/revocation HTTP/1.1
          Content-Type: application/x-www-form-urlencoded
@@ -410,3 +555,5 @@ Now the user is complete. Let us sign out so someone else can have a try.
 
 429 : Too many request
    * You have have either hit your API or Database limit. Please review your account.
+
+Not seeing something you need? Feel free to give us a chat or contact us at support@meshydb.com.

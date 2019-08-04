@@ -251,29 +251,6 @@ Create data
 
 Now that a user connection is established you can begin making API requests.
 
-.. |meshData| raw:: html
-
-    <code>IMeshData</code>
-    
-The MeshyDB SDK requires all data extend the |meshData| interface. 
-
-The example below shows a Person represented by a first name, last name and user id.
-
-.. tabs::
-   
-   .. group-tab:: NodeJS
-   
-      .. code-block:: javascript
-         
-         class Person implements IMeshData {
-            _id?: string | undefined;
-            firstName: string;
-            lastName: string;
-            userId: string;
-         }
-
-Now that we have a representation of a person we can start making data to write to the API.
-
 The example below shows committing a new person.
 
 .. tabs::
@@ -282,11 +259,12 @@ The example below shows committing a new person.
    
       .. code-block:: javascript
 
-         var model = new Person();
-
-         model.firstName = "Bob";
-         model.lastName = "Bobson";
-         model.userId = user.id;
+         var model = {
+                        _id: undefined,
+                        firstName: "Bob",
+                        lastName: "Bobson",
+                        userId: user.id
+                     };
 
          var meshName = "person";
 
@@ -297,7 +275,7 @@ The example below shows committing a new person.
       meshName : :type:`string`, :required:`required`
          Identifies which mesh collection to manage.
       model : :type:`object`, :required:`required`
-         Representation of data that *must* extend |meshData|.
+         Represents a person in this example.
 
 .. rubric:: Responses
 
@@ -329,7 +307,7 @@ Example Result
 Update data
 -----------
 
-The API allows you to make updates to specific |meshData| by targeting the id.
+The API allows you to make updates to specific Mesh Data by targeting the id.
 
 The SDK makes this even simpler since the id can be derived from the object itself along with all it's modifications.
 
@@ -350,7 +328,7 @@ The example below shows modifying the first name and committing those changes to
       meshName : :type:`string`, :required:`required`
          Identifies which mesh collection to manage.
       model : :type:`object`, :required:`required`
-         Representation of data that *must* extend |meshData|.
+         Represents a person in this example.
 
 .. rubric:: Responses
 
@@ -382,7 +360,7 @@ Example Result
 Search data
 -----------
 
-The API allows you to search |meshData| using a MongoDB expression.
+The API allows you to search a mesh collection using a MongoDB expression.
 
 The example below shows searching based where the first name starts with Rob.
 
@@ -440,7 +418,7 @@ Example Result
 Delete data
 -----------
 
-The API allows you to delete a specific |meshData| by targeting the id.
+The API allows you to delete a specific Mesh Data by targeting the id.
 
 The example below shows deleting the data from the API by providing the object.
 

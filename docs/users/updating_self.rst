@@ -22,36 +22,6 @@ The following can be used to update an authenticated user's personal information
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         PUT https://api.meshydb.com/{accountName}/users/me HTTP/1.1
-         Authentication: Bearer {access_token}
-         Content-Type: application/json
-         
-           {
-             "firstName": "Tester",
-             "lastName": "McTesterton",
-             "phoneNumber": "+15555555555",
-             "emailAddress": "test@test.com"
-           }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      firstName : :type:`string`
-         First name of authenticated user.
-      lastName : :type:`string`
-         Last name of authenticated user.
-      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of authenticated user.
-      emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of authenticated user.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -101,6 +71,36 @@ The following can be used to update an authenticated user's personal information
          Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
+      firstName : :type:`string`
+         First name of authenticated user.
+      lastName : :type:`string`
+         Last name of authenticated user.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of authenticated user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of authenticated user.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         PUT https://api.meshydb.com/{accountName}/users/me HTTP/1.1
+         Authentication: Bearer {access_token}
+         Content-Type: application/json
+         
+           {
+             "firstName": "Tester",
+             "lastName": "McTesterton",
+             "phoneNumber": "+15555555555",
+             "emailAddress": "test@test.com"
+           }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       firstName : :type:`string`
          First name of authenticated user.
       lastName : :type:`string`
@@ -163,32 +163,6 @@ The following can be used to change the authenticated user's security questions 
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         POST https://api.meshydb.com/{accountName}/users/me/questions HTTP/1.1
-         Authentication: Bearer {access_token}
-         Content-Type: application/json
-         
-           {
-             "securityQuestions": [
-                                    {
-                                        "question": "What would you say to this question?",
-                                        "answer": "..."
-                                    }
-                                  ]
-           }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      securityQuestions : :type:`object[]`, :required:`required`
-         New set of questions and answers for authenticated user in password recovery.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -235,6 +209,32 @@ The following can be used to change the authenticated user's security questions 
       securityQuestions : :type:`object[]`, :required:`required`
          Collection of questions and answers used for password recovery if question security is configured.
 
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         POST https://api.meshydb.com/{accountName}/users/me/questions HTTP/1.1
+         Authentication: Bearer {access_token}
+         Content-Type: application/json
+         
+           {
+             "securityQuestions": [
+                                    {
+                                        "question": "What would you say to this question?",
+                                        "answer": "..."
+                                    }
+                                  ]
+           }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      securityQuestions : :type:`object[]`, :required:`required`
+         New set of questions and answers for authenticated user in password recovery.
+
 .. rubric:: Responses
 
 204 : No Content
@@ -260,30 +260,6 @@ Changing Password
 Allows the authenticated user to change their password.
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         POST https://api.meshydb.com/{accountName}/users/me/password HTTP/1.1
-         Authentication: Bearer {access_token}
-         Content-Type: application/json
-         
-           {
-             "newPassword": "newPassword",
-             "previousPassword": "previousPassword"
-           }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token: :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generate Access Token <auth.html#generate-access-token>`_.
-      previousPassword : :type:`string`, :required:`required`
-        Previous user secret credentials for login.
-      newPassword : :type:`string`, :required:`required`
-        New user secret credentials for login.
 
    .. group-tab:: C#
    
@@ -330,6 +306,30 @@ Allows the authenticated user to change their password.
          Unique identifier for user or device.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
+      previousPassword : :type:`string`, :required:`required`
+        Previous user secret credentials for login.
+      newPassword : :type:`string`, :required:`required`
+        New user secret credentials for login.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         POST https://api.meshydb.com/{accountName}/users/me/password HTTP/1.1
+         Authentication: Bearer {access_token}
+         Content-Type: application/json
+         
+           {
+             "newPassword": "newPassword",
+             "previousPassword": "previousPassword"
+           }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token: :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generate Access Token <auth.html#generate-access-token>`_.
       previousPassword : :type:`string`, :required:`required`
         Previous user secret credentials for login.
       newPassword : :type:`string`, :required:`required`

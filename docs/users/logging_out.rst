@@ -12,28 +12,6 @@ Logging Out
 Log authenticated user out.
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-        POST https://api.meshydb.com/{accountName}/connect/revocation HTTP/1.1
-        Content-Type: application/x-www-form-urlencoded
-         
-          token={refresh_token}&
-          token_type_hint=refresh_token&
-          client_id={publicKey}
-
-        (Form-encoding removed, and line breaks added for readability)
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      refresh_token  : :type:`string`, :required:`required`
-         Refresh token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
          
    .. group-tab:: C#
    
@@ -73,6 +51,28 @@ Log authenticated user out.
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+        POST https://api.meshydb.com/{accountName}/connect/revocation HTTP/1.1
+        Content-Type: application/x-www-form-urlencoded
+         
+          token={refresh_token}&
+          token_type_hint=refresh_token&
+          client_id={publicKey}
+
+        (Form-encoding removed, and line breaks added for readability)
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      refresh_token  : :type:`string`, :required:`required`
+         Refresh token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
 
 .. rubric:: Responses
 

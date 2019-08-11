@@ -14,30 +14,6 @@ Retrieve single item from Mesh collection.
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-
-         GET https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
-         Content-Type: application/json
-
-               {
-                  "firstName": "Bob",
-                  "lastName": "Bobberson"
-               }
-            
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-      id : :type:`string`, :required:`required`
-         Identifies location of what Mesh data to retrieve.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -88,6 +64,30 @@ Retrieve single item from Mesh collection.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       meshName : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+      id : :type:`string`, :required:`required`
+         Identifies location of what Mesh data to retrieve.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
+         GET https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
+         Authentication: Bearer {access_token}
+         Content-Type: application/json
+
+               {
+                  "firstName": "Bob",
+                  "lastName": "Bobberson"
+               }
+            
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies location of what Mesh data to retrieve.

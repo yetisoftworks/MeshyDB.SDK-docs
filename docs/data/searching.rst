@@ -14,35 +14,6 @@ Filter Mesh data from collection based on query parameters.
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-
-         GET https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter}&
-                                                               orderby={orderby}&
-                                                               page={page}&
-                                                               pageSize={pageSize} HTTP/1.1
-         Authentication: Bearer {access_token}
-         
-      (Line breaks added for readability)
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-      filter : :type:`string`
-         Criteria provided in a MongoDB format to limit results.
-      orderby : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
-      page : :type:`integer`, default: 1
-         Page number of results to bring back.
-      pageSize : :type:`integer`, max: 200, default: 25
-         Number of results to bring back per page.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -108,7 +79,36 @@ Filter Mesh data from collection based on query parameters.
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
+         GET https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter}&
+                                                               orderby={orderby}&
+                                                               page={page}&
+                                                               pageSize={pageSize} HTTP/1.1
+         Authentication: Bearer {access_token}
          
+      (Line breaks added for readability)
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+      filter : :type:`string`
+         Criteria provided in a MongoDB format to limit results.
+      orderby : :type:`string`
+         Defines which fields need to be sorted and direction in a MongoDB format.
+      page : :type:`integer`, default: 1
+         Page number of results to bring back.
+      pageSize : :type:`integer`, max: 200, default: 25
+         Number of results to bring back per page.
+
 .. rubric:: Responses
 
 200 : OK

@@ -16,29 +16,6 @@ Once the token expires the refresh token can be used to generate a new set of cr
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
-         Content-Type: application/x-www-form-urlencoded
-
-            client_id={publicKey}&
-            grant_type=refresh_token&
-            refresh_token={refresh_token}
-
-        
-      (Form-encoding removed, and line breaks added for readability)
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      refresh_token : :type:`string`, :required:`required`
-         Refresh token generated from  previous access token generation.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -87,6 +64,29 @@ Once the token expires the refresh token can be used to generate a new set of cr
       refreshToken : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
 
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
+         Content-Type: application/x-www-form-urlencoded
+
+            client_id={publicKey}&
+            grant_type=refresh_token&
+            refresh_token={refresh_token}
+
+        
+      (Form-encoding removed, and line breaks added for readability)
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      refresh_token : :type:`string`, :required:`required`
+         Refresh token generated from  previous access token generation.
+         
 .. rubric:: Responses
 
 200 : OK

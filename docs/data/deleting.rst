@@ -14,24 +14,6 @@ Permanently remove Mesh data from collection.
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
-         
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-      id : :type:`string`, :required:`required`
-         Identifies unique record of Mesh data to remove.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -74,6 +56,24 @@ Permanently remove Mesh data from collection.
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
+      mesh : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+      id : :type:`string`, :required:`required`
+         Identifies unique record of Mesh data to remove.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
+         Authentication: Bearer {access_token}
+         
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`

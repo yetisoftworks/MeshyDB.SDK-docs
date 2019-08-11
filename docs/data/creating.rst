@@ -13,28 +13,6 @@ Creating Data
 Create new custom mesh data into specified mesh name.
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-
-         POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
-         Authentication: Bearer {access_token}
-         Content-Type: application/json
-         
-            {
-               "firstName": "Bob",
-               "lastName": "Bobberson"
-            }
-            
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
    
    .. group-tab:: C#
    
@@ -93,6 +71,28 @@ Create new custom mesh data into specified mesh name.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
    
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
+         POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
+         Authentication: Bearer {access_token}
+         Content-Type: application/json
+         
+            {
+               "firstName": "Bob",
+               "lastName": "Bobberson"
+            }
+            
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+         
 .. rubric:: Responses
 
 201 : Created

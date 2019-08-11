@@ -22,19 +22,6 @@ Before identifying a device or unique user you can check to see if they already 
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-         
-        GET https://api.meshydb.com//{accountName}/users/{username}/exists HTTP/1.1
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -69,6 +56,18 @@ Before identifying a device or unique user you can check to see if they already 
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
          
+   .. group-tab:: REST
+   
+      .. code-block:: http
+         
+        GET https://api.meshydb.com//{accountName}/users/{username}/exists HTTP/1.1
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
 
 .. rubric:: Responses
 
@@ -98,24 +97,6 @@ An anonymous user can identify a device or unique user without requiring user in
 This kind of user has limited functionality such as not having the ability to be verified or be assigned roles.
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-        POST https://api.meshydb.com/{accountName}/users/register/anonymous HTTP/1.1
-        Content-Type: application/json
-         
-          {
-            "username": "username_testermctesterson"
-          }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
 
    .. group-tab:: C#
    
@@ -151,6 +132,23 @@ This kind of user has limited functionality such as not having the ability to be
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
          
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+        POST https://api.meshydb.com/{accountName}/users/register/anonymous HTTP/1.1
+        Content-Type: application/json
+         
+          {
+            "username": "username_testermctesterson"
+          }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
 
 .. rubric:: Responses
 
@@ -194,47 +192,6 @@ If email or text verification is configured, they will be prompted to verify the
 The user will not be able to be authenticated until verification has been completed. The verification request lasts one hour before it expires.
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-        POST https://api.meshydb.com/{accountName}/users/register HTTP/1.1
-        Content-Type: application/json
-         
-          {
-            "username": "username_testermctesterson",
-            "firstName": "Tester",
-            "lastName": "McTesterton",
-            "phoneNumber": "+15555555555",
-            "emailAddress": "test@test.com",
-            "securityQuestions": [
-                                    {
-                                       "question": "What would you say to this question?",
-                                       "answer": "mceasy123"
-                                    }
-                                 ],
-            "newPassword": "newPassword"
-          }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      newPassword : :type:`string`, :required:`required`
-         New user secret credentials for login.
-      firstName : :type:`string`
-         First name of registering user.
-      lastName : :type:`string`
-         Last name of registering user.
-      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of registering user.
-      emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of registering user.
-      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         New set of questions and answers for registering user in password recovery.
 
    .. group-tab:: C#
    
@@ -304,6 +261,47 @@ The user will not be able to be authenticated until verification has been comple
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          New set of questions and answers for registering user in password recovery.
 
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+        POST https://api.meshydb.com/{accountName}/users/register HTTP/1.1
+        Content-Type: application/json
+         
+          {
+            "username": "username_testermctesterson",
+            "firstName": "Tester",
+            "lastName": "McTesterton",
+            "phoneNumber": "+15555555555",
+            "emailAddress": "test@test.com",
+            "securityQuestions": [
+                                    {
+                                       "question": "What would you say to this question?",
+                                       "answer": "mceasy123"
+                                    }
+                                 ],
+            "newPassword": "newPassword"
+          }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      newPassword : :type:`string`, :required:`required`
+         New user secret credentials for login.
+      firstName : :type:`string`
+         First name of registering user.
+      lastName : :type:`string`
+         Last name of registering user.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of registering user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of registering user.
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
+         New set of questions and answers for registering user in password recovery.
+
 .. rubric:: Responses
 
 201 : Created
@@ -346,39 +344,6 @@ Optionally, before verifying the request you can choose to check if the verifica
 You may want to provide this flow if you still need to collect more information about the user before finalizing verification.
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
-        Content-Type: application/json
-         
-          {
-             "username": "username_testermctesterson",
-             "attempt": 1,
-             "hash": "...",
-             "expires": "1/1/1900",
-             "hint": "...",
-             "verificationCode": "...",
-          }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
-         Identifies which attempt hash was generated against.
-      hash : :type:`string`, :required:`required`
-         Generated hash from verification request.
-      expires : :type:`date`, :required:`required`
-         Identifies when the request expires.
-      hint : :type:`string`, :required:`required`
-         Hint for verification code was generated.
-      verificationCode : :type:`string`, :required:`required`
-         Value to verify against verification request.
 
    .. group-tab:: C#
    
@@ -443,39 +408,11 @@ You may want to provide this flow if you still need to collect more information 
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
 
-.. rubric:: Responses
-
-200 : OK
-   * Identifies if hash with verification code is valid.
-
-Example Result
-
-.. code-block:: boolean
-
-	true
-
-400 : Bad request
-   * Username is required.
-   * Hash is required.
-   * Expires is required.
-   * Verification code is required.
-
-429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
-
-''''''
-Verify
-''''''
-
-If email or text verification is configured the registered user must be verified. The resulting request lasts one hour.
-
-.. tabs::
-
    .. group-tab:: REST
    
       .. code-block:: http
       
-        POST https://api.meshydb.com/{accountName}/users/verify HTTP/1.1
+        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
         Content-Type: application/json
          
           {
@@ -503,6 +440,34 @@ If email or text verification is configured the registered user must be verified
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
+
+.. rubric:: Responses
+
+200 : OK
+   * Identifies if hash with verification code is valid.
+
+Example Result
+
+.. code-block:: boolean
+
+	true
+
+400 : Bad request
+   * Username is required.
+   * Hash is required.
+   * Expires is required.
+   * Verification code is required.
+
+429 : Too many request
+   * You have have either hit your API or Database limit. Please review your account.
+
+''''''
+Verify
+''''''
+
+If email or text verification is configured the registered user must be verified. The resulting request lasts one hour.
+
+.. tabs::
 
    .. group-tab:: C#
    
@@ -554,6 +519,39 @@ If email or text verification is configured the registered user must be verified
          Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+        POST https://api.meshydb.com/{accountName}/users/verify HTTP/1.1
+        Content-Type: application/json
+         
+          {
+             "username": "username_testermctesterson",
+             "attempt": 1,
+             "hash": "...",
+             "expires": "1/1/1900",
+             "hint": "...",
+             "verificationCode": "...",
+          }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       attempt : :type:`integer`, :required:`required`

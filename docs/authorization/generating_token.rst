@@ -13,33 +13,6 @@ Generating Token
 Create a short lived access token to be used for authorized API calls. Typically a token will last 3600 seconds(one hour).
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
-         Content-Type: application/x-www-form-urlencoded
-
-            client_id={publicKey}&
-            grant_type=password&
-            username={username}&
-            password={password}&
-            scope=meshy.api offline_access
-
-        
-      (Form-encoding removed, and line breaks added for readability)
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      password : :type:`string`, :required:`required`
-         User secret credentials for login. When anonymous it is static as nopassword.
    
    .. group-tab:: C#
    
@@ -67,6 +40,33 @@ Create a short lived access token to be used for authorized API calls. Typically
          
          var meshyConnection = await client.login(username,password);
       
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      password : :type:`string`, :required:`required`
+         User secret credentials for login. When anonymous it is static as nopassword.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
+         Content-Type: application/x-www-form-urlencoded
+
+            client_id={publicKey}&
+            grant_type=password&
+            username={username}&
+            password={password}&
+            scope=meshy.api offline_access
+
+        
+      (Form-encoding removed, and line breaks added for readability)
+
       |parameters|
 
       accountName : :type:`string`, :required:`required`

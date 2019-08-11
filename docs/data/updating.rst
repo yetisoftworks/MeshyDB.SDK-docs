@@ -14,30 +14,6 @@ Update Mesh data in collection by id.
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-
-         PUT https://api.meshydb.com/{accountName}/meshes/{mesh}/{id}  HTTP/1.1
-         Authentication: Bearer {access_token}
-         Content-Type: application/json
-
-         {
-            "firstName": "Bobbo",
-            "lastName": "Bobberson"
-         }
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-      id : :type:`string`, :required:`required`
-         Identifies unique record of Mesh data to replace.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -90,6 +66,30 @@ Update Mesh data in collection by id.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
       meshName : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+      id : :type:`string`, :required:`required`
+         Identifies unique record of Mesh data to replace.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
+         PUT https://api.meshydb.com/{accountName}/meshes/{mesh}/{id}  HTTP/1.1
+         Authentication: Bearer {access_token}
+         Content-Type: application/json
+
+         {
+            "firstName": "Bobbo",
+            "lastName": "Bobberson"
+         }
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.

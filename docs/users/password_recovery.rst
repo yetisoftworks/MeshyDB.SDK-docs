@@ -28,27 +28,6 @@ The attempt will load the question into the hint field to be asked of the user.
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         POST https://api.meshydb.com/{accountName}/users/forgotpassword HTTP/1.1
-         Content-Type: application/json
-         
-           {
-             "username": "username_testermctesterson",
-             "attempt": 1
-           }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
-         Identifies how many times a request has been made.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -88,6 +67,26 @@ The attempt will load the question into the hint field to be asked of the user.
       attempt : :type:`integer`, :required:`required`
          Identifies how many times a request has been made.
 
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         POST https://api.meshydb.com/{accountName}/users/forgotpassword HTTP/1.1
+         Content-Type: application/json
+         
+           {
+             "username": "username_testermctesterson",
+             "attempt": 1
+           }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies how many times a request has been made.
 
 .. rubric:: Responses
 
@@ -125,39 +124,6 @@ Optionally, before the user's password is reset you can check if the verificatio
 This would allow a user to verify their code before requiring a reset.
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
-        Content-Type: application/json
-         
-          {
-             "username": "username_testermctesterson",
-             "attempt": 1,
-             "hash": "...",
-             "expires": "1/1/1900",
-             "hint": "...",
-             "verificationCode": "...",
-          }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
-         Identifies which attempt hash was generated against.
-      hash : :type:`string`, :required:`required`
-         Generated hash from verification request.
-      expires : :type:`date`, :required:`required`
-         Identifies when the request expires.
-      hint : :type:`string`, :required:`required`
-         Hint for verification code was generated.
-      verificationCode : :type:`string`, :required:`required`
-         Value to verify against verification request.
 
    .. group-tab:: C#
    
@@ -221,6 +187,39 @@ This would allow a user to verify their code before requiring a reset.
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
+        Content-Type: application/json
+         
+          {
+             "username": "username_testermctesterson",
+             "attempt": 1,
+             "hash": "...",
+             "expires": "1/1/1900",
+             "hint": "...",
+             "verificationCode": "...",
+          }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
 		
 .. rubric:: Responses
 
@@ -250,33 +249,6 @@ Take result from forgot password and application verification code generated fro
 
 
 .. tabs::
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         POST https://api.meshydb.com/{accountName}/users/resetpassword  HTTP/1.1
-         Content-Type: application/json
-         
-           {
-             "username": "username_testermctesterson",
-             "expires": "1-1-2019",
-             "hash": "randomlygeneratedhash",
-             "newPassword": "newPassword"
-           }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      expires : :type:`date`, :required:`required`
-         Defines when hash will expire before it needs to be regenerated.
-      hash : :type:`string`, :required:`required`
-         Hash result of forgot password to verify request for password reset.
-      newPassword : :type:`string`, :required:`required`
-         New user secret credentials for login.
         
    .. group-tab:: C#
    
@@ -326,6 +298,33 @@ Take result from forgot password and application verification code generated fro
         Hash result of forgot password to verify request for password reset.
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         POST https://api.meshydb.com/{accountName}/users/resetpassword  HTTP/1.1
+         Content-Type: application/json
+         
+           {
+             "username": "username_testermctesterson",
+             "expires": "1-1-2019",
+             "hash": "randomlygeneratedhash",
+             "newPassword": "newPassword"
+           }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      expires : :type:`date`, :required:`required`
+         Defines when hash will expire before it needs to be regenerated.
+      hash : :type:`string`, :required:`required`
+         Hash result of forgot password to verify request for password reset.
+      newPassword : :type:`string`, :required:`required`
+         New user secret credentials for login.
 
 .. rubric:: Responses
 

@@ -13,20 +13,6 @@ Retrieve details about the authenticated user.
 
 .. tabs::
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
-         Authentication: Bearer {access_token}
-         
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -65,6 +51,20 @@ Retrieve details about the authenticated user.
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique identifier for user or device.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
+         Authentication: Bearer {access_token}
+         
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
 
 .. rubric:: Responses
 

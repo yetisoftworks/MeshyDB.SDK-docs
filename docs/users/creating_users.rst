@@ -60,7 +60,7 @@ Before identifying a device or unique user you can check to see if they already 
    
       .. code-block:: http
          
-        GET https://api.meshydb.com//{accountName}/users/{username}/exists HTTP/1.1
+        GET https://api.meshydb.com/{accountName}/users/{username}/exists HTTP/1.1
 
       |parameters|
       

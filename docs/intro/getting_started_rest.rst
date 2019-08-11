@@ -62,7 +62,7 @@ The example below shows verifying a username is available.
    
       .. code-block:: http
          
-        GET https://api.meshydb.com//{accountName}/users/{username}/exists HTTP/1.1
+        GET https://api.meshydb.com/{accountName}/users/{username}/exists HTTP/1.1
 
       |parameters|
       

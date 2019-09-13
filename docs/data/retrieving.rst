@@ -75,11 +75,6 @@ Retrieve single item from Mesh collection.
          GET https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
          Authentication: Bearer {access_token}
          Content-Type: application/json
-
-               {
-                  "firstName": "Bob",
-                  "lastName": "Bobberson"
-               }
             
       |parameters|
 

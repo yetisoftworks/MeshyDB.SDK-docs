@@ -30,7 +30,10 @@ Retrieve data from a defined projection.
          var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
          
-         var person = await connection.Projections.Get<ProjectionTest>(projectionName, orderBy, page, pageSize);
+         var person = await connection.Projections.Get<ProjectionTest>(projectionName, 
+                                                                       orderBy, 
+                                                                       page, 
+                                                                       pageSize);
 
       |parameters|
 
@@ -43,7 +46,7 @@ Retrieve data from a defined projection.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`object`
-         Defines which fields need to be ordered and direction.
+         Defines which fields need to be ordered and direction. Review more ways to use `ordering <../details/orderby.html>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25

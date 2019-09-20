@@ -7,7 +7,7 @@
    <h4>Parameters</h4>
    
 ---------------
-Projections Data
+Projecting Data
 ---------------
 
 Retrieve data from a defined projection.
@@ -30,7 +30,7 @@ Retrieve data from a defined projection.
          var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
          
-         var person = await connection.Projections.Get<ProjectionTest>(projectionName, sort, page, pageSize);
+         var person = await connection.Projections.Get<ProjectionTest>(projectionName, orderBy, page, pageSize);
 
       |parameters|
 
@@ -42,8 +42,8 @@ Retrieve data from a defined projection.
          Unique identifier for user or device.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
-      sort : :type:`object`
-         Defines which fields need to be sorted and direction.
+      orderBy : :type:`object`
+         Defines which fields need to be ordered and direction.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -61,7 +61,7 @@ Retrieve data from a defined projection.
 
          var projectionData = await meshyConnection.projections.get<any>(projectionName, 
                                                                         {
-                                                                            orderby: orderby,
+                                                                            orderBy: orderBy,
                                                                             page: page,
                                                                             pageSize: pageSize
                                                                         });
@@ -76,8 +76,8 @@ Retrieve data from a defined projection.
          Unique identifier for user or device.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
-      sort : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -100,8 +100,8 @@ Retrieve data from a defined projection.
          Identifies name of mesh collection. e.g. person.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
-      sort : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25

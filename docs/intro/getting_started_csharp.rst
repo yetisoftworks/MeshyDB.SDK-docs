@@ -431,7 +431,7 @@ Example Result
 429 : Too many request
    * You have have either hit your API or Database limit. Please review your account.
 
-In some cases you may need more control on your filtering or sorting. You can optionally provide this criteria in a MongoDB format.
+In some cases you may need more control on your filtering or ordering. You can optionally provide this criteria in a MongoDB format.
 
 -----------
 Delete data

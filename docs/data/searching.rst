@@ -35,8 +35,8 @@ Filter Mesh data from collection based on query parameters.
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
-      orderby : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -56,7 +56,7 @@ Filter Mesh data from collection based on query parameters.
          var pagedResults = await meshyConnection.meshes.search(meshName, 
                                                                {
                                                                   filter: filter,
-                                                                  orderby: orderby,
+                                                                  orderBy: orderBy,
                                                                   pageNumber: page,
                                                                   pageSize: pageSize
                                                                });
@@ -73,8 +73,8 @@ Filter Mesh data from collection based on query parameters.
          Unique identifier for user or device.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
-      orderby : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -85,7 +85,7 @@ Filter Mesh data from collection based on query parameters.
       .. code-block:: http
 
          GET https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter}&
-                                                               orderby={orderby}&
+                                                               orderBy={orderBy}&
                                                                page={page}&
                                                                pageSize={pageSize} HTTP/1.1
          Authentication: Bearer {access_token}
@@ -102,8 +102,8 @@ Filter Mesh data from collection based on query parameters.
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
-      orderby : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25

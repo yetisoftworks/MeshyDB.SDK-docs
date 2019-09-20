@@ -420,8 +420,8 @@ The example below shows searching based where the first name starts with Rob.
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
-      orderby : :type:`string`
-         Defines which fields need to be sorted and direction in a MongoDB format.
+      orderBy : :type:`string`
+         Defines which fields need to be ordering and direction in a MongoDB format.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25

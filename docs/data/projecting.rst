@@ -46,7 +46,7 @@ Retrieve data from a defined projection.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`object`
-         Defines which fields need to be ordered and direction. Review more ways to use :doc:`projecting/orderby`.
+         Defines which fields need to be ordered and direction. Review more ways to use :doc:`orderby`.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25

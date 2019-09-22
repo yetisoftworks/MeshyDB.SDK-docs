@@ -80,7 +80,7 @@ Retrieve data from a defined projection.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`string`
-         Defines which fields need to be ordered and direction in a MongoDB format.
+         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <../details/orderby.html>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -104,7 +104,7 @@ Retrieve data from a defined projection.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`string`
-         Defines which fields need to be ordered and direction in a MongoDB format.
+         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <../details/orderby.html>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25

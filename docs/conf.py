@@ -92,7 +92,7 @@ html_static_path = ['_static',
                     'scripts/requirehttps.js', 
                     'styles/parameters.css', 
                     'scripts/insights.js', 
-                    'scripts/chat2.js', 
+                    'scripts/chat.js', 
                     'styles/codecopy.css'
                     ]
 
@@ -108,7 +108,7 @@ html_static_path = ['_static',
 
 html_css_files = ['parameters.css', 'codecopy.css']
 
-html_js_files = ['requirehttps.js', 'insights.js', 'chat2.js']
+html_js_files = ['requirehttps.js', 'insights.js', 'chat.js']
 
 html_favicon = 'images/favicon-32.png'
 # -- Options for HTMLHelp output ---------------------------------------------

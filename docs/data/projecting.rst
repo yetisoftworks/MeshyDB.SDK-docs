@@ -10,7 +10,11 @@
 Projecting Data
 ---------------
 
-Retrieve data from a defined projection.
+A Projection is a stored query of MongoDB aggregates and filters that can be called for reporting or analysis.
+
+`````````````
+API Reference
+`````````````
 
 .. tabs::
 
@@ -46,7 +50,7 @@ Retrieve data from a defined projection.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`object`
-         Defines which fields need to be ordered and direction. Review more ways to use `ordering <../details/orderby.html>`_.
+         Defines which fields need to be ordered and direction. Review more ways to use `ordering <Ordering Data>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -80,7 +84,7 @@ Retrieve data from a defined projection.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`string`
-         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <../details/orderby.html>`_.
+         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <Ordering Data>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -104,7 +108,7 @@ Retrieve data from a defined projection.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`string`
-         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <../details/orderby.html>`_.
+         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <Ordering Data>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -142,3 +146,76 @@ Example Result
 
 429 : Too many request
    * You have have either hit your API or Database limit. Please review your account.
+
+``````````````
+Ordering Data
+``````````````
+
+Ordering is supported in a MongoDB format. This format is as an object with a -1 or 1 to identify descending or ascending format respectively.
+
+The following example shows how to sort an object by Name in descending order.
+
+.. tabs::
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+
+         OrderByDefinition<Person>.OrderByDescending("Name");
+
+         // Or
+
+         OrderByDefinition<Person>.OrderByDescending(x => x.Name);
+
+      Alternatively you can use MongoDB syntax
+
+      .. code-block:: json
+
+         { "Name": -1 }
+      
+   .. group-tab:: NodeJS
+      
+      .. code-block:: json
+
+         { "Name": -1 }
+
+   .. group-tab:: REST
+   
+      .. code-block:: json
+
+         { "Name": -1 }
+
+
+To add additional filters it can be extended as follows.
+
+This example will order by Name descending then Age ascending.
+
+.. tabs::
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+
+         OrderByDefinition<Person>.OrderByDescending("Name").ThenBy("Age");
+
+         // Or
+
+         OrderByDefinition<Person>.OrderByDescending(x => x.Name).ThenBy(x=> x.Age);
+
+      Alternatively you can use MongoDB syntax
+
+      .. code-block:: json
+
+         { "Name": -1, "Age": 1 }
+      
+   .. group-tab:: NodeJS
+      
+      .. code-block:: json
+
+         { "Name": -1, "Age": 1 }
+
+   .. group-tab:: REST
+   
+      .. code-block:: json
+
+         { "Name": -1, "Age": 1 }

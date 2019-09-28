@@ -50,7 +50,7 @@ API Reference
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`object`
-         Defines which fields need to be ordered and direction. Review more ways to use `ordering <Ordering Data>`_.
+         Defines which fields need to be ordered and direction. Review more ways to use `ordering <#ordering-data>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -84,7 +84,7 @@ API Reference
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`string`
-         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <Ordering Data>`_.
+         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <#ordering-data>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -108,7 +108,7 @@ API Reference
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       orderBy : :type:`string`
-         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <Ordering Data>`_.
+         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <#ordering-data>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25

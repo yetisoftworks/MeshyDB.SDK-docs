@@ -10,7 +10,11 @@
 Projecting Data
 ---------------
 
-A Projection is a stored query of MongoDB aggregates and filters that can be called for reporting or analysis.
+A Projection is a stored query of MongoDB aggregates and filters that can be called for reporting or analysis. By creating a Projection is gives you better control over what data is accessible without needing to worry about someone accidentially exporting all your data.
+
+You can create your query your Mesh Data using the admin portal under the Projections tab.
+
+Please review the following for supported `aggregations <#supported-aggregates>`_.
 
 `````````````
 API Reference
@@ -219,3 +223,29 @@ This example will order by Name descending then Age ascending.
       .. code-block:: json
 
          { "Name": -1, "Age": 1 }
+
+
+````````````````````
+Supported Aggregates
+````````````````````
+
+The following aggregates are from MongoDB and more detailed explination can be found `here <https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/>`_.
+
+	 - $addFields
+	 - $bucket
+	 - $bucketAuto
+	 - $count
+	 - $graphLookup
+	 - $facet
+	 - $group
+	 - $limit
+	 - $lookup
+	 - $match
+	 - $project
+	 - $redact
+	 - $replaceRoot
+	 - $sample
+	 - $skip
+	 - $sort
+	 - $sortByCount
+	 - $unwind

@@ -73,4 +73,4 @@ Now that you have your public key, you can begin with any of our language specif
     data/updating
     data/searching
     data/deleting
-   
+    data/projecting

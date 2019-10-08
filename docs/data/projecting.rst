@@ -132,7 +132,7 @@ Example Result
       "pageSize": 25,
       "results": [{
                      "state":"WI",
-                     "attractions": "24"
+                     "attractions":"24"
                  }],
       "totalRecords": 1
    }
@@ -178,7 +178,7 @@ The following example shows how to sort an object by Name in descending order.
 
       Alternatively you can use MongoDB syntax
 
-      .. code-block:: json
+      .. code-block:: c#
 
          var orderBy = "{ \"Name\": -1 }";
 
@@ -189,7 +189,7 @@ The following example shows how to sort an object by Name in descending order.
 
    .. group-tab:: NodeJS
       
-      .. code-block:: json
+      .. code-block:: javascript
 
          var orderBy = { "Name": -1 };
 
@@ -202,7 +202,7 @@ The following example shows how to sort an object by Name in descending order.
 
    .. group-tab:: REST
    
-      .. code-block:: json
+      .. code-block:: http
 
          GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1 } HTTP/1.1
          Authentication: Bearer {access_token}
@@ -230,7 +230,7 @@ This example will order by Name descending then Age ascending.
 
       Alternatively you can use MongoDB syntax
 
-      .. code-block:: json
+      .. code-block:: c#
 
          var orderBy = "{ \"Name\": -1, \"Age\": 1 }";
 
@@ -241,7 +241,7 @@ This example will order by Name descending then Age ascending.
 
    .. group-tab:: NodeJS
       
-      .. code-block:: json
+      .. code-block:: javascript
 
          var orderBy = { "Name": -1, "Age": 1 };
 
@@ -254,7 +254,7 @@ This example will order by Name descending then Age ascending.
 
    .. group-tab:: REST
    
-      .. code-block:: json
+      .. code-block:: http
 
          GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1, "Age": 1 } HTTP/1.1
          Authentication: Bearer {access_token}

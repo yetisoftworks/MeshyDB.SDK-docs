@@ -10,7 +10,7 @@
 Projecting Data
 ---------------
 
-A Projection is a stored query of MongoDB aggregates and filters that can be called for reporting or analysis. By creating a Projection is gives you better control over what data is accessible without needing to worry about someone accidentially exporting all your data.
+A projection is a stored MongoDB query that can contain aggregations, filtering and lookups. It's great for reporting or simply re-using queries throughout your application. Projections also give you the abiliy to control access to data by allowing you to explicity define the data you want to make accessible to end-users.
 
 You can create your query your Mesh Data using the admin portal under the Projections tab.
 
@@ -26,22 +26,22 @@ API Reference
    
       .. code-block:: c#
 
-         public class ProjectionTest
+         public class PopularState
          {
-            [JsonProperty("_id")]
-            public string Id { get; set; }
+            [JsonProperty("state")]
+            public string State { get; set; }
             
-            [JsonProperty("test")]
-            public string Test { get; set; }
+            [JsonProperty("attractions")]
+            public int Attractions { get; set; }
          }
 
          var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
          
-         var person = await connection.Projections.Get<ProjectionTest>(projectionName, 
-                                                                       orderBy, 
-                                                                       page, 
-                                                                       pageSize);
+         var stateAttractions = await connection.Projections.Get<PopularState>(projectionName, 
+                                                                               orderBy, 
+                                                                               page, 
+                                                                               pageSize);
 
       |parameters|
 
@@ -70,7 +70,7 @@ API Reference
 
          var meshyConnection = await client.loginAnonymously(anonymousUser.username);
 
-         var projectionData = await meshyConnection.projections.get<any>(projectionName, 
+         var popularStates = await meshyConnection.projections.get<any>(projectionName, 
                                                                         {
                                                                             orderBy: orderBy,
                                                                             page: page,
@@ -118,7 +118,6 @@ API Reference
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-
 .. rubric:: Responses
 
 200 : OK
@@ -132,8 +131,8 @@ Example Result
       "page": 1,
       "pageSize": 25,
       "results": [{
-                     "_id":"5c78cc81dd870827a8e7b6c4",
-                     "test": "Projection Test"
+                     "state":"WI",
+                     "attractions": "24"
                  }],
       "totalRecords": 1
    }
@@ -165,30 +164,48 @@ The following example shows how to sort an object by Name in descending order.
    
       .. code-block:: c#
 
-         OrderByDefinition<Person>.OrderByDescending("Name");
+         var orderBy = OrderByDefinition<PopularState>.OrderByDescending("Name");
 
          // Or
 
-         OrderByDefinition<Person>.OrderByDescending(x => x.Name);
+         orderBy = OrderByDefinition<PopularState>.OrderByDescending(x => x.Name);
+
+         var popularStates = await connection.Projections.Get<PopularState>(projectionName, 
+                                                                            orderBy, 
+                                                                            page, 
+                                                                            pageSize);
+
 
       Alternatively you can use MongoDB syntax
 
       .. code-block:: json
 
-         { "Name": -1 }
-      
+         var orderBy = "{ \"Name\": -1 }";
+
+         var popularStates = await connection.Projections.Get<PopularState>(projectionName, 
+                                                                            orderBy, 
+                                                                            page, 
+                                                                            pageSize);
+
    .. group-tab:: NodeJS
       
       .. code-block:: json
 
-         { "Name": -1 }
+         var orderBy = { "Name": -1 };
+
+         var popularStates = await meshyConnection.projections.get<any>(projectionName, 
+                                                                        {
+                                                                            orderBy: orderBy,
+                                                                            page: page,
+                                                                            pageSize: pageSize
+                                                                        });
 
    .. group-tab:: REST
    
       .. code-block:: json
 
-         { "Name": -1 }
-
+         GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1 } HTTP/1.1
+         Authentication: Bearer {access_token}
 
 To add additional filters it can be extended as follows.
 
@@ -200,36 +217,53 @@ This example will order by Name descending then Age ascending.
    
       .. code-block:: c#
 
-         OrderByDefinition<Person>.OrderByDescending("Name").ThenBy("Age");
+         var orderBy = OrderByDefinition<Person>.OrderByDescending("Name").ThenBy("Age");
 
          // Or
 
-         OrderByDefinition<Person>.OrderByDescending(x => x.Name).ThenBy(x=> x.Age);
+         orderBy = OrderByDefinition<Person>.OrderByDescending(x => x.Name).ThenBy(x=> x.Age);
+
+         var popularStates = await connection.Projections.Get<PopularState>(projectionName, 
+                                                                            orderBy, 
+                                                                            page, 
+                                                                            pageSize);
 
       Alternatively you can use MongoDB syntax
 
       .. code-block:: json
 
-         { "Name": -1, "Age": 1 }
-      
+         var orderBy = "{ \"Name\": -1, \"Age\": 1 }";
+
+         var popularStates = await connection.Projections.Get<PopularState>(projectionName, 
+                                                                            orderBy, 
+                                                                            page, 
+                                                                            pageSize);
+
    .. group-tab:: NodeJS
       
       .. code-block:: json
 
-         { "Name": -1, "Age": 1 }
+         var orderBy = { "Name": -1, "Age": 1 };
+
+         var popularStates = await meshyConnection.projections.get<any>(projectionName, 
+                                                               {
+                                                                     orderBy: orderBy,
+                                                                     page: page,
+                                                                     pageSize: pageSize
+                                                               });
 
    .. group-tab:: REST
    
       .. code-block:: json
 
-         { "Name": -1, "Age": 1 }
-
+         GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1, "Age": 1 } HTTP/1.1
+         Authentication: Bearer {access_token}
 
 ````````````````````
 Supported Aggregates
 ````````````````````
 
-The following aggregates are from MongoDB and more detailed explination can be found `here <https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/>`_.
+The following aggregates are from MongoDB and more detailed explanation can be found `here <https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/>`_.
 
 	 - $addFields
 	 - $bucket

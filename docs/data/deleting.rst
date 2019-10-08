@@ -94,4 +94,4 @@ Permanently remove Mesh data from collection.
    * Mesh data was not found.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.

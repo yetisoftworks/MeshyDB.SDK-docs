@@ -85,4 +85,4 @@ Log authenticated user out.
    * Unsupported Token type.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.

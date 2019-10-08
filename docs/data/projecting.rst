@@ -10,7 +10,7 @@
 Projecting Data
 ---------------
 
-A projection is a stored MongoDB query that can contain aggregations, filtering and lookups. It's great for reporting or simply re-using queries throughout your application. Projections also give you the abiliy to control access to data by allowing you to explicity define the data you want to make accessible to end-users.
+A projection is a stored MongoDB query that can contain aggregations, filtering and lookups. It’s great for reporting or simply re-using queries throughout your application. Projections also give you the ability to control access to data by allowing you to explicitly define the data you want to make accessible to end-users.
 
 You can create your query your Mesh Data using the admin portal under the Projections tab.
 
@@ -148,7 +148,7 @@ Example Result
    * Projection was not found.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 ``````````````
 Ordering Data
@@ -176,7 +176,7 @@ The following example shows how to sort an object by Name in descending order.
                                                                             pageSize);
 
 
-      Alternatively you can use MongoDB syntax
+      Alternatively you can use MongoDB syntax.
 
       .. code-block:: c#
 
@@ -207,7 +207,7 @@ The following example shows how to sort an object by Name in descending order.
          GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1 } HTTP/1.1
          Authentication: Bearer {access_token}
 
-To add additional filters it can be extended as follows.
+Additional filters can be extended as follows. 
 
 This example will order by Name descending then Age ascending.
 

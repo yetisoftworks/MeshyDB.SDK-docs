@@ -113,7 +113,7 @@ Example Result
    * User was not found.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 ''''''''''
 Check Hash
@@ -239,7 +239,7 @@ Example Result
    * Verification code is required.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 ''''''''''''''''''
 Resetting Password
@@ -343,4 +343,4 @@ Take result from forgot password and application verification code generated fro
    * Request hash is invalid.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.

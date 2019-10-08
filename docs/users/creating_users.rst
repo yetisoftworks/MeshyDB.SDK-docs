@@ -86,7 +86,7 @@ Example Result
    * Username is required.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 ''''''''''''''''''''''''''
 Registering Anonymous User
@@ -179,7 +179,7 @@ Example Result
    * Username must be unique.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 ''''''''''''''''
 Registering User
@@ -333,7 +333,7 @@ Example Result
    * Username must be unique.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 ''''''''''
 Check Hash
@@ -459,7 +459,7 @@ Example Result
    * Verification code is required.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 ''''''
 Verify
@@ -581,4 +581,4 @@ If email or text verification is configured the registered user must be verified
    * Request hash is invalid.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.

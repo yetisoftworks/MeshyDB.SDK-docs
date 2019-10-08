@@ -135,7 +135,7 @@ Example Result
    * Username must be unique.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 -----
 Login
@@ -184,7 +184,7 @@ Example Result
    * Password is invalid.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 Once we login we can access our connection through a static member.
 
@@ -243,7 +243,7 @@ Example Result
    * User is not authorized to make call.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
    
 -----------
 Create data
@@ -322,7 +322,7 @@ Example Result
    * User is not authorized to make call.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 -----------
 Update data
@@ -373,7 +373,7 @@ Example Result
    * User is not authorized to make call.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 -----------
 Search data
@@ -429,7 +429,7 @@ Example Result
    * User is not authorized to make call.
    
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 In some cases you may need more control on your filtering or ordering. You can optionally provide this criteria in a MongoDB format.
 
@@ -477,7 +477,7 @@ The example below shows deleting the data from the API by providing the object.
    * Mesh data was not found.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 --------
 Sign out
@@ -514,6 +514,6 @@ The example below shows signing out of the currently established connection.
    * Unsupported Token type.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 Not seeing something you need? Feel free to give us a chat or contact us at support@meshydb.com.

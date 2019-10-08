@@ -153,7 +153,7 @@ Example Result
    * User is not authorized to make call.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 ''''''''''''''''''
 Security Questions
@@ -251,7 +251,7 @@ The following can be used to change the authenticated user's security questions 
    * User is not authorized to make call.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.
 
 '''''''''''''''''
 Changing Password
@@ -350,4 +350,4 @@ Allows the authenticated user to change their password.
    * User is not authorized to make call.
 
 429 : Too many request
-   * You have have either hit your API or Database limit. Please review your account.
+   * You have either hit your API or Database limit. Please review your account.

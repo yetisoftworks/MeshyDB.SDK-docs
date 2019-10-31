@@ -116,5 +116,8 @@ Example Result
 401 : Unauthorized
    * User is not authorized to make call.
 
+403 : Forbidden
+   * User has insufficent permission to update meshes or mesh.
+
 429 : Too many request
    * You have either hit your API or Database limit. Please review your account.

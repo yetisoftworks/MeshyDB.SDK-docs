@@ -38,7 +38,8 @@ API Reference
          var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
          
-         var stateAttractions = await connection.Projections.Get<PopularState>(projectionName, 
+         var stateAttractions = await connection.Projections.Get<PopularState>(projectionName,
+                                                                               filter,
                                                                                orderBy, 
                                                                                page, 
                                                                                pageSize);
@@ -53,6 +54,8 @@ API Reference
          Unique identifier for user or device.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
+      filter : :type:`string`
+         Criteria provided in a MongoDB format to limit results.
       orderBy : :type:`object`
          Defines which fields need to be ordered and direction. Review more ways to use `ordering <#ordering-data>`_.
       page : :type:`integer`, default: 1
@@ -72,6 +75,7 @@ API Reference
 
          var popularStates = await meshyConnection.projections.get<any>(projectionName, 
                                                                         {
+                                                                            filter: filter,
                                                                             orderBy: orderBy,
                                                                             page: page,
                                                                             pageSize: pageSize
@@ -87,6 +91,8 @@ API Reference
          Unique identifier for user or device.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
+      filter : :type:`string`
+         Criteria provided in a MongoDB format to limit results.
       orderBy : :type:`string`
          Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <#ordering-data>`_.
       page : :type:`integer`, default: 1
@@ -111,6 +117,8 @@ API Reference
          Identifies name of mesh collection. e.g. person.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
+      filter : :type:`string`
+         Criteria provided in a MongoDB format to limit results.
       orderBy : :type:`string`
          Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <#ordering-data>`_.
       page : :type:`integer`, default: 1
@@ -143,7 +151,10 @@ Example Result
 
 401 : Unauthorized
    * User is not authorized to make call.
-   
+
+403 : Forbidden
+   * User has insufficent permission to read projections.
+
 404 : Not Found
    * Projection was not found.
 

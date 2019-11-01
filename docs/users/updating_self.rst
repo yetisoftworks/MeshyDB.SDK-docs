@@ -128,10 +128,16 @@ Example Result
     "isActive": true,
     "phoneNumber": "+15555555555",
     "emailAddress": "test@test.com",
-    "roles": [
-                "admin",
-                "test"
-             ],
+    "roles" : [
+               {
+                  "name":"admin",
+                  "addedDate":"2019-01-01T00:00:00.0000000+00:00"
+               },
+               {
+                  "name":"test",
+                  "addedDate":"2019-01-01T00:00:00.0000000+00:00"
+               }
+            ],
     "securityQuestions": [
                             {
                                "question": "What would you say to this question?",

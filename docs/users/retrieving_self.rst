@@ -83,10 +83,16 @@ Example Result
     "verified": true,
     "isActive": true,
     "phoneNumber": "5555555555",
-    "roles": [
-                "admin",
-                "test"
-             ],
+    "roles" : [
+               {
+                  "name":"admin",
+                  "addedDate":"2019-01-01T00:00:00.0000000+00:00"
+               },
+               {
+                  "name":"test",
+                  "addedDate":"2019-01-01T00:00:00.0000000+00:00"
+               }
+            ],
     "securityQuestions": [
                             {
                                "question": "What would you say to this question?",

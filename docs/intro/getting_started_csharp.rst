@@ -321,6 +321,9 @@ Example Result
 401 : Unauthorized
    * User is not authorized to make call.
 
+403 : Forbidden
+   * User has insufficent permission to create meshes or mesh.
+
 429 : Too many request
    * You have either hit your API or Database limit. Please review your account.
 
@@ -371,6 +374,9 @@ Example Result
 
 401 : Unauthorized
    * User is not authorized to make call.
+
+403 : Forbidden
+   * User has insufficent permission to update meshes or mesh.
 
 429 : Too many request
    * You have either hit your API or Database limit. Please review your account.
@@ -428,6 +434,9 @@ Example Result
 401 : Unauthorized
    * User is not authorized to make call.
    
+403 : Forbidden
+   * User has insufficent permission to read meshes or mesh.
+
 429 : Too many request
    * You have either hit your API or Database limit. Please review your account.
 
@@ -472,6 +481,9 @@ The example below shows deleting the data from the API by providing the object.
 
 401 : Unauthorized
    * User is not authorized to make call.
+
+403 : Forbidden
+   * User has insufficent permission to delete meshes or mesh.
 
 404 : Not Found
    * Mesh data was not found.

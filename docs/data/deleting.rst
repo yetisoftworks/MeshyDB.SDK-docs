@@ -90,6 +90,9 @@ Permanently remove Mesh data from collection.
 401 : Unauthorized
    * User is not authorized to make call.
 
+403 : Forbidden
+   * User has insufficent permission to delete meshes or mesh.
+
 404 : Not Found
    * Mesh data was not found.
 

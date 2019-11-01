@@ -170,7 +170,8 @@ Example Result
       "emailAddress": null,
       "roles": [],
       "securityQuestions": [],
-      "anonymous": true
+      "anonymous": true,
+      "lastAccessed":"2019-01-01T00:00:00.0000+00:00"
    }
 
 400 : Bad request

@@ -56,7 +56,7 @@ Creating a role allows it to be assignable to a user.
 
         var meshyConnection = await client.loginAnonymously(username);
       
-        meshyConnection.rolesService.create(role);
+        await meshyConnection.rolesService.create(role);
 
       |parameters|
 
@@ -213,8 +213,8 @@ When creating a permission it is assigned to a role. When a user has the role th
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissibleName : :type:`string`, :required:`required`

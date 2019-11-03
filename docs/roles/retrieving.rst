@@ -10,8 +10,7 @@
 Retrieving
 ----------
 
-
-Retrieve information for specific specific role.
+Retrieve information for specific role.
 
 ''''
 Role

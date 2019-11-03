@@ -53,7 +53,6 @@ Creating a role allows it to be assignable to a user.
       .. code-block:: javascript
          
         var client = MeshyClient.initialize(accountName, publicKey);
-
         var meshyConnection = await client.loginAnonymously(username);
       
         await meshyConnection.rolesService.create(role);
@@ -167,10 +166,9 @@ When creating a permission it is assigned to a role. When a user has the role th
       .. code-block:: javascript
          
         var client = MeshyClient.initialize(accountName, publicKey);
-
         var meshyConnection = await client.loginAnonymously(username);
       
-        meshyConnection.rolesService.createPermission(roleId, permission);
+        await meshyConnection.rolesService.createPermission(roleId, permission);
 
       |parameters|
 

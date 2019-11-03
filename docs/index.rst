@@ -74,3 +74,14 @@ Now that you have your public key, you can begin with any of our language specif
     data/searching
     data/deleting
     data/projecting
+
+.. toctree::
+    :maxdepth: 2
+    :hidden:
+    :caption: Roles
+
+    roles/creating
+    roles/retrieving
+    roles/updating
+    roles/searching
+    roles/deleting

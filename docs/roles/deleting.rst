@@ -107,7 +107,7 @@ Delete specific permission from role by id.
         var client = MeshyClient.Initialize(accountName, publicKey);
         var connection = await client.LoginAnonymouslyAsync(username);
 
-        var permission = await connection.Roles.DeletePermissionAsync(roleId, permissionId);
+        await connection.Roles.DeletePermissionAsync(roleId, permissionId);
 
       |parameters|
       
@@ -128,7 +128,7 @@ Delete specific permission from role by id.
 
         var meshyConnection = await client.loginAnonymously(username);
       
-        var permission = await meshyConnection.rolesService.deletePermission(roleId, permissionId);
+        await meshyConnection.rolesService.deletePermission(roleId, permissionId);
 
       |parameters|
 

@@ -336,9 +336,10 @@ Example Result
 429 : Too many request
    * You have either hit your API or Database limit. Please review your account.
 
-'''''''''''
-Create User
-'''''''''''
+''''''''
+New User
+''''''''
+
 Creating a user is a controlled way where another user can grant access to someone else.
 
 .. tabs::
@@ -479,37 +480,37 @@ Creating a user is a controlled way where another user can grant access to someo
 
 .. rubric:: Responses
 
-200 : Created
+201 : Created
    * New user has been registered and must be verified before use.
 
 Example Result
 
 .. code-block:: json
 
-{
-   "username":"test",
-   "firstName":null,
-   "lastName":null,
-   "verified":true,
-   "isActive":true,
-   "phoneNumber":null,
-   "emailAddress":null,
-   "roles":[
-      {
-         "name":"meshy.user",
-         "addedDate":"2019-01-01T00:00:00.0000000+00:00"
-      }
-   ],
-   "securityQuestions":[
-      {
-         "question":"test",
-         "answerHash":"..."
-      }
-   ],
-   "anonymous":false,
-   "lastAccessed":null,
-   "id":"5db..."
-}
+   {
+      "username":"test",
+      "firstName":null,
+      "lastName":null,
+      "verified":true,
+      "isActive":true,
+      "phoneNumber":null,
+      "emailAddress":null,
+      "roles":[
+         {
+            "name":"meshy.user",
+            "addedDate":"2019-01-01T00:00:00.0000000+00:00"
+         }
+      ],
+      "securityQuestions":[
+         {
+            "question":"test",
+            "answerHash":"..."
+         }
+      ],
+      "anonymous":false,
+      "lastAccessed":null,
+      "id":"5db..."
+   }
 
 400 : Bad request
    * Email address is required when Email recovery is enabled.

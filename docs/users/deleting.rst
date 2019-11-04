@@ -38,10 +38,7 @@ Remove user from system permanently.
       .. code-block:: javascript
          
          var client = MeshyClient.initialize(accountName, publicKey);
-         
-         var anonymousUser = await client.registerAnonymousUser();
-
-         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+         var meshyConnection = await client.loginAnonymously(username);
 
          await meshyConnection.usersService.delete(id);
       
@@ -79,7 +76,7 @@ Remove user from system permanently.
 
 400 : Bad request
     * User is not able to delete self.
-    
+
 401 : Unauthorized
    * User is not authorized to make call.
 

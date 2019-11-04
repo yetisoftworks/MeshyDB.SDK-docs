@@ -6,9 +6,9 @@
 
    <h4>Parameters</h4>
    
--------------
-Updating Self
--------------
+--------
+Updating
+--------
 
 Updating self allows the ability to update the authenticated user's information.
 
@@ -204,9 +204,7 @@ The following can be used to update an existing user's personal information such
          
          var client = MeshyClient.initialize(accountName, publicKey);
          
-         var anonymousUser = await client.registerAnonymousUser();
-
-         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+         var meshyConnection = await client.loginAnonymously(username);
 
          var self = await meshyConnection.usersService.update(id,
                                                              {

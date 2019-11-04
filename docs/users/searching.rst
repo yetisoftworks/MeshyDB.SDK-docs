@@ -119,8 +119,44 @@ Filter User data based on query parameters.
 
 .. rubric:: Responses
 
-200 : No Content
+200 : OK
     * Identifies if users were found.
+
+Example Result
+
+.. code-block:: json
+
+    {
+        "results":[
+            {
+                "username":"test",
+                "firstName":null,
+                "lastName":null,
+                "verified":true,
+                "isActive":true,
+                "phoneNumber":null,
+                "emailAddress":null,
+                "roles":[
+                    {
+                    "name":"meshy.user",
+                    "addedDate":"2019-10-18T15:11:55.2413015-05:00"
+                    }
+                ],
+                "securityQuestions":[
+                    {
+                    "question":"Test 1",
+                    "answerHash":"..."
+                    }
+                ],
+                "anonymous":false,
+                "lastAccessed":null,
+                "id":"5d4..."
+            }
+        ],
+        "page":1,
+        "pageSize":25,
+        "totalRecords":1
+    }
 
 400 : Bad request
     * User is not able to delete self.

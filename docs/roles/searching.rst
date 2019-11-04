@@ -225,21 +225,21 @@ Example Result
 
 .. code-block:: json
 
-{
-   "results":[
-      {
-         "permissibleName":"meshes",
-         "create":true,
-         "update":true,
-         "read":true,
-         "delete":true,
-         "id":"5d9..."
-      }
-   ],
-   "page":1,
-   "pageSize":25,
-   "totalRecords":1
-}
+    {
+        "results":[
+            {
+                "permissibleName":"meshes",
+                "create":true,
+                "update":true,
+                "read":true,
+                "delete":true,
+                "id":"5d9..."
+            }
+        ],
+        "page":1,
+        "pageSize":25,
+        "totalRecords":1
+    }
 
 401 : Unauthorized
    * User is not authorized to make call.
@@ -355,7 +355,7 @@ Example Result
 
 401 : Unauthorized
    * User is not authorized to make call.
-   
+
 403 : Forbidden
     * User has insufficent permission to read roles.
 

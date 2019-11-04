@@ -349,11 +349,11 @@ Add users from specific role.
 .. rubric:: Responses
 
 204 : No Content
-    * Identifies if role is removed.
+    * Identifies if role is added.
 
 401 : Unauthorized
    * User is not authorized to make call.
-   
+
 403 : Forbidden
     * User has insufficent permission to update roles.
 

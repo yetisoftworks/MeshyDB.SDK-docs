@@ -90,6 +90,9 @@ Example Result
         "id":"5db..."
     }
 
+401 : Unauthorized
+   * User is not authorized to make call.
+
 403 : Forbidden
     * User has insufficent permission to read roles.
 
@@ -186,6 +189,9 @@ Example Result
         "delete":"true"
     }
 
+401 : Unauthorized
+   * User is not authorized to make call.
+   
 403 : Forbidden
     * User has insufficent permission to read roles.
 

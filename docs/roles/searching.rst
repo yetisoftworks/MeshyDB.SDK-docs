@@ -118,6 +118,9 @@ Example Result
       "totalRecords": 1
    }
 
+401 : Unauthorized
+   * User is not authorized to make call.
+
 403 : Forbidden
     * User has insufficent permission to read roles.
 
@@ -238,6 +241,9 @@ Example Result
    "totalRecords":1
 }
 
+401 : Unauthorized
+   * User is not authorized to make call.
+
 403 : Forbidden
     * User has insufficent permission to read roles.
 
@@ -347,6 +353,9 @@ Example Result
         "totalRecords":1
     }
 
+401 : Unauthorized
+   * User is not authorized to make call.
+   
 403 : Forbidden
     * User has insufficent permission to read roles.
 

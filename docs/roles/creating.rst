@@ -117,6 +117,9 @@ Example Result
     * Role cannot start with 'meshy.'.
     * Role already exists.
 
+401 : Unauthorized
+   * User is not authorized to make call.
+
 403 : Forbidden
     * User has insufficent permission to create roles.
 
@@ -253,6 +256,9 @@ Example Result
     * Permissible was already configured for role.
     * A higher permissible cannot be assigned to a role with a specific permission already. IE you cannot have 'meshes' and 'meshes.person' for the role.
 
+401 : Unauthorized
+   * User is not authorized to make call.
+   
 403 : Forbidden
     * User has insufficent permission to create permissions.
 

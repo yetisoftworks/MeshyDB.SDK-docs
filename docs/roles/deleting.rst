@@ -83,6 +83,9 @@ Delete details about role by id.
 400 : Bad request
     * Unable to delete role that starts with 'meshy.'.
 
+401 : Unauthorized
+   * User is not authorized to make call.
+
 403 : Forbidden
     * User has insufficent permission to delete roles.
 
@@ -165,6 +168,9 @@ Delete specific permission from role by id.
 
 204 : No Content
     * Identifies if permission was deleted.
+
+401 : Unauthorized
+   * User is not authorized to make call.
 
 403 : Forbidden
     * User has insufficent permission to delete roles.
@@ -258,6 +264,9 @@ Remove users from specific role.
 204 : No Content
     * Identifies if role is removed.
 
+401 : Unauthorized
+   * User is not authorized to make call.
+   
 403 : Forbidden
     * User has insufficent permission to update roles.
 

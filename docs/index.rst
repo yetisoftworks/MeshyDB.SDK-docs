@@ -62,6 +62,7 @@ Now that you have your public key, you can begin with any of our language specif
     users/updating_self
     users/password_recovery
     users/logging_out
+    users/deleting
 
 .. toctree::
     :maxdepth: 2

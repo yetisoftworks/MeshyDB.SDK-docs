@@ -175,9 +175,9 @@ Delete specific permission from role by id.
 429 : Too many request
     * You have either hit your API or Database limit. Please review your account.
 
-````````````
+''''''''''''
 Remove Users
-````````````
+''''''''''''
 
 Remove users from specific role.
 

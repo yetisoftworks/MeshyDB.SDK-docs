@@ -170,7 +170,8 @@ Example Result
       "emailAddress": null,
       "roles": [],
       "securityQuestions": [],
-      "anonymous": true
+      "anonymous": true,
+      "lastAccessed":"2019-01-01T00:00:00.0000+00:00"
    }
 
 400 : Bad request
@@ -334,6 +335,202 @@ Example Result
 
 429 : Too many request
    * You have either hit your API or Database limit. Please review your account.
+
+''''''''
+New User
+''''''''
+
+Creating a user is a controlled way where another user can grant access to someone else.
+
+.. tabs::
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+        var user = new NewUser();
+
+        await connection.Users.CreateAsync(user);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      newPassword : :type:`string`, :required:`required`
+         New user secret credentials for login.
+      firstName : :type:`string`
+         First name of registering user.
+      lastName : :type:`string`
+         Last name of registering user.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of registering user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of registering user.
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
+         New set of questions and answers for registering user in password recovery.
+      verified : :type:`boolean`, default: false
+         Identifies if the user is verified. The user must be verified to login if the verification method is email or phone number.
+      isActive : :type:`boolean`, default: false
+         Identifies if the user is active. The user must be active to allow login.
+      roles : :type:`object`
+         Collection of roles and when they were added to give user permissions within the system.
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         var user = await client.create({
+                                          username: username,
+                                          newPassword: newPassword,
+                                          firstName: firstName,
+                                          lastName: lastName,
+                                          phoneNumber: phoneNumber,
+                                          emailAddress: emailAddress,
+                                          securityQuestions: securityQuestions,
+                                          verified: verified,
+                                          isActive: isActive,
+                                          roles: roles
+                                       });
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      newPassword : :type:`string`, :required:`required`
+         New user secret credentials for login.
+      firstName : :type:`string`
+         First name of registering user.
+      lastName : :type:`string`
+         Last name of registering user.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of registering user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of registering user.
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
+         New set of questions and answers for registering user in password recovery.
+      verified : :type:`boolean`, default: false
+         Identifies if the user is verified. The user must be verified to login if the verification method is email or phone number.
+      isActive : :type:`boolean`, default: false
+         Identifies if the user is active. The user must be active to allow login.
+      roles : :type:`object`
+         Collection of roles and when they were added to give user permissions within the system.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+        POST https://api.meshydb.com/{accountName}/users HTTP/1.1
+        Content-Type: application/json
+         
+          {
+            "username": "username_testermctesterson",
+            "firstName": "Tester",
+            "lastName": "McTesterton",
+            "phoneNumber": "+15555555555",
+            "emailAddress": "test@test.com",
+            "securityQuestions": [
+                                    {
+                                       "question": "What would you say to this question?",
+                                       "answer": "mceasy123"
+                                    }
+                                 ],
+            "newPassword": "newPassword",
+            verified: true,
+            isActive: true,
+            roles: []
+          }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      newPassword : :type:`string`, :required:`required`
+         New user secret credentials for login.
+      firstName : :type:`string`
+         First name of registering user.
+      lastName : :type:`string`
+         Last name of registering user.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of registering user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of registering user.
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
+         New set of questions and answers for registering user in password recovery.
+      verified : :type:`boolean`, default: false
+         Identifies if the user is verified. The user must be verified to login if the verification method is email or phone number.
+      isActive : :type:`boolean`, default: false
+         Identifies if the user is active. The user must be active to allow login.
+      roles : :type:`object`
+         Collection of roles and when they were added to give user permissions within the system.
+
+.. rubric:: Responses
+
+201 : Created
+   * New user has been registered and must be verified before use.
+
+Example Result
+
+.. code-block:: json
+
+   {
+      "username":"test",
+      "firstName":null,
+      "lastName":null,
+      "verified":true,
+      "isActive":true,
+      "phoneNumber":null,
+      "emailAddress":null,
+      "roles":[
+         {
+            "name":"meshy.user",
+            "addedDate":"2019-01-01T00:00:00.0000000+00:00"
+         }
+      ],
+      "securityQuestions":[
+         {
+            "question":"test",
+            "answerHash":"..."
+         }
+      ],
+      "anonymous":false,
+      "lastAccessed":null,
+      "id":"5db..."
+   }
+
+400 : Bad request
+   * Email address is required when Email recovery is enabled.
+   * Phone number is required when Text recovery is enabled.
+   * At least one Security Questions is required when Question recovery is enabled.
+   * Username is a required field.
+   * Email address must be in a valid format.
+   * Phone number must be in an international format.
+   * Username must be unique.
+   * User cannot add roles they do not already have assigned. If a user has the update role permission they can assign any role to any user. However if they do not have this permission they can only assign roles they currently have assigned to themselves.
+
+401 : Unauthorized
+   * User is not authorized to make call.
+
+403 : Forbidden
+    * User has insufficent permission to create users.
+
+429 : Too many request
+   * You have either hit your API or Database limit. Please review your account.
+
 
 ''''''''''
 Check Hash

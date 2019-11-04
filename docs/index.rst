@@ -59,6 +59,7 @@ Now that you have your public key, you can begin with any of our language specif
 
     users/creating_users
     users/retrieving_self
+    users/searching
     users/updating_self
     users/password_recovery
     users/logging_out

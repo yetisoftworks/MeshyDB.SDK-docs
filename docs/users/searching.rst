@@ -1,0 +1,135 @@
+.. role:: required
+
+.. role:: type
+
+.. |parameters| raw:: html
+
+   <h4>Parameters</h4>
+   
+---------
+Searching
+---------
+
+Filter User data based on query parameters.
+
+.. tabs::
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+         await connection.Users.SearchAsync(name, roleId, orderBy, activeOnly, page, pageSize);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      name : :type:`string`
+         Case-insensitive partial name search.
+      roleId : :type:`string`
+         Filters users with defined role identifier.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format.
+      activeOnly : :type:`boolean`, default: true
+         Filters users that are not active. Setting to false will include all users regardless of active status.
+      page : :type:`integer`, default: 1
+         Page number of results to bring back.
+      pageSize : :type:`integer`, max: 200, default: 25
+         Number of results to bring back per page.
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         await meshyConnection.usersService.search({
+                                                    name: name,
+                                                    roleId: roleId,
+                                                    orderBy: orderBy,
+                                                    activeOnly: activeOnly,
+                                                    page: page,
+                                                    pageSize: pageSize
+                                                  });
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique identifier for user or device.
+      name : :type:`string`
+         Case-insensitive partial name search.
+      roleId : :type:`string`
+         Filters users with defined role identifier.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format.
+      activeOnly : :type:`boolean`, default: true
+         Filters users that are not active. Setting to false will include all users regardless of active status.
+      page : :type:`integer`, default: 1
+         Page number of results to bring back.
+      pageSize : :type:`integer`, max: 200, default: 25
+         Number of results to bring back per page.
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         GET https://api.meshydb.com/{accountName}/users?name={name}&
+                                                         roleId={roleId}&
+                                                         orderBy={orderBy}&
+                                                         activeOnly={activeOnly}&
+                                                         page={page}&
+                                                         pageSize={pageSize} HTTP/1.1
+         Authentication: Bearer {access_token}
+
+        (Line breaks added for readability)
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      name : :type:`string`
+         Case-insensitive partial name search.
+      roleId : :type:`string`
+         Filters users with defined role identifier.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format.
+      activeOnly : :type:`boolean`, default: true
+         Filters users that are not active. Setting to false will include all users regardless of active status.
+      page : :type:`integer`, default: 1
+         Page number of results to bring back.
+      pageSize : :type:`integer`, max: 200, default: 25
+         Number of results to bring back per page.
+
+.. rubric:: Responses
+
+200 : No Content
+    * Identifies if users were found.
+
+400 : Bad request
+    * User is not able to delete self.
+    
+401 : Unauthorized
+   * User is not authorized to make call.
+
+403 : Forbidden
+    * User has insufficent permission to read users.
+
+429 : Too many request
+   * You have either hit your API or Database limit. Please review your account.

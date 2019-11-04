@@ -508,7 +508,7 @@ The following can be used to change the authenticated user's security questions 
 .. rubric:: Responses
 
 204 : No Content
-   * Updated information of updated authorized user.
+   * Updated information of updated existing user.
 
 400 : Bad request
    * Unable to update security questions if question verification is not configured.

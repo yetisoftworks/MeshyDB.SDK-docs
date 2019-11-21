@@ -307,6 +307,7 @@ The user will not be able to be authenticated until verification has been comple
 
 201 : Created
    * New user has been registered and must be verified before use.
+      * This will only occur when Email or Text verification is enabled.
 
 Example Result
 
@@ -322,6 +323,7 @@ Example Result
 
 204 : No Content
    * New user has been registered and is now available for use.
+      * This will only occur when Question verification is enabled.
 
 400 : Bad request
    * Public registration is not enabled.
@@ -481,7 +483,7 @@ Creating a user is a controlled way where another user can grant access to someo
 .. rubric:: Responses
 
 201 : Created
-   * New user has been registered and must be verified before use.
+   * New user must be verified before use.
 
 Example Result
 

@@ -66,7 +66,7 @@ Permanently remove Mesh data from collection.
       .. code-block:: http
       
          DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       |parameters|
 

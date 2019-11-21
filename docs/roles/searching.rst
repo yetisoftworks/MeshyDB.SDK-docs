@@ -80,7 +80,7 @@ Search details about roles.
         GET https://api.meshydb.com/{accountName}/roles?name={name}&
                                                         page={page}&
                                                         pageSize={pageSize} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
         (Line breaks added for readability)
       
@@ -197,7 +197,7 @@ Search permissions from role by id.
         GET https://api.meshydb.com/{accountName}/roles/{roleId}/permissions?permissibleName={permissibleName}&
                                                                              page={page}&
                                                                              pageSize={pageSize} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
         (Line breaks added for readability)
 
@@ -312,7 +312,7 @@ Search for permissible to assign to a permission.
         GET https://api.meshydb.com/{accountName}/permissibles?name={name}&
                                                                page={page}&
                                                                pageSize={pageSize} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
         (Line breaks added for readability)
 

@@ -76,7 +76,7 @@ Create new custom mesh data into specified mesh name.
       .. code-block:: http
 
          POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
          
             {

@@ -66,7 +66,7 @@ Retrieve details about role by id.
       .. code-block:: http
          
         GET https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
       |parameters|
       
@@ -158,7 +158,7 @@ Get specific permission from role by id.
       .. code-block:: http
          
         GET https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
       |parameters|
       

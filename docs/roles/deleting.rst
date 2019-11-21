@@ -66,7 +66,7 @@ Delete details about role by id.
       .. code-block:: http
          
         DELETE https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
       |parameters|
       
@@ -151,7 +151,7 @@ Delete specific permission from role by id.
       .. code-block:: http
          
         DELETE https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
       |parameters|
       
@@ -239,7 +239,7 @@ Remove users from specific role.
       .. code-block:: http
          
         DELETE https://api.meshydb.com/{accountName}/roles/{roleId}/users HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {

@@ -72,7 +72,7 @@ Update details about role by id.
       .. code-block:: http
          
         PUT https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {
@@ -197,7 +197,7 @@ Update specific permission from role by id.
       .. code-block:: http
          
         PUT https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {
@@ -326,7 +326,7 @@ Add users from specific role.
       .. code-block:: http
          
         POST https://api.meshydb.com/{accountName}/roles/{roleId}/users HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {

@@ -58,7 +58,7 @@ Remove user from system permanently.
       .. code-block:: http
       
          DELETE https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       |parameters|
       

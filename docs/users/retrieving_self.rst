@@ -63,7 +63,7 @@ Retrieve details about the authenticated user.
       .. code-block:: http
       
          GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       |parameters|
       
@@ -171,7 +171,7 @@ Retrieve details about an existing user by id.
       .. code-block:: http
       
          GET https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       |parameters|
       

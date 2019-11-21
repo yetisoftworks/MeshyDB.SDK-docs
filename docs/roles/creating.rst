@@ -77,7 +77,7 @@ Creating a role allows it to be assignable to a user.
       .. code-block:: http
          
         POST https://api.meshydb.com/{accountName}/roles HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {
@@ -199,7 +199,7 @@ When creating a permission it is assigned to a role. When a user has the role th
       .. code-block:: http
          
         POST https://api.meshydb.com/{accountName}/roles/{roleId}/permissions HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {

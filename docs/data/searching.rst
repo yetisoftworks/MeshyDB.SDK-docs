@@ -88,7 +88,7 @@ Filter Mesh data from collection based on query parameters.
                                                                orderBy={orderBy}&
                                                                page={page}&
                                                                pageSize={pageSize} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       (Line breaks added for readability)
 

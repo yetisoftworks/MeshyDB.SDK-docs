@@ -73,7 +73,7 @@ Retrieve single item from Mesh collection.
       .. code-block:: http
 
          GET https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
             
       |parameters|

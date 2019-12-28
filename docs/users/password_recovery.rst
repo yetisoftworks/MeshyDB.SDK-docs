@@ -327,15 +327,15 @@ Take result from forgot password and application verification code generated fro
          POST https://api.meshydb.com/{accountName}/users/resetpassword  HTTP/1.1
          Content-Type: application/json
          
-         {
-            username: "username_testermctesterson",
-            attempt: 1,
-            hash: "randomlygeneratedhash",
-            expires: "1-1-2019",
-            hint: "Recovery hint",
-            verificationCode: "usercollectedhash",
-            newPassword: "newPassword"
-         }
+            {
+               username: "username_testermctesterson",
+               attempt: 1,
+               hash: "randomlygeneratedhash",
+               expires: "1-1-2019",
+               hint: "Recovery hint",
+               verificationCode: "usercollectedhash",
+               newPassword: "newPassword"
+            }
 
       |parameters|
       

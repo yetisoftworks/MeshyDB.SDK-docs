@@ -329,6 +329,7 @@ Take result from forgot password and application verification code generated fro
    .. group-tab:: REST
    
       .. code-block:: http
+      
          POST https://api.meshydb.com/{accountName}/users/resetpassword HTTP/1.1
          Content-Type: application/json
          

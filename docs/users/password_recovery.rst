@@ -272,11 +272,17 @@ Take result from forgot password and application verification code generated fro
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-        User name that is being reset.
-      expires : :type:`date`, :required:`required`
-        Defines when hash will expire before it needs to be regenerated.
+         Unique identifier for user or device.
+      attempt : :type:`integer`
+         Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
-        Hash result of forgot password to verify request for password reset.
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required` *if using question verification*
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
 

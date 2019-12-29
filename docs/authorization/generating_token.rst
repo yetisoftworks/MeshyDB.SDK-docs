@@ -28,7 +28,7 @@ Create a short lived access token to be used for authorized API calls. Typically
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
 
@@ -47,7 +47,7 @@ Create a short lived access token to be used for authorized API calls. Typically
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
 
@@ -74,7 +74,7 @@ Create a short lived access token to be used for authorized API calls. Typically
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
 

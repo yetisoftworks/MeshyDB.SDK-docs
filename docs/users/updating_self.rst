@@ -548,7 +548,7 @@ Allows the authenticated user to change their password.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
       previousPassword : :type:`string`, :required:`required`
@@ -574,7 +574,7 @@ Allows the authenticated user to change their password.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
       previousPassword : :type:`string`, :required:`required`

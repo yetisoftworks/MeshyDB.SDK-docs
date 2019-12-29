@@ -29,7 +29,7 @@ Remove user from system permanently.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 
@@ -49,7 +49,7 @@ Remove user from system permanently.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 

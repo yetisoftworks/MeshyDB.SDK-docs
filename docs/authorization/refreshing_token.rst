@@ -33,7 +33,7 @@ Once the token expires the refresh token can be used to generate a new set of cr
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
       refreshToken : :type:`string`, :required:`required`
@@ -58,7 +58,7 @@ Once the token expires the refresh token can be used to generate a new set of cr
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
       refreshToken : :type:`string`, :required:`required`

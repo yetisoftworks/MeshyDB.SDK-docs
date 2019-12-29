@@ -37,7 +37,7 @@ Before identifying a device or unique user you can check to see if they already 
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 		
    .. group-tab:: NodeJS
       
@@ -54,7 +54,7 @@ Before identifying a device or unique user you can check to see if they already 
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
          
    .. group-tab:: REST
    
@@ -67,7 +67,7 @@ Before identifying a device or unique user you can check to see if they already 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
 .. rubric:: Responses
 
@@ -113,7 +113,7 @@ This kind of user has limited functionality such as not having the ability to be
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 		
    .. group-tab:: NodeJS
       
@@ -130,7 +130,7 @@ This kind of user has limited functionality such as not having the ability to be
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
          
    .. group-tab:: REST
    
@@ -148,7 +148,7 @@ This kind of user has limited functionality such as not having the ability to be
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
 .. rubric:: Responses
 
@@ -211,7 +211,7 @@ The user will not be able to be authenticated until verification has been comple
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
@@ -248,7 +248,7 @@ The user will not be able to be authenticated until verification has been comple
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
@@ -289,7 +289,7 @@ The user will not be able to be authenticated until verification has been comple
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
@@ -364,7 +364,7 @@ Creating a user is a controlled way where another user can grant access to someo
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
@@ -410,7 +410,7 @@ Creating a user is a controlled way where another user can grant access to someo
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
@@ -460,7 +460,7 @@ Creating a user is a controlled way where another user can grant access to someo
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       newPassword : :type:`string`, :required:`required`
          New user secret credentials for login.
       firstName : :type:`string`
@@ -561,7 +561,7 @@ You may want to provide this flow if you still need to collect more information 
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       attempt : :type:`integer`, :required:`required`
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
@@ -595,7 +595,7 @@ You may want to provide this flow if you still need to collect more information 
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       attempt : :type:`integer`, :required:`required`
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
@@ -628,7 +628,7 @@ You may want to provide this flow if you still need to collect more information 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       attempt : :type:`integer`, :required:`required`
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
@@ -685,7 +685,7 @@ If email or text verification is configured the registered user must be verified
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       attempt : :type:`integer`, :required:`required`
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
@@ -719,7 +719,7 @@ If email or text verification is configured the registered user must be verified
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       attempt : :type:`integer`, :required:`required`
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
@@ -752,7 +752,7 @@ If email or text verification is configured the registered user must be verified
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       attempt : :type:`integer`, :required:`required`
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`

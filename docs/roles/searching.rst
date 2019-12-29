@@ -36,7 +36,7 @@ Search details about roles.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -65,7 +65,7 @@ Search details about roles.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -180,7 +180,7 @@ Search permissions from role by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissibleName : :type:`string`
@@ -297,7 +297,7 @@ Search for permissible to assign to a permission.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1

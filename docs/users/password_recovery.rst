@@ -43,8 +43,8 @@ The attempt will load the question into the hint field to be asked of the user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies how many times a request has been made.
 
 
@@ -63,8 +63,8 @@ The attempt will load the question into the hint field to be asked of the user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies how many times a request has been made.
 
    .. group-tab:: REST
@@ -84,8 +84,8 @@ The attempt will load the question into the hint field to be asked of the user.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`, :required:`required`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies how many times a request has been made.
 
 .. rubric:: Responses
@@ -102,7 +102,7 @@ Example Result
 		"attempt": 1,
 		"hash": "...",
 		"expires": "1900-01-01T00:00:00.000Z",
-		"hint": "xxxx"
+		"hint": "..."
 	}
 
 400 : Bad request
@@ -142,14 +142,14 @@ This would allow a user to verify their code before requiring a reset.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
          Generated hash from verification request.
       expires : :type:`date`, :required:`required`
          Identifies when the request expires.
-      hint : :type:`string`, :required:`required` *if using question verification*
+      hint : :type:`string`
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
@@ -165,7 +165,6 @@ This would allow a user to verify their code before requiring a reset.
                                     attempt: attempt,
                                     hash: hash,
                                     expires: expires,
-                                    hint: hint,
                                     verificationCode: verificationCode
                                });
       
@@ -176,14 +175,14 @@ This would allow a user to verify their code before requiring a reset.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
          Generated hash from verification request.
       expires : :type:`date`, :required:`required`
          Identifies when the request expires.
-      hint : :type:`string`, :required:`required` *if using question verification*
+      hint : :type:`string`
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
@@ -199,8 +198,7 @@ This would allow a user to verify their code before requiring a reset.
              "username": "username_testermctesterson",
              "attempt": 1,
              "hash": "...",
-             "expires": "1/1/1900",
-             "hint": "...",
+             "expires": "1900-01-01T00:00:00.000Z",
              "verificationCode": "...",
           }
 
@@ -209,14 +207,14 @@ This would allow a user to verify their code before requiring a reset.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
          Generated hash from verification request.
       expires : :type:`date`, :required:`required`
          Identifies when the request expires.
-      hint : :type:`string`, :required:`required` *if using question verification*
+      hint : :type:`string`
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
@@ -258,10 +256,14 @@ Take result from forgot password and application verification code generated fro
 
          var forgotPassword = await client.ForgotPasswordAsync(username, attempt);
 
-         var resetPassword = new ResetPassword(forgotPassword) {
-                                                                  VerificationCode: verificationCode,
-                                                                  NewPassword: newPassword
-                                                               };
+         var resetPassword = new ResetPassword() {
+                                                   Username: forgotPassword.Username,
+                                                   Attempt: forgotPassword.Attempt,
+                                                   Hash: forgotPassword.Hash,
+                                                   Expires: forgotPassword.Expires,
+                                                   VerificationCode: verificationCode,
+                                                   NewPassword: newPassword
+                                                 };
 
          await client.ResetPasswordAsync(resetPassword);
 
@@ -272,14 +274,14 @@ Take result from forgot password and application verification code generated fro
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
          Generated hash from verification request.
       expires : :type:`date`, :required:`required`
          Identifies when the request expires.
-      hint : :type:`string`, :required:`required` *if using question verification*
+      hint : :type:`string`
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
@@ -300,7 +302,6 @@ Take result from forgot password and application verification code generated fro
                                        attempt: passwordResetHash.attempt,
                                        hash: passwordResetHash.hash,
                                        expires: passwordResetHash.expires,
-                                       hint: passwordResetHash.hint,
                                        verificationCode: verificationCode,
                                        newPassword: newPassword
                                    });
@@ -312,14 +313,14 @@ Take result from forgot password and application verification code generated fro
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
          Generated hash from verification request.
       expires : :type:`date`, :required:`required`
          Identifies when the request expires.
-      hint : :type:`string`, :required:`required` *if using question verification*
+      hint : :type:`string`
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
@@ -329,18 +330,17 @@ Take result from forgot password and application verification code generated fro
    .. group-tab:: REST
    
       .. code-block:: http
-      
+
          POST https://api.meshydb.com/{accountName}/users/resetpassword HTTP/1.1
          Content-Type: application/json
          
             {
                username: "username_testermctesterson",
                attempt: 1,
-               hash: "randomlygeneratedhash",
-               expires: "1-1-2019",
-               hint: "Recovery hint",
-               verificationCode: "usercollectedhash",
-               newPassword: "newPassword"
+               hash: "...",
+               expires: "1900-01-01T00:00:00.000Z",
+               verificationCode: "...",
+               newPassword: "..."
             }
 
       |parameters|
@@ -348,14 +348,14 @@ Take result from forgot password and application verification code generated fro
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
-      attempt : :type:`integer`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
          Identifies which attempt hash was generated against.
       hash : :type:`string`, :required:`required`
          Generated hash from verification request.
       expires : :type:`date`, :required:`required`
          Identifies when the request expires.
-      hint : :type:`string`, :required:`required` *if using question verification*
+      hint : :type:`string`
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.

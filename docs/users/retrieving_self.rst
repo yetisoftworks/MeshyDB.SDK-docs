@@ -35,7 +35,7 @@ Retrieve details about the authenticated user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
    .. group-tab:: NodeJS
       
@@ -56,7 +56,7 @@ Retrieve details about the authenticated user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
    .. group-tab:: REST
    
@@ -139,7 +139,7 @@ Retrieve details about an existing user by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 
@@ -162,7 +162,7 @@ Retrieve details about an existing user by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 

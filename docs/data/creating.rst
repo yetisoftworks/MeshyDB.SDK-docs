@@ -40,7 +40,7 @@ Create new custom mesh data into specified mesh name.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       mesh : :type:`string`, default: class name
          Identifies name of mesh collection. e.g. person.
 
@@ -67,7 +67,7 @@ Create new custom mesh data into specified mesh name.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
    

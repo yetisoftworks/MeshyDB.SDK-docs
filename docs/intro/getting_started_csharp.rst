@@ -104,7 +104,7 @@ The example below shows verifying a username is available and registering an ano
       |parameters|
 
       username : :type:`string`
-         Unique identifier for user or device. If it is not provided a username will be automatically generated.
+         Unique user name for authentication. If it is not provided a username will be automatically generated.
 
 .. rubric:: Responses
 
@@ -157,7 +157,7 @@ The example below shows logging in an anonymous user.
       |parameters|
 
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
 .. rubric:: Responses
 

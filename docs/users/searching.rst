@@ -30,7 +30,7 @@ Filter User data based on query parameters.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       roleId : :type:`string`
@@ -70,7 +70,7 @@ Filter User data based on query parameters.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       roleId : :type:`string`

@@ -199,7 +199,7 @@ This would allow a user to verify their code before requiring a reset.
              "attempt": 1,
              "hash": "...",
              "expires": "1900-01-01T00:00:00.000Z",
-             "verificationCode": "...",
+             "verificationCode": "..."
           }
 
       |parameters|
@@ -254,15 +254,15 @@ Take result from forgot password and application verification code generated fro
       
          var client = MeshyClient.Initialize(accountName, publicKey);
 
-         var forgotPassword = await client.ForgotPasswordAsync(username, attempt);
+         var passwordResetHash = await client.ForgotPasswordAsync(username, attempt);
 
          var resetPassword = new ResetPassword() {
-                                                   Username: forgotPassword.Username,
-                                                   Attempt: forgotPassword.Attempt,
-                                                   Hash: forgotPassword.Hash,
-                                                   Expires: forgotPassword.Expires,
-                                                   VerificationCode: verificationCode,
-                                                   NewPassword: newPassword
+                                                   Username = passwordResetHash.Username,
+                                                   Attempt = passwordResetHash.Attempt,
+                                                   Hash = passwordResetHash.Hash,
+                                                   Expires = passwordResetHash.Expires,
+                                                   VerificationCode = verificationCode,
+                                                   NewPassword = newPassword
                                                  };
 
          await client.ResetPasswordAsync(resetPassword);

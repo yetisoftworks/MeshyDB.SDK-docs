@@ -85,7 +85,7 @@ The following can be used to update an authenticated user's personal information
       .. code-block:: http
       
          PUT https://api.meshydb.com/{accountName}/users/me HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
          
            {
@@ -236,7 +236,7 @@ The following can be used to update an existing user's personal information such
       .. code-block:: http
       
          PUT https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
          
            {
@@ -377,7 +377,7 @@ The following can be used to change the authenticated user's security questions 
       .. code-block:: http
       
          POST https://api.meshydb.com/{accountName}/users/me/questions HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
          
            {
@@ -480,7 +480,7 @@ The following can be used to change the authenticated user's security questions 
       .. code-block:: http
       
          POST https://api.meshydb.com/{accountName}/users/{id}/questions HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
          
            {
@@ -548,7 +548,7 @@ Allows the authenticated user to change their password.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
       previousPassword : :type:`string`, :required:`required`
@@ -574,7 +574,7 @@ Allows the authenticated user to change their password.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
       previousPassword : :type:`string`, :required:`required`
@@ -587,7 +587,7 @@ Allows the authenticated user to change their password.
       .. code-block:: http
       
          POST https://api.meshydb.com/{accountName}/users/me/password HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
          
            {

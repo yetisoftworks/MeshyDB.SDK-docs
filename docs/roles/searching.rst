@@ -36,7 +36,7 @@ Search details about roles.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -65,7 +65,7 @@ Search details about roles.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -80,7 +80,7 @@ Search details about roles.
         GET https://api.meshydb.com/{accountName}/roles?name={name}&
                                                         page={page}&
                                                         pageSize={pageSize} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
         (Line breaks added for readability)
       
@@ -180,7 +180,7 @@ Search permissions from role by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissibleName : :type:`string`
@@ -197,7 +197,7 @@ Search permissions from role by id.
         GET https://api.meshydb.com/{accountName}/roles/{roleId}/permissions?permissibleName={permissibleName}&
                                                                              page={page}&
                                                                              pageSize={pageSize} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
         (Line breaks added for readability)
 
@@ -297,7 +297,7 @@ Search for permissible to assign to a permission.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -312,7 +312,7 @@ Search for permissible to assign to a permission.
         GET https://api.meshydb.com/{accountName}/permissibles?name={name}&
                                                                page={page}&
                                                                pageSize={pageSize} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
         (Line breaks added for readability)
 

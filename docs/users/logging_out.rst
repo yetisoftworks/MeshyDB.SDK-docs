@@ -29,7 +29,7 @@ Log authenticated user out.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
    .. group-tab:: NodeJS
       
@@ -50,7 +50,7 @@ Log authenticated user out.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
    .. group-tab:: REST
    

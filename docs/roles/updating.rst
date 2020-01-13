@@ -36,7 +36,7 @@ Update details about role by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       name : :type:`string`, :required:`required`
@@ -63,7 +63,7 @@ Update details about role by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
 
@@ -72,7 +72,7 @@ Update details about role by id.
       .. code-block:: http
          
         PUT https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {
@@ -176,7 +176,7 @@ Update specific permission from role by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissionId : :type:`string`, :required:`required`
@@ -197,7 +197,7 @@ Update specific permission from role by id.
       .. code-block:: http
          
         PUT https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {
@@ -315,7 +315,7 @@ Add users from specific role.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       batchRoleAdd : :type:`object`, :required:`required`
@@ -326,7 +326,7 @@ Add users from specific role.
       .. code-block:: http
          
         POST https://api.meshydb.com/{accountName}/roles/{roleId}/users HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {

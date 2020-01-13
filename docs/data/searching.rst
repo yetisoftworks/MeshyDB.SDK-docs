@@ -30,7 +30,7 @@ Filter Mesh data from collection based on query parameters.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       mesh : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
@@ -70,7 +70,7 @@ Filter Mesh data from collection based on query parameters.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       username : :type:`string`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
       orderBy : :type:`string`
@@ -88,7 +88,7 @@ Filter Mesh data from collection based on query parameters.
                                                                orderBy={orderBy}&
                                                                page={page}&
                                                                pageSize={pageSize} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       (Line breaks added for readability)
 

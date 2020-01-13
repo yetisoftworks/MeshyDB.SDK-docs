@@ -33,7 +33,7 @@ Update Mesh data in collection by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       mesh : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
@@ -64,7 +64,7 @@ Update Mesh data in collection by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       meshName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
@@ -75,7 +75,7 @@ Update Mesh data in collection by id.
       .. code-block:: http
 
          PUT https://api.meshydb.com/{accountName}/meshes/{mesh}/{id}  HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
 
          {

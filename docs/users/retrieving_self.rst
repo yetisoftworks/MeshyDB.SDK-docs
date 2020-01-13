@@ -35,7 +35,7 @@ Retrieve details about the authenticated user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
    .. group-tab:: NodeJS
       
@@ -56,14 +56,14 @@ Retrieve details about the authenticated user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
    .. group-tab:: REST
    
       .. code-block:: http
       
          GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       |parameters|
       
@@ -139,7 +139,7 @@ Retrieve details about an existing user by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 
@@ -162,7 +162,7 @@ Retrieve details about an existing user by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 
@@ -171,7 +171,7 @@ Retrieve details about an existing user by id.
       .. code-block:: http
       
          GET https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       |parameters|
       

@@ -69,7 +69,7 @@ The example below shows verifying a username is available.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
 .. rubric:: Responses
 
@@ -116,7 +116,7 @@ The example below shows registering an anonymous user.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
 
 .. rubric:: Responses
 
@@ -182,7 +182,7 @@ The example below shows logging in an anonymous user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
    
@@ -229,7 +229,7 @@ The example below shows retrieving information of the user.
       .. code-block:: http
       
          GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       |parameters|
       
@@ -287,7 +287,7 @@ The example below shows committing a new |meshData| such as a person.
       .. code-block:: http
 
          POST https://api.meshydb.com/{accountName}/meshes/{meshName} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          Content-Type: application/json
          
             {
@@ -350,7 +350,7 @@ The example below shows modifying the first name and committing those changes to
       .. code-block:: http
 
        PUT https://api.meshydb.com/{accountName}/meshes/{meshName}/{id}  HTTP/1.1
-       Authentication: Bearer {access_token}
+       Authorization: Bearer {access_token}
        Content-Type: application/json
          
           {
@@ -414,7 +414,7 @@ The example below shows searching based where the first name starts with Rob.
       .. code-block:: http
 	  
          GET https://api.meshydb.com/{accountName}/meshes/{meshName}?filter={ 'firstName': { "$regex": "^Rob" } } HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       (Encoding removed for readability)
 
@@ -491,7 +491,7 @@ The example below shows deleting the data from the API by providing the object.
       .. code-block:: http
       
          DELETE https://api.meshydb.com/{accountName}/meshes/{meshName}/{id} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
          
       |parameters|
 

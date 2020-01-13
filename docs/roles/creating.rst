@@ -40,7 +40,7 @@ Creating a role allows it to be assignable to a user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`, :required:`required`
          Name of the role.
       description : :type:`string`
@@ -64,7 +64,7 @@ Creating a role allows it to be assignable to a user.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`, :required:`required`
          Name of the role.
       description : :type:`string`
@@ -77,7 +77,7 @@ Creating a role allows it to be assignable to a user.
       .. code-block:: http
          
         POST https://api.meshydb.com/{accountName}/roles HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {
@@ -90,7 +90,7 @@ Creating a role allows it to be assignable to a user.
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       name : :type:`string`, :required:`required`
          Name of the role.
       description : :type:`string`
@@ -180,7 +180,7 @@ When creating a permission it is assigned to a role. When a user has the role th
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissibleName : :type:`string`, :required:`required`
@@ -199,7 +199,7 @@ When creating a permission it is assigned to a role. When a user has the role th
       .. code-block:: http
          
         POST https://api.meshydb.com/{accountName}/roles/{roleId}/permissions HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
         Content-Type: application/json
 
         {

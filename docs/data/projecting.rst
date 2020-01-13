@@ -51,7 +51,7 @@ API Reference
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
@@ -88,7 +88,7 @@ API Reference
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
@@ -105,7 +105,7 @@ API Reference
       .. code-block:: http
 
          GET https://api.meshydb.com/{accountName}/projections/{projectionName} HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
             
       |parameters|
 
@@ -216,7 +216,7 @@ The following example shows how to sort an object by Name in descending order.
       .. code-block:: http
 
          GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1 } HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
 
 Additional filters can be extended as follows. 
 
@@ -268,7 +268,7 @@ This example will order by Name descending then Age ascending.
       .. code-block:: http
 
          GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1, "Age": 1 } HTTP/1.1
-         Authentication: Bearer {access_token}
+         Authorization: Bearer {access_token}
 
 ````````````````````
 Supported Aggregates

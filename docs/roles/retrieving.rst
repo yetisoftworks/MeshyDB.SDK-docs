@@ -36,7 +36,7 @@ Retrieve details about role by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
 		
@@ -57,7 +57,7 @@ Retrieve details about role by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
 
@@ -66,7 +66,7 @@ Retrieve details about role by id.
       .. code-block:: http
          
         GET https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
       |parameters|
       
@@ -147,7 +147,7 @@ Get specific permission from role by id.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
       username : :type:`string`, :required:`required`
-         Unique identifier for user or device.
+         Unique user name for authentication.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissionId : :type:`string`, :required:`required`
@@ -158,7 +158,7 @@ Get specific permission from role by id.
       .. code-block:: http
          
         GET https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
-        Authentication: Bearer {access_token}
+        Authorization: Bearer {access_token}
 
       |parameters|
       

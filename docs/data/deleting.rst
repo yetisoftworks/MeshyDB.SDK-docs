@@ -186,8 +186,8 @@ Example Result
 .. code-block:: json
 
    {
-      deletedCount: 5,
-      isAcknowledged: true
+      "deletedCount": 5,
+      "isAcknowledged": true
    }
 
 400 : Bad request

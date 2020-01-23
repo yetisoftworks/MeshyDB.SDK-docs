@@ -6,9 +6,9 @@
 
    <h4>Parameters</h4>
    
----------------
-Projecting Data
----------------
+----------
+Projecting
+----------
 
 A projection is a stored MongoDB query that can contain aggregations, filtering and lookups. It’s great for reporting or simply re-using queries throughout your application. Projections also give you the ability to control access to data by allowing you to explicitly define the data you want to make accessible to end-users.
 

@@ -6,9 +6,9 @@
 
    <h4>Parameters</h4>
    
--------------
-Creating Data
--------------
+--------
+Creating
+--------
 
 Create new custom mesh data into specified mesh name.
 
@@ -231,7 +231,6 @@ Example Result
 400 : Bad request
    * No data was provided.
    * Data is in an invalid format. The status of each object will be brought back to identify the error. The errors are as follows:
-      
       * Mesh name is invalid and must be alpha characters only.
       * Mesh property cannot begin with '$' or contain '.'.
       * Mesh already exists for provided id.

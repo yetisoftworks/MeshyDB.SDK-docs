@@ -6,9 +6,9 @@
 
    <h4>Parameters</h4>
    
----------------
-Retrieving Data
----------------
+----------
+Retrieving
+----------
 
 Retrieve single item from Mesh collection.
 

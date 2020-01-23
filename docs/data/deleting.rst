@@ -5,7 +5,7 @@
 .. |parameters| raw:: html
 
    <h4>Parameters</h4>
-   
+
 --------
 Deleting
 --------
@@ -21,7 +21,7 @@ Delete a specific record of data.
 .. tabs::
 
    .. group-tab:: C#
-   
+
       .. code-block:: c#
          
          var client = MeshyClient.Initialize(accountName, publicKey);

@@ -175,7 +175,7 @@ Bulk create many objects.
       
          var client = MeshyClient.initialize(accountName, publicKey);
          var anonymousUser = await client.registerAnonymousUser();
-         var connection = await client.loginAnonymously(anonymousUser.username);
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
 
          var result = await connection.meshesService.createMany(meshName, [{
                                                                               firstName:"Bob",

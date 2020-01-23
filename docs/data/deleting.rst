@@ -141,7 +141,7 @@ Delete all objects with the provided filter.
 
          var client = MeshyClient.initialize(accountName, publicKey);
          var anonymousUser = await client.registerAnonymousUser();
-         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+         var connection = await client.loginAnonymously(anonymousUser.username);
 
          var data = await connection.meshesService.deleteMany(meshName, filter)
       

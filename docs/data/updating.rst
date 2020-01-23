@@ -45,7 +45,6 @@ Update single mesh data record.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.
 
-
    .. group-tab:: NodeJS
       
       .. code-block:: javascript

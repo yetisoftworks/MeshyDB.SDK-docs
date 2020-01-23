@@ -6,9 +6,9 @@
 
    <h4>Parameters</h4>
    
---------
-Deleting
---------
+-------------
+Deleting Data
+-------------
 
 Delete mesh data from a collection is permanent. If you desire to retain your data one possible pattern to consider would be a soft-delete pattern.
 
@@ -141,7 +141,7 @@ Delete all objects with the provided filter.
 
          var client = MeshyClient.initialize(accountName, publicKey);
          var anonymousUser = await client.registerAnonymousUser();
-         var connection = await client.loginAnonymously(anonymousUser.username);
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
 
          var data = await connection.meshesService.deleteMany(meshName, filter)
       

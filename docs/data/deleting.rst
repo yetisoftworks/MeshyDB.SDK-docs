@@ -162,7 +162,7 @@ Delete all objects with the provided filter.
    
       .. code-block:: http
 
-         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh?filter={filter} HTTP/1.1
+         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter} HTTP/1.1
          Authorization: Bearer {access_token}
 
       |parameters|

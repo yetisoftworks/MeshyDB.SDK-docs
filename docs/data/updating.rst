@@ -138,6 +138,7 @@ Bulk update data based on provided filter.
    .. group-tab:: C#
    
       .. code-block:: c#
+
          var client = MeshyClient.Initialize(accountName, publicKey);
          var connection = await client.LoginAnonymouslyAsync(username);
 
@@ -219,11 +220,11 @@ Example Result
 .. code-block:: json
 
    {
-      isAcknowledged: true,
-      isModifiedCountAvailable:true,
-      matchedCount: 5,
-      modifiedCount: 3,
-      upsertedId: null
+      "isAcknowledged": true,
+      "isModifiedCountAvailable": true,
+      "matchedCount": 5,
+      "modifiedCount": 3,
+      "upsertedId": null
    }
 
 400 : Bad request

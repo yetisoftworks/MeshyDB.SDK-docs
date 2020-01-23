@@ -6,9 +6,9 @@
 
    <h4>Parameters</h4>
    
----------
-Searching
----------
+--------------
+Searching Data
+--------------
 
 Filter Mesh data from collection based on query parameters.
 

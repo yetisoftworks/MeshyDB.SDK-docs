@@ -6,9 +6,9 @@
 
    <h4>Parameters</h4>
    
---------
-Deleting
---------
+-------------
+Deleting Data
+-------------
 
 Delete mesh data from a collection is permanent. If you desire to retain your data one possible pattern to consider would be a soft-delete pattern.
 

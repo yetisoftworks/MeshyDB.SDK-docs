@@ -79,7 +79,7 @@ Update single mesh data record.
    
       .. code-block:: http
 
-         PUT https://api.meshydb.com/{accountName}/meshes/{mesh}/{id}  HTTP/1.1
+         PUT https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
          Authorization: Bearer {access_token}
          Content-Type: application/json
 
@@ -188,7 +188,7 @@ Bulk update data based on provided filter.
    
       .. code-block:: http
 
-         PATCH https://api.meshydb.com/{accountName}/meshes/{mesh}  HTTP/1.1
+         PATCH https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
          Authorization: Bearer {access_token}
          Content-Type: application/json
 

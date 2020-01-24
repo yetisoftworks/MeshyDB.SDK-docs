@@ -14,9 +14,9 @@ Updating self allows the ability to update the authenticated user's information.
 
 This might be personal or security questions for password recovery later.
 
-''''''''''''''''''''''
+'''''''''''''''''''''''
 My Personal Information
-''''''''''''''''''''''
+'''''''''''''''''''''''
 
 The following can be used to update an authenticated user's personal information such as name, phone number, and email address.
 

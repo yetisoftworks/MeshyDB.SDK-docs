@@ -22,23 +22,27 @@ The following can be used to update an authenticated user's personal information
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-
-         var user = new User();
-
-         await connection.Users.UpdateSelfAsync(user);
+         PUT https://api.meshydb.com/{accountName}/users/me HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
+         
+           {
+             "firstName": "Tester",
+             "lastName": "McTesterton",
+             "phoneNumber": "+15555555555",
+             "emailAddress": "test@test.com"
+           }
 
       |parameters|
       
-      accountName  : :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       firstName : :type:`string`
          First name of authenticated user.
       lastName : :type:`string`
@@ -80,27 +84,23 @@ The following can be used to update an authenticated user's personal information
       emailAddress : :type:`string`, :required:`required` *if using email verification*
          Email address of authenticated user.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         PUT https://api.meshydb.com/{accountName}/users/me HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
-         
-           {
-             "firstName": "Tester",
-             "lastName": "McTesterton",
-             "phoneNumber": "+15555555555",
-             "emailAddress": "test@test.com"
-           }
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+         var user = new User();
+
+         await connection.Users.UpdateSelfAsync(user);
 
       |parameters|
       
-      accountName : :type:`string`, :required:`required`
+      accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       firstName : :type:`string`
          First name of authenticated user.
       lastName : :type:`string`
@@ -170,23 +170,27 @@ The following can be used to update an existing user's personal information such
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-
-         var user = new User();
-
-         await connection.Users.UpdateAsync(id, user);
+         PUT https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
+         
+           {
+             "firstName": "Tester",
+             "lastName": "McTesterton",
+             "phoneNumber": "+15555555555",
+             "emailAddress": "test@test.com"
+           }
 
       |parameters|
       
-      accountName  : :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       id : :type:`string`, :required:`required`
          Identifies id of user.
       firstName : :type:`string`
@@ -231,27 +235,23 @@ The following can be used to update an existing user's personal information such
       emailAddress : :type:`string`, :required:`required` *if using email verification*
          Email address of authenticated user.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         PUT https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
-         
-           {
-             "firstName": "Tester",
-             "lastName": "McTesterton",
-             "phoneNumber": "+15555555555",
-             "emailAddress": "test@test.com"
-           }
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+         var user = new User();
+
+         await connection.Users.UpdateAsync(id, user);
 
       |parameters|
       
-      accountName : :type:`string`, :required:`required`
+      accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       id : :type:`string`, :required:`required`
          Identifies id of user.
       firstName : :type:`string`
@@ -326,28 +326,29 @@ The following can be used to change the authenticated user's security questions 
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-
-         var questions = new UserSecurityQuestionUpdate();
-
-         questions.SecurityQuestions.Add(new SecurityQuestion(){
-                                                                    Question = "What should this be?",
-                                                                    Answer = "This seems like an ok example"
-                                                               };
-
-         await connection.Users.UpdateSecurityQuestionsAsync(questions);
+         POST https://api.meshydb.com/{accountName}/users/me/questions HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
+         
+           {
+             "securityQuestions": [
+                                    {
+                                        "question": "What would you say to this question?",
+                                        "answer": "..."
+                                    }
+                                  ]
+           }
 
       |parameters|
       
-      accountName  : :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       securityQuestions : :type:`object[]`, :required:`required`
          New set of questions and answers for authenticated user in password recovery.
 
@@ -372,29 +373,28 @@ The following can be used to change the authenticated user's security questions 
       securityQuestions : :type:`object[]`, :required:`required`
          Collection of questions and answers used for password recovery if question security is configured.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         POST https://api.meshydb.com/{accountName}/users/me/questions HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
-         
-           {
-             "securityQuestions": [
-                                    {
-                                        "question": "What would you say to this question?",
-                                        "answer": "..."
-                                    }
-                                  ]
-           }
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+         var questions = new UserSecurityQuestionUpdate();
+
+         questions.SecurityQuestions.Add(new SecurityQuestion(){
+                                                                    Question = "What should this be?",
+                                                                    Answer = "This seems like an ok example"
+                                                               };
+
+         await connection.Users.UpdateSecurityQuestionsAsync(questions);
 
       |parameters|
       
-      accountName : :type:`string`, :required:`required`
+      accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       securityQuestions : :type:`object[]`, :required:`required`
          New set of questions and answers for authenticated user in password recovery.
 
@@ -424,28 +424,29 @@ The following can be used to change the authenticated user's security questions 
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-
-         var questions = new UserSecurityQuestionUpdate();
-
-         questions.SecurityQuestions.Add(new SecurityQuestion(){
-                                                                    Question = "What should this be?",
-                                                                    Answer = "This seems like an ok example"
-                                                               };
-
-         await connection.Users.UpdateSecurityQuestionsAsync(id, questions);
+         POST https://api.meshydb.com/{accountName}/users/{id}/questions HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
+         
+           {
+             "securityQuestions": [
+                                    {
+                                        "question": "What would you say to this question?",
+                                        "answer": "..."
+                                    }
+                                  ]
+           }
 
       |parameters|
       
-      accountName  : :type:`string`, :required:`required`
+      accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       id : :type:`string`, :required:`required`
          Identifies id of user.
       securityQuestions : :type:`object[]`, :required:`required`
@@ -475,29 +476,28 @@ The following can be used to change the authenticated user's security questions 
       securityQuestions : :type:`object[]`, :required:`required`
          Collection of questions and answers used for password recovery if question security is configured.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         POST https://api.meshydb.com/{accountName}/users/{id}/questions HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
-         
-           {
-             "securityQuestions": [
-                                    {
-                                        "question": "What would you say to this question?",
-                                        "answer": "..."
-                                    }
-                                  ]
-           }
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+         var questions = new UserSecurityQuestionUpdate();
+
+         questions.SecurityQuestions.Add(new SecurityQuestion(){
+                                                                    Question = "What should this be?",
+                                                                    Answer = "This seems like an ok example"
+                                                               };
+
+         await connection.Users.UpdateSecurityQuestionsAsync(id, questions);
 
       |parameters|
       
-      accountName : :type:`string`, :required:`required`
+      accountName  : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       id : :type:`string`, :required:`required`
          Identifies id of user.
       securityQuestions : :type:`object[]`, :required:`required`
@@ -532,30 +532,29 @@ Allows the authenticated user to change their password.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginWithPasswordAsync(username, password);
-
-         await connection.UpdatePasswordAsync(previousPassword, newPassword);
+         POST https://api.meshydb.com/{accountName}/users/me/password HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
+         
+           {
+             "newPassword": "newPassword",
+             "previousPassword": "previousPassword"
+           }
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      password : :type:`string`, :required:`required`
-         User secret credentials for login. When anonymous it is static as nopassword.
+      access_token: :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generate Access Token <auth.html#generate-access-token>`_.
       previousPassword : :type:`string`, :required:`required`
         Previous user secret credentials for login.
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
-
 
    .. group-tab:: NodeJS
       
@@ -582,29 +581,30 @@ Allows the authenticated user to change their password.
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         POST https://api.meshydb.com/{accountName}/users/me/password HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
-         
-           {
-             "newPassword": "newPassword",
-             "previousPassword": "previousPassword"
-           }
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginWithPasswordAsync(username, password);
+
+         await connection.UpdatePasswordAsync(previousPassword, newPassword);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token: :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generate Access Token <auth.html#generate-access-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      password : :type:`string`, :required:`required`
+         User secret credentials for login. When anonymous it is static as nopassword.
       previousPassword : :type:`string`, :required:`required`
         Previous user secret credentials for login.
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
+
 
 .. rubric:: Responses
 

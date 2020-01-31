@@ -19,23 +19,19 @@ Retrieve details about the authenticated user.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-
-         await connection.Users.GetSelfAsync();
-
+         GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
+         Authorization: Bearer {access_token}
+         
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
 
    .. group-tab:: NodeJS
       
@@ -58,19 +54,23 @@ Retrieve details about the authenticated user.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         GET https://api.meshydb.com/{accountName}/users/me HTTP/1.1
-         Authorization: Bearer {access_token}
-         
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+         await connection.Users.GetSelfAsync();
+
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
 
 .. rubric:: Responses
 
@@ -123,23 +123,19 @@ Retrieve details about an existing user by id.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-
-         await connection.Users.GetAsync(id);
-
+         GET https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
+         Authorization: Bearer {access_token}
+         
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 
@@ -166,19 +162,23 @@ Retrieve details about an existing user by id.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         GET https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
-         Authorization: Bearer {access_token}
-         
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+         await connection.Users.GetAsync(id);
+
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 

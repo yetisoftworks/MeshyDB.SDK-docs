@@ -14,23 +14,26 @@ Filter User data based on query parameters.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
+         GET https://api.meshydb.com/{accountName}/users?name={name}&
+                                                         roleId={roleId}&
+                                                         orderBy={orderBy}&
+                                                         activeOnly={activeOnly}&
+                                                         page={page}&
+                                                         pageSize={pageSize} HTTP/1.1
+         Authorization: Bearer {access_token}
 
-         await connection.Users.SearchAsync(name, roleId, orderBy, activeOnly, page, pageSize);
+        (Line breaks added for readability)
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       name : :type:`string`
          Case-insensitive partial name search.
       roleId : :type:`string`
@@ -84,26 +87,23 @@ Filter User data based on query parameters.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         GET https://api.meshydb.com/{accountName}/users?name={name}&
-                                                         roleId={roleId}&
-                                                         orderBy={orderBy}&
-                                                         activeOnly={activeOnly}&
-                                                         page={page}&
-                                                         pageSize={pageSize} HTTP/1.1
-         Authorization: Bearer {access_token}
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
 
-        (Line breaks added for readability)
+         await connection.Users.SearchAsync(name, roleId, orderBy, activeOnly, page, pageSize);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       roleId : :type:`string`

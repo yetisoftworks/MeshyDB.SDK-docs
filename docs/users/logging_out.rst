@@ -13,23 +13,27 @@ Log authenticated user out.
 
 .. tabs::
          
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
+        POST https://api.meshydb.com/{accountName}/connect/revocation HTTP/1.1
+        Content-Type: application/x-www-form-urlencoded
+         
+          token={refresh_token}&
+          token_type_hint=refresh_token&
+          client_id={publicKey}
 
-        await connection.SignoutAsync();
+        (Form-encoding removed, and line breaks added for readability)
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
+      refresh_token  : :type:`string`, :required:`required`
+         Refresh token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
 
    .. group-tab:: NodeJS
       
@@ -52,27 +56,23 @@ Log authenticated user out.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-        POST https://api.meshydb.com/{accountName}/connect/revocation HTTP/1.1
-        Content-Type: application/x-www-form-urlencoded
-         
-          token={refresh_token}&
-          token_type_hint=refresh_token&
-          client_id={publicKey}
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
 
-        (Form-encoding removed, and line breaks added for readability)
+        await connection.SignoutAsync();
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      refresh_token  : :type:`string`, :required:`required`
-         Refresh token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
 
 .. rubric:: Responses
 

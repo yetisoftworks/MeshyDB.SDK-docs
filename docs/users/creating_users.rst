@@ -22,23 +22,19 @@ Before identifying a device or unique user you can check to see if they already 
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-
-        var userExists = await client.CheckUserExistAsync(username);
+      .. code-block:: http
+         
+        GET https://api.meshydb.com/{accountName}/users/{username}/exists HTTP/1.1
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
-		
+
    .. group-tab:: NodeJS
       
       .. code-block:: javascript
@@ -56,19 +52,23 @@ Before identifying a device or unique user you can check to see if they already 
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
          
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
-         
-        GET https://api.meshydb.com/{accountName}/users/{username}/exists HTTP/1.1
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+
+        var userExists = await client.CheckUserExistAsync(username);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
-
+		
 .. rubric:: Responses
 
 201 : Created
@@ -98,40 +98,6 @@ This kind of user has limited functionality such as not having the ability to be
 
 .. tabs::
 
-   .. group-tab:: C#
-   
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-
-        var anonymousUser = await client.RegisterAnonymousUserAsync(userName);
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-		
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-         var client = MeshyClient.initialize(accountName, publicKey);
-         
-         var anonymousUser = await client.registerAnonymousUser(username);
-      
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-         
    .. group-tab:: REST
    
       .. code-block:: http
@@ -150,6 +116,40 @@ This kind of user has limited functionality such as not having the ability to be
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
 
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         var anonymousUser = await client.registerAnonymousUser(username);
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+         
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+
+        var anonymousUser = await client.RegisterAnonymousUserAsync(userName);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+		
 .. rubric:: Responses
 
 201 : Created
@@ -194,74 +194,6 @@ The user will not be able to be authenticated until verification has been comple
 
 .. tabs::
 
-   .. group-tab:: C#
-   
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-
-        var user = new RegisterUser();
-
-        await client.RegisterUserAsync(user);
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      newPassword : :type:`string`, :required:`required`
-         New user secret credentials for login.
-      firstName : :type:`string`
-         First name of registering user.
-      lastName : :type:`string`
-         Last name of registering user.
-      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of registering user.
-      emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of registering user.
-      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         New set of questions and answers for registering user in password recovery.
-		
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-         var client = MeshyClient.initialize(accountName, publicKey);
-         
-         var user = await client.registerUser({
-                                                username: username,
-                                                newPassword: newPassword,
-                                                firstName: firstName,
-                                                lastName: lastName,
-                                                phoneNumber: phoneNumber,
-                                                emailAddress: emailAddress,
-                                                securityQuestions: securityQuestions
-                                             });
-      
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      newPassword : :type:`string`, :required:`required`
-         New user secret credentials for login.
-      firstName : :type:`string`
-         First name of registering user.
-      lastName : :type:`string`
-         Last name of registering user.
-      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
-         Phone number of registering user.
-      emailAddress : :type:`string`, :required:`required` *if using email verification*
-         Email address of registering user.
-      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
-         New set of questions and answers for registering user in password recovery.
-
    .. group-tab:: REST
    
       .. code-block:: http
@@ -303,6 +235,74 @@ The user will not be able to be authenticated until verification has been comple
       securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
          New set of questions and answers for registering user in password recovery.
 
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         var user = await client.registerUser({
+                                                username: username,
+                                                newPassword: newPassword,
+                                                firstName: firstName,
+                                                lastName: lastName,
+                                                phoneNumber: phoneNumber,
+                                                emailAddress: emailAddress,
+                                                securityQuestions: securityQuestions
+                                             });
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      newPassword : :type:`string`, :required:`required`
+         New user secret credentials for login.
+      firstName : :type:`string`
+         First name of registering user.
+      lastName : :type:`string`
+         Last name of registering user.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of registering user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of registering user.
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
+         New set of questions and answers for registering user in password recovery.
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+
+        var user = new RegisterUser();
+
+        await client.RegisterUserAsync(user);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      newPassword : :type:`string`, :required:`required`
+         New user secret credentials for login.
+      firstName : :type:`string`
+         First name of registering user.
+      lastName : :type:`string`
+         Last name of registering user.
+      phoneNumber : :type:`string`, :required:`required` *if using phone verification*
+         Phone number of registering user.
+      emailAddress : :type:`string`, :required:`required` *if using email verification*
+         Email address of registering user.
+      securityQuestions : :type:`object[]`, :required:`required` *if using question verification*
+         New set of questions and answers for registering user in password recovery.
+		
 .. rubric:: Responses
 
 201 : Created
@@ -346,23 +346,35 @@ Creating a user is a controlled way where another user can grant access to someo
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-
-        var user = new NewUser();
-
-        await connection.Users.CreateAsync(user);
+        POST https://api.meshydb.com/{accountName}/users HTTP/1.1
+        Content-Type: application/json
+         
+          {
+            "username": "username_testermctesterson",
+            "firstName": "Tester",
+            "lastName": "McTesterton",
+            "phoneNumber": "+15555555555",
+            "emailAddress": "test@test.com",
+            "securityQuestions": [
+                                    {
+                                       "question": "What would you say to this question?",
+                                       "answer": "mceasy123"
+                                    }
+                                 ],
+            "newPassword": "newPassword",
+            verified: true,
+            isActive: true,
+            roles: []
+          }
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       newPassword : :type:`string`, :required:`required`
@@ -430,35 +442,23 @@ Creating a user is a controlled way where another user can grant access to someo
       roles : :type:`object`
          Collection of roles and when they were added to give user permissions within the system.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-        POST https://api.meshydb.com/{accountName}/users HTTP/1.1
-        Content-Type: application/json
-         
-          {
-            "username": "username_testermctesterson",
-            "firstName": "Tester",
-            "lastName": "McTesterton",
-            "phoneNumber": "+15555555555",
-            "emailAddress": "test@test.com",
-            "securityQuestions": [
-                                    {
-                                       "question": "What would you say to this question?",
-                                       "answer": "mceasy123"
-                                    }
-                                 ],
-            "newPassword": "newPassword",
-            verified: true,
-            isActive: true,
-            roles: []
-          }
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+        var user = new NewUser();
+
+        await connection.Users.CreateAsync(user);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       newPassword : :type:`string`, :required:`required`
@@ -544,22 +544,26 @@ You may want to provide this flow if you still need to collect more information 
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-        var client = MeshyClient.Initialize(accountName, publicKey);
-
-        var check = new UserVerificationCheck();
-		
-        var isValid = await client.CheckHashAsync(check);
+        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
+        Content-Type: application/json
+         
+          {
+             "username": "username_testermctesterson",
+             "attempt": 1,
+             "hash": "...",
+             "expires": "1/1/1900",
+             "hint": "...",
+             "verificationCode": "...",
+          }
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       attempt : :type:`integer`, :required:`required`
@@ -572,7 +576,7 @@ You may want to provide this flow if you still need to collect more information 
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
-		
+
    .. group-tab:: NodeJS
       
       .. code-block:: javascript
@@ -607,26 +611,22 @@ You may want to provide this flow if you still need to collect more information 
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
-        Content-Type: application/json
-         
-          {
-             "username": "username_testermctesterson",
-             "attempt": 1,
-             "hash": "...",
-             "expires": "1/1/1900",
-             "hint": "...",
-             "verificationCode": "...",
-          }
+        var client = MeshyClient.Initialize(accountName, publicKey);
+
+        var check = new UserVerificationCheck();
+		
+        var isValid = await client.CheckHashAsync(check);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       attempt : :type:`integer`, :required:`required`
@@ -639,7 +639,7 @@ You may want to provide this flow if you still need to collect more information 
          Hint for verification code was generated.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
-
+		
 .. rubric:: Responses
 
 200 : OK
@@ -667,69 +667,6 @@ Verify
 If email or text verification is configured the registered user must be verified. The resulting request lasts one hour.
 
 .. tabs::
-
-   .. group-tab:: C#
-   
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-
-        var check = new UserVerificationCheck();
-		
-        await client.VerifyAsync(check);
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      attempt : :type:`integer`, :required:`required`
-         Identifies which attempt hash was generated against.
-      hash : :type:`string`, :required:`required`
-         Generated hash from verification request.
-      expires : :type:`date`, :required:`required`
-         Identifies when the request expires.
-      hint : :type:`string`, :required:`required`
-         Hint for verification code was generated.
-      verificationCode : :type:`string`, :required:`required`
-         Value to verify against verification request.
-		
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-         var client = MeshyClient.initialize(accountName, publicKey);
-         
-         await client.verify({
-                           username: username,
-                           attempt: attempt:
-                           hash: hash,
-                           expires: expires,
-                           hint: hint,
-                           verificationCode: verificationCode
-						    });
-      
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      attempt : :type:`integer`, :required:`required`
-         Identifies which attempt hash was generated against.
-      hash : :type:`string`, :required:`required`
-         Generated hash from verification request.
-      expires : :type:`date`, :required:`required`
-         Identifies when the request expires.
-      hint : :type:`string`, :required:`required`
-         Hint for verification code was generated.
-      verificationCode : :type:`string`, :required:`required`
-         Value to verify against verification request.
 
    .. group-tab:: REST
    
@@ -764,6 +701,69 @@ If email or text verification is configured the registered user must be verified
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
 
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         await client.verify({
+                           username: username,
+                           attempt: attempt:
+                           hash: hash,
+                           expires: expires,
+                           hint: hint,
+                           verificationCode: verificationCode
+						    });
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+
+        var check = new UserVerificationCheck();
+		
+        await client.VerifyAsync(check);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      attempt : :type:`integer`, :required:`required`
+         Identifies which attempt hash was generated against.
+      hash : :type:`string`, :required:`required`
+         Generated hash from verification request.
+      expires : :type:`date`, :required:`required`
+         Identifies when the request expires.
+      hint : :type:`string`, :required:`required`
+         Hint for verification code was generated.
+      verificationCode : :type:`string`, :required:`required`
+         Value to verify against verification request.
+		
 .. rubric:: Responses
 
 204 : No Content

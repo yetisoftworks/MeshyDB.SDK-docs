@@ -13,23 +13,19 @@ Remove user from system permanently.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-
-         await connection.Users.DeleteAsync(id);
-
+         DELETE https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
+         Authorization: Bearer {access_token}
+         
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 
@@ -53,19 +49,23 @@ Remove user from system permanently.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-         DELETE https://api.meshydb.com/{accountName}/users/{id} HTTP/1.1
-         Authorization: Bearer {access_token}
-         
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+
+         await connection.Users.DeleteAsync(id);
+
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
       id : :type:`string`, :required:`required`
          Identifies id of user.
 

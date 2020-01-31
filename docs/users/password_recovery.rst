@@ -28,45 +28,6 @@ The attempt will load the question into the hint field to be asked of the user.
 
 .. tabs::
 
-   .. group-tab:: C#
-   
-      .. code-block:: c#
-      
-         var client = MeshyClient.Initialize(accountName, publicKey);
-
-         await client.ForgotPasswordAsync(username, attempt);
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      attempt : :type:`integer`, default: 1
-         Identifies how many times a request has been made.
-
-
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-         var client = MeshyClient.initialize(accountName, publicKey);
-         
-         await client.forgotPassword(username, attempt);
-      
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      attempt : :type:`integer`, default: 1
-         Identifies how many times a request has been made.
-
    .. group-tab:: REST
    
       .. code-block:: http
@@ -87,6 +48,45 @@ The attempt will load the question into the hint field to be asked of the user.
          Unique user name for authentication.
       attempt : :type:`integer`, default: 1
          Identifies how many times a request has been made.
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+         
+         await client.forgotPassword(username, attempt);
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
+         Identifies how many times a request has been made.
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+         var client = MeshyClient.Initialize(accountName, publicKey);
+
+         await client.ForgotPasswordAsync(username, attempt);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      attempt : :type:`integer`, default: 1
+         Identifies how many times a request has been made.
+
 
 .. rubric:: Responses
 
@@ -125,22 +125,25 @@ This would allow a user to verify their code before requiring a reset.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
       
-        var client = MeshyClient.Initialize(accountName, publicKey);
-
-        var check = new UserVerificationCheck();
-		
-        var isValid = await client.CheckHashAsync(check);
+        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
+        Content-Type: application/json
+         
+          {
+             "username": "username_testermctesterson",
+             "attempt": 1,
+             "hash": "...",
+             "expires": "1900-01-01T00:00:00.000Z",
+             "verificationCode": "..."
+          }
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       attempt : :type:`integer`, default: 1
@@ -187,25 +190,22 @@ This would allow a user to verify their code before requiring a reset.
       verificationCode : :type:`string`, :required:`required`
          Value to verify against verification request.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
       
-        POST https://api.meshydb.com/{accountName}/users/checkhash HTTP/1.1
-        Content-Type: application/json
-         
-          {
-             "username": "username_testermctesterson",
-             "attempt": 1,
-             "hash": "...",
-             "expires": "1900-01-01T00:00:00.000Z",
-             "verificationCode": "..."
-          }
+        var client = MeshyClient.Initialize(accountName, publicKey);
+
+        var check = new UserVerificationCheck();
+		
+        var isValid = await client.CheckHashAsync(check);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       attempt : :type:`integer`, default: 1
@@ -248,31 +248,26 @@ Take result from forgot password and application verification code generated fro
 
 .. tabs::
         
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-         var client = MeshyClient.Initialize(accountName, publicKey);
+      .. code-block:: http
 
-         var passwordResetHash = await client.ForgotPasswordAsync(username, attempt);
-
-         var resetPassword = new ResetPassword() {
-                                                   Username = passwordResetHash.Username,
-                                                   Attempt = passwordResetHash.Attempt,
-                                                   Hash = passwordResetHash.Hash,
-                                                   Expires = passwordResetHash.Expires,
-                                                   VerificationCode = verificationCode,
-                                                   NewPassword = newPassword
-                                                 };
-
-         await client.ResetPasswordAsync(resetPassword);
+         POST https://api.meshydb.com/{accountName}/users/resetpassword HTTP/1.1
+         Content-Type: application/json
+         
+            {
+               username: "username_testermctesterson",
+               attempt: 1,
+               hash: "...",
+               expires: "1900-01-01T00:00:00.000Z",
+               verificationCode: "...",
+               newPassword: "..."
+            }
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       attempt : :type:`integer`, default: 1
@@ -287,7 +282,6 @@ Take result from forgot password and application verification code generated fro
          Value to verify against verification request.
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
-
 
    .. group-tab:: NodeJS
       
@@ -327,26 +321,31 @@ Take result from forgot password and application verification code generated fro
       newPassword : :type:`string`, :required:`required`
         New user secret credentials for login.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
+      
+         var client = MeshyClient.Initialize(accountName, publicKey);
 
-         POST https://api.meshydb.com/{accountName}/users/resetpassword HTTP/1.1
-         Content-Type: application/json
-         
-            {
-               username: "username_testermctesterson",
-               attempt: 1,
-               hash: "...",
-               expires: "1900-01-01T00:00:00.000Z",
-               verificationCode: "...",
-               newPassword: "..."
-            }
+         var passwordResetHash = await client.ForgotPasswordAsync(username, attempt);
+
+         var resetPassword = new ResetPassword() {
+                                                   Username = passwordResetHash.Username,
+                                                   Attempt = passwordResetHash.Attempt,
+                                                   Hash = passwordResetHash.Hash,
+                                                   Expires = passwordResetHash.Expires,
+                                                   VerificationCode = verificationCode,
+                                                   NewPassword = newPassword
+                                                 };
+
+         await client.ResetPasswordAsync(resetPassword);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       attempt : :type:`integer`, default: 1

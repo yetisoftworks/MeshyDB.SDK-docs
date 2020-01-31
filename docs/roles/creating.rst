@@ -160,13 +160,13 @@ When creating a permission it is assigned to a role. When a user has the role th
          Identifies id of role.
       permissibleName : :type:`string`, :required:`required`
          Name of permissible reference. An example would be 'meshes' or 'meshes.{meshName}' to identify access to a specific mesh.
-      create : type:`boolean`
+      create : :type:`boolean`
          Identifies if role can create data.
-      update : type:`boolean`
+      update : :type:`boolean`
          Identifies if role can update data.
-      read : type:`boolean`
+      read : :type:`boolean`
          Identifies if role can read data.
-      delete : type:`boolean`
+      delete : :type:`boolean`
          Identifies if role can delete data.
 
    .. group-tab:: NodeJS
@@ -190,13 +190,13 @@ When creating a permission it is assigned to a role. When a user has the role th
          Identifies id of role.
       permissibleName : :type:`string`, :required:`required`
          Name of permissible reference. An example would be 'meshes' or 'meshes.{meshName}' to identify access to a specific mesh.
-      create : type:`boolean`
+      create : :type:`boolean`
          Identifies if role can create data.
-      update : type:`boolean`
+      update : :type:`boolean`
          Identifies if role can update data.
-      read : type:`boolean`
+      read : :type:`boolean`
          Identifies if role can read data.
-      delete : type:`boolean`
+      delete : :type:`boolean`
          Identifies if role can delete data.
 
    .. group-tab:: C#
@@ -220,13 +220,13 @@ When creating a permission it is assigned to a role. When a user has the role th
          Identifies id of role.
       permissibleName : :type:`string`, :required:`required`
          Name of permissible reference. An example would be 'meshes' or 'meshes.{meshName}' to identify access to a specific mesh.
-      create : type:`boolean`
+      create : :type:`boolean`
          Identifies if role can create data.
-      update : type:`boolean`
+      update : :type:`boolean`
          Identifies if role can update data.
-      read : type:`boolean`
+      read : :type:`boolean`
          Identifies if role can read data.
-      delete : type:`boolean`
+      delete : :type:`boolean`
          Identifies if role can delete data.
 
 .. rubric:: Responses

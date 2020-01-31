@@ -13,13 +13,22 @@ Generating Token
 Create a short lived access token to be used for authorized API calls. Typically a token will last 3600 seconds(one hour).
 
 .. tabs::
-   
-   .. group-tab:: C#
-   
-      .. code-block:: c#
 
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = client.LoginWithPassword(username, password);
+   .. group-tab:: REST
+   
+      .. code-block:: http
+      
+         POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
+         Content-Type: application/x-www-form-urlencoded
+
+            client_id={publicKey}&
+            grant_type=password&
+            username={username}&
+            password={password}&
+            scope=meshy.api offline_access
+
+        
+      (Form-encoding removed, and line breaks added for readability)
 
       |parameters|
 
@@ -51,21 +60,12 @@ Create a short lived access token to be used for authorized API calls. Typically
       password : :type:`string`, :required:`required`
          User secret credentials for login. When anonymous it is static as nopassword.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
-      
-         POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
-         Content-Type: application/x-www-form-urlencoded
+      .. code-block:: c#
 
-            client_id={publicKey}&
-            grant_type=password&
-            username={username}&
-            password={password}&
-            scope=meshy.api offline_access
-
-        
-      (Form-encoding removed, and line breaks added for readability)
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = client.LoginWithPassword(username, password);
 
       |parameters|
 

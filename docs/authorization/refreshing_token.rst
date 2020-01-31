@@ -16,15 +16,19 @@ Once the token expires the refresh token can be used to generate a new set of cr
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
+      
+         POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
+         Content-Type: application/x-www-form-urlencoded
 
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = client.LoginWithPassword(username, password);
-        var refreshToken = connection.RetrieveRefreshToken();
+            client_id={publicKey}&
+            grant_type=refresh_token&
+            refresh_token={refresh_token}
+
         
-        connection = await client.LoginWithRefreshAsync(refreshToken);
+      (Form-encoding removed, and line breaks added for readability)
 
       |parameters|
 
@@ -32,13 +36,9 @@ Once the token expires the refresh token can be used to generate a new set of cr
          Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      password : :type:`string`, :required:`required`
-         User secret credentials for login. When anonymous it is static as nopassword.
-      refreshToken : :type:`string`, :required:`required`
+      refresh_token : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
-         
+
    .. group-tab:: NodeJS
       
       .. code-block:: javascript
@@ -64,19 +64,16 @@ Once the token expires the refresh token can be used to generate a new set of cr
       refreshToken : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
 
-   .. group-tab:: REST
+       
+   .. group-tab:: C#
    
-      .. code-block:: http
-      
-         POST https://auth.meshydb.com/{accountName}/connect/token HTTP/1.1
-         Content-Type: application/x-www-form-urlencoded
+      .. code-block:: c#
 
-            client_id={publicKey}&
-            grant_type=refresh_token&
-            refresh_token={refresh_token}
-
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = client.LoginWithPassword(username, password);
+        var refreshToken = connection.RetrieveRefreshToken();
         
-      (Form-encoding removed, and line breaks added for readability)
+        connection = await client.LoginWithRefreshAsync(refreshToken);
 
       |parameters|
 
@@ -84,7 +81,11 @@ Once the token expires the refresh token can be used to generate a new set of cr
          Indicates which account you are connecting to.
       publicKey : :type:`string`, :required:`required`
          Public identifier of connecting service.
-      refresh_token : :type:`string`, :required:`required`
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      password : :type:`string`, :required:`required`
+         User secret credentials for login. When anonymous it is static as nopassword.
+      refreshToken : :type:`string`, :required:`required`
          Refresh token generated from  previous access token generation.
          
 .. rubric:: Responses

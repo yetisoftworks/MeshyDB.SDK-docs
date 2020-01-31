@@ -225,7 +225,14 @@ Example Result
 .. code-block:: json
 
    {
-      "createdCount": 1
+      "createdCount": 1,
+      "createdData": [
+                        {
+                           "_id": "5c78cc81dd870827a8e7b6c4",
+                           "firstName": "Bob",
+                           "lastName": "Bobberson"
+                        }
+                     ]
    }
 
 400 : Bad request

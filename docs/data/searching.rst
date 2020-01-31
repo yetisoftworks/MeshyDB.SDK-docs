@@ -14,24 +14,25 @@ Filter Mesh data from collection based on query parameters.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
+      .. code-block:: http
 
-         var pagedPersonResult = await connection.Meshes.SearchAsync<Person>(filter, page, pageSize);
+         GET https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter}&
+                                                               orderBy={orderBy}&
+                                                               page={page}&
+                                                               pageSize={pageSize} HTTP/1.1
+         Authorization: Bearer {access_token}
+         
+      (Line breaks added for readability)
 
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      mesh : :type:`string`, :required:`required`, default: class name
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
@@ -41,7 +42,6 @@ Filter Mesh data from collection based on query parameters.
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
-
 
    .. group-tab:: NodeJS
       
@@ -80,25 +80,24 @@ Filter Mesh data from collection based on query parameters.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
+      
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
 
-         GET https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter}&
-                                                               orderBy={orderBy}&
-                                                               page={page}&
-                                                               pageSize={pageSize} HTTP/1.1
-         Authorization: Bearer {access_token}
-         
-      (Line breaks added for readability)
+         var pagedPersonResult = await connection.Meshes.SearchAsync<Person>(filter, page, pageSize);
 
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      mesh : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
@@ -108,6 +107,7 @@ Filter Mesh data from collection based on query parameters.
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
+
 
 .. rubric:: Responses
 

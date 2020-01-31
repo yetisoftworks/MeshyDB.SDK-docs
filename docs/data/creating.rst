@@ -20,6 +20,55 @@ Create a specific record.
 
 .. tabs::
    
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
+         POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
+         
+            {
+               "firstName": "Bob",
+               "lastName": "Bobberson"
+            }
+            
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+         
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+         var client = MeshyClient.initialize(accountName, publicKey);
+
+         var anonymousUser = await client.registerAnonymousUser();
+
+         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
+
+         var createdMesh = await meshyConnection.meshes.create(meshName, 
+                                                         {
+                                                            firstName:"Bob",
+                                                            lastName:"Bobberson"
+                                                         });
+      
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      meshName : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+   
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -50,55 +99,6 @@ Create a specific record.
       mesh : :type:`string`, default: class name
          Identifies name of mesh collection. e.g. person.
 
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-         var client = MeshyClient.initialize(accountName, publicKey);
-
-         var anonymousUser = await client.registerAnonymousUser();
-
-         var meshyConnection = await client.loginAnonymously(anonymousUser.username);
-
-         var createdMesh = await meshyConnection.meshes.create(meshName, 
-                                                         {
-                                                            firstName:"Bob",
-                                                            lastName:"Bobberson"
-                                                         });
-      
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      meshName : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-   
-   .. group-tab:: REST
-   
-      .. code-block:: http
-
-         POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
-         
-            {
-               "firstName": "Bob",
-               "lastName": "Bobberson"
-            }
-            
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-         
 .. rubric:: Responses
 
 201 : Created
@@ -136,6 +136,52 @@ Bulk create many objects.
 
 .. tabs::
    
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
+         POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
+         
+            [{
+               "firstName": "Bob",
+               "lastName": "Bobberson"
+            }]
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+      
+         var client = MeshyClient.initialize(accountName, publicKey);
+         var anonymousUser = await client.registerAnonymousUser();
+         var connection = await client.loginAnonymously(anonymousUser.username);
+
+         var result = await connection.meshesService.createMany(meshName, [{
+                                                                              firstName:"Bob",
+                                                                              lastName:"Bobberson"
+                                                                          }]);
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      meshName : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
+
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -167,52 +213,6 @@ Bulk create many objects.
       username : :type:`string`, :required:`required`
          Unique user name for authentication.
       mesh : :type:`string`, default: class name
-         Identifies name of mesh collection. e.g. person.
-
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-      
-         var client = MeshyClient.initialize(accountName, publicKey);
-         var anonymousUser = await client.registerAnonymousUser();
-         var connection = await client.loginAnonymously(anonymousUser.username);
-
-         var result = await connection.meshesService.createMany(meshName, [{
-                                                                              firstName:"Bob",
-                                                                              lastName:"Bobberson"
-                                                                          }]);
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      meshName : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-
-         POST https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
-         
-            [{
-               "firstName": "Bob",
-               "lastName": "Bobberson"
-            }]
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
 
 .. rubric:: Responses

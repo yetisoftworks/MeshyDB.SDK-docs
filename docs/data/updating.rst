@@ -20,27 +20,26 @@ Update single mesh data record.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
 
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-         var person = await connection.Meshes.GetDataAsync<Person>(id);         
+         PUT https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
 
-         person.FirstName = "Bobbo";
+         {
+            "firstName": "Bobbo",
+            "lastName": "Bobberson"
+         }
 
-         person = await connection.Meshes.UpdateAsync(person);
-         
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      mesh : :type:`string`, :required:`required`, default: class name
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.
@@ -75,26 +74,27 @@ Update single mesh data record.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
 
-         PUT https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+         var person = await connection.Meshes.GetDataAsync<Person>(id);         
 
-         {
-            "firstName": "Bobbo",
-            "lastName": "Bobberson"
-         }
+         person.FirstName = "Bobbo";
 
+         person = await connection.Meshes.UpdateAsync(person);
+         
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      mesh : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to replace.
@@ -135,24 +135,26 @@ Bulk update data based on provided filter.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
 
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
+         PATCH https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
 
-         var result = await connection.Meshes.UpdateManyAsync<Person>(filter, update);
+         {
+            "filter": filter,
+            "update": update
+         }
 
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      mesh : :type:`string`, :required:`required`, default: class name
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`, :required:`required`
          Criteria provided in a MongoDB format to limit results.
@@ -184,26 +186,24 @@ Bulk update data based on provided filter.
       update : :type:`string`, :required:`required`
          Update command provided in a MongoDB format.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
 
-         PATCH https://api.meshydb.com/{accountName}/meshes/{mesh} HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
 
-         {
-            "filter": filter,
-            "update": update
-         }
+         var result = await connection.Meshes.UpdateManyAsync<Person>(filter, update);
 
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      mesh : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`, :required:`required`
          Criteria provided in a MongoDB format to limit results.

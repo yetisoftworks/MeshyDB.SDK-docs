@@ -22,42 +22,27 @@ API Reference
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
 
-         public class PopularState
-         {
-            [JsonProperty("state")]
-            public string State { get; set; }
+         GET https://api.meshydb.com/{accountName}/projections/{projectionName} HTTP/1.1
+         Authorization: Bearer {access_token}
             
-            [JsonProperty("attractions")]
-            public int Attractions { get; set; }
-         }
-
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-         
-         var stateAttractions = await connection.Projections.Get<PopularState>(projectionName,
-                                                                               filter,
-                                                                               orderBy, 
-                                                                               page, 
-                                                                               pageSize);
-
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
+         Identifies name of mesh collection. e.g. person.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
-      orderBy : :type:`object`
-         Defines which fields need to be ordered and direction. Review more ways to use `ordering <#ordering-data>`_.
+      orderBy : :type:`string`
+         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <#ordering-data>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -100,27 +85,42 @@ API Reference
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
 
-         GET https://api.meshydb.com/{accountName}/projections/{projectionName} HTTP/1.1
-         Authorization: Bearer {access_token}
+         public class PopularState
+         {
+            [JsonProperty("state")]
+            public string State { get; set; }
             
+            [JsonProperty("attractions")]
+            public int Attractions { get; set; }
+         }
+
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+         
+         var stateAttractions = await connection.Projections.Get<PopularState>(projectionName,
+                                                                               filter,
+                                                                               orderBy, 
+                                                                               page, 
+                                                                               pageSize);
+
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
-         Identifies name of mesh collection. e.g. person.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
       projectionName : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`
          Criteria provided in a MongoDB format to limit results.
-      orderBy : :type:`string`
-         Defines which fields need to be ordered and direction in a MongoDB format. Review more ways to use `ordering <#ordering-data>`_.
+      orderBy : :type:`object`
+         Defines which fields need to be ordered and direction. Review more ways to use `ordering <#ordering-data>`_.
       page : :type:`integer`, default: 1
          Page number of results to bring back.
       pageSize : :type:`integer`, max: 200, default: 25
@@ -171,6 +171,26 @@ The following example shows how to sort an object by Name in descending order.
 
 .. tabs::
 
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
+         GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1 } HTTP/1.1
+         Authorization: Bearer {access_token}
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+
+         var orderBy = { "Name": -1 };
+
+         var popularStates = await meshyConnection.projections.get<any>(projectionName, 
+                                                                        {
+                                                                            orderBy: orderBy,
+                                                                            page: page,
+                                                                            pageSize: pageSize
+                                                                        });
+
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -198,31 +218,31 @@ The following example shows how to sort an object by Name in descending order.
                                                                             page, 
                                                                             pageSize);
 
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-
-         var orderBy = { "Name": -1 };
-
-         var popularStates = await meshyConnection.projections.get<any>(projectionName, 
-                                                                        {
-                                                                            orderBy: orderBy,
-                                                                            page: page,
-                                                                            pageSize: pageSize
-                                                                        });
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-
-         GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1 } HTTP/1.1
-         Authorization: Bearer {access_token}
-
 Additional filters can be extended as follows. 
 
 This example will order by Name descending then Age ascending.
 
 .. tabs::
+
+   .. group-tab:: REST
+   
+      .. code-block:: http
+
+         GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1, "Age": 1 } HTTP/1.1
+         Authorization: Bearer {access_token}
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+
+         var orderBy = { "Name": -1, "Age": 1 };
+
+         var popularStates = await meshyConnection.projections.get<any>(projectionName, 
+                                                               {
+                                                                     orderBy: orderBy,
+                                                                     page: page,
+                                                                     pageSize: pageSize
+                                                               });
 
    .. group-tab:: C#
    
@@ -249,26 +269,6 @@ This example will order by Name descending then Age ascending.
                                                                             orderBy, 
                                                                             page, 
                                                                             pageSize);
-
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-
-         var orderBy = { "Name": -1, "Age": 1 };
-
-         var popularStates = await meshyConnection.projections.get<any>(projectionName, 
-                                                               {
-                                                                     orderBy: orderBy,
-                                                                     page: page,
-                                                                     pageSize: pageSize
-                                                               });
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-
-         GET https://api.meshydb.com/{accountName}/projections/{projectionName}?orderBy={ "Name": -1, "Age": 1 } HTTP/1.1
-         Authorization: Bearer {access_token}
 
 ````````````````````
 Supported Aggregates

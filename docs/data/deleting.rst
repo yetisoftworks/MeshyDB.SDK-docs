@@ -20,28 +20,24 @@ Delete a specific record of data.
 
 .. tabs::
 
-   .. group-tab:: C#
-
-      .. code-block:: c#
-         
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
+   .. group-tab:: REST
+   
+      .. code-block:: http
       
-         await connection.Meshes.DeleteAsync(person);
-
+         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
+         Authorization: Bearer {access_token}
+         
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      meshName : :type:`string`, :required:`required`, default: class name
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to remove.
-		 
+
    .. group-tab:: NodeJS
       
       .. code-block:: javascript
@@ -67,24 +63,28 @@ Delete a specific record of data.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to remove.
 
-   .. group-tab:: REST
-   
-      .. code-block:: http
-      
-         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
-         Authorization: Bearer {access_token}
+   .. group-tab:: C#
+
+      .. code-block:: c#
          
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+      
+         await connection.Meshes.DeleteAsync(person);
+
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      meshName : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies unique record of Mesh data to remove.
-
+		 
 .. rubric:: Responses
 
 204 : No Content
@@ -113,24 +113,20 @@ Delete all objects with the provided filter.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
 
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
+         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter} HTTP/1.1
+         Authorization: Bearer {access_token}
 
-         var result = connection.Meshes.DeleteMany<DeleteManyTest>(filter);
-      
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      meshName : :type:`string`, :required:`required`, default: class name
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`, :required:`required`
          Criteria provided in a MongoDB format to limit results.
@@ -158,20 +154,24 @@ Delete all objects with the provided filter.
       filter : :type:`object`, :required:`required`
          Criteria provided in a MongoDB format to limit results.
    
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
 
-         DELETE https://api.meshydb.com/{accountName}/meshes/{mesh}?filter={filter} HTTP/1.1
-         Authorization: Bearer {access_token}
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
 
+         var result = connection.Meshes.DeleteMany<DeleteManyTest>(filter);
+      
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      meshName : :type:`string`, :required:`required`, default: class name
          Identifies name of mesh collection. e.g. person.
       filter : :type:`string`, :required:`required`
          Criteria provided in a MongoDB format to limit results.

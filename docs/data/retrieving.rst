@@ -14,31 +14,21 @@ Retrieve single item from Mesh collection.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
 
-         // Mesh is derived from class name
-         public class Person: MeshData
-         {
-           public string FirstName { get; set; }
-           public string LastName { get; set; }
-         }
-
-         var client = MeshyClient.Initialize(accountName, publicKey);
-         var connection = await client.LoginAnonymouslyAsync(username);
-         
-         var person = await connection.Meshes.GetData<Person>(id);
-
+         GET https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
+         Authorization: Bearer {access_token}
+         Content-Type: application/json
+            
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      mesh : :type:`string`, default: class name
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      mesh : :type:`string`, :required:`required`
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies location of what Mesh data to retrieve.
@@ -68,21 +58,31 @@ Retrieve single item from Mesh collection.
       id : :type:`string`, :required:`required`
          Identifies location of what Mesh data to retrieve.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
+      .. code-block:: c#
 
-         GET https://api.meshydb.com/{accountName}/meshes/{mesh}/{id} HTTP/1.1
-         Authorization: Bearer {access_token}
-         Content-Type: application/json
-            
+         // Mesh is derived from class name
+         public class Person: MeshData
+         {
+           public string FirstName { get; set; }
+           public string LastName { get; set; }
+         }
+
+         var client = MeshyClient.Initialize(accountName, publicKey);
+         var connection = await client.LoginAnonymouslyAsync(username);
+         
+         var person = await connection.Meshes.GetData<Person>(id);
+
       |parameters|
 
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-      mesh : :type:`string`, :required:`required`
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      mesh : :type:`string`, default: class name
          Identifies name of mesh collection. e.g. person.
       id : :type:`string`, :required:`required`
          Identifies location of what Mesh data to retrieve.

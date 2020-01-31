@@ -20,6 +20,48 @@ Update details about role by id.
 
 .. tabs::
 
+   .. group-tab:: REST
+   
+      .. code-block:: http
+         
+        PUT https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
+        Authorization: Bearer {access_token}
+        Content-Type: application/json
+
+        {
+            "name":"test",
+            "description":"..."
+        }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+        var client = MeshyClient.initialize(accountName, publicKey);
+
+        var meshyConnection = await client.loginAnonymously(username);
+      
+        await meshyConnection.rolesService.update(roleId, role);
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      roleId : :type:`string`, :required:`required`
+         Identifies id of role.
+
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -45,48 +87,6 @@ Update details about role by id.
          Describes the purpose of the role.
       numberOfUsers : :type:`string`
          Read-only count of users assigned to the role.
-
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-        var client = MeshyClient.initialize(accountName, publicKey);
-
-        var meshyConnection = await client.loginAnonymously(username);
-      
-        await meshyConnection.rolesService.update(roleId, role);
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      roleId : :type:`string`, :required:`required`
-         Identifies id of role.
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-         
-        PUT https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
-        Authorization: Bearer {access_token}
-        Content-Type: application/json
-
-        {
-            "name":"test",
-            "description":"..."
-        }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-
 
 .. rubric:: Responses
 
@@ -129,21 +129,28 @@ Update specific permission from role by id.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
+      .. code-block:: http
+         
+        PUT https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
+        Authorization: Bearer {access_token}
+        Content-Type: application/json
 
-        await connection.Roles.UpdatePermissionAsync(roleId, permissionId, permission);
+        {
+            "permissibleName":"meshes",
+            "create":"true",
+            "update":"true",
+            "read":"true",
+            "delete":"true"
+        }
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissionId : :type:`string`, :required:`required`
@@ -192,28 +199,21 @@ Update specific permission from role by id.
       delete : type:`boolean`
          Identifies if role can delete data.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
-         
-        PUT https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
-        Authorization: Bearer {access_token}
-        Content-Type: application/json
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
 
-        {
-            "permissibleName":"meshes",
-            "create":"true",
-            "update":"true",
-            "read":"true",
-            "delete":"true"
-        }
+        await connection.Roles.UpdatePermissionAsync(roleId, permissionId, permission);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissionId : :type:`string`, :required:`required`
@@ -276,51 +276,6 @@ Add users from specific role.
 
 .. tabs::
 
-   .. group-tab:: C#
-   
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
-
-        var batchRoleAdd = new BatchRoleAdd();
-
-        await connection.Roles.AddUsersAsync(roleId, batchRoleAdd);
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      roleId : :type:`string`, :required:`required`
-         Identifies id of role.
-      batchRoleAdd : :type:`object`, :required:`required`
-         Batch object of user ids to be added from role.
-
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-        var client = MeshyClient.initialize(accountName, publicKey);
-
-        var meshyConnection = await client.loginAnonymously(username);
-      
-        await meshyConnection.rolesService.addUsers(roleId, batchRoleAdd);
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      roleId : :type:`string`, :required:`required`
-         Identifies id of role.
-      batchRoleAdd : :type:`object`, :required:`required`
-         Batch object of user ids to be added from role.
-
    .. group-tab:: REST
    
       .. code-block:: http
@@ -345,6 +300,51 @@ Add users from specific role.
          Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+        var client = MeshyClient.initialize(accountName, publicKey);
+
+        var meshyConnection = await client.loginAnonymously(username);
+      
+        await meshyConnection.rolesService.addUsers(roleId, batchRoleAdd);
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      roleId : :type:`string`, :required:`required`
+         Identifies id of role.
+      batchRoleAdd : :type:`object`, :required:`required`
+         Batch object of user ids to be added from role.
+
+   .. group-tab:: C#
+   
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
+
+        var batchRoleAdd = new BatchRoleAdd();
+
+        await connection.Roles.AddUsersAsync(roleId, batchRoleAdd);
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      roleId : :type:`string`, :required:`required`
+         Identifies id of role.
+      batchRoleAdd : :type:`object`, :required:`required`
+         Batch object of user ids to be added from role.
 
 .. rubric:: Responses
 

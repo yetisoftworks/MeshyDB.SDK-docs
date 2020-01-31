@@ -20,23 +20,23 @@ Search details about roles.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
+      .. code-block:: http
+         
+        GET https://api.meshydb.com/{accountName}/roles?name={name}&
+                                                        page={page}&
+                                                        pageSize={pageSize} HTTP/1.1
+        Authorization: Bearer {access_token}
+
+        (Line breaks added for readability)
       
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
-
-        await connection.Roles.SearchAsync(name, page, pageSize);
-
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -73,23 +73,23 @@ Search details about roles.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
-         
-        GET https://api.meshydb.com/{accountName}/roles?name={name}&
-                                                        page={page}&
-                                                        pageSize={pageSize} HTTP/1.1
-        Authorization: Bearer {access_token}
-
-        (Line breaks added for readability)
+      .. code-block:: c#
       
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
+
+        await connection.Roles.SearchAsync(name, page, pageSize);
+
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -135,21 +135,23 @@ Search permissions from role by id.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
+      .. code-block:: http
+         
+        GET https://api.meshydb.com/{accountName}/roles/{roleId}/permissions?permissibleName={permissibleName}&
+                                                                             page={page}&
+                                                                             pageSize={pageSize} HTTP/1.1
+        Authorization: Bearer {access_token}
 
-        await connection.Roles.SearchPermissionAsync(roleId, permissibleName, page, pageSize);
+        (Line breaks added for readability)
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissibleName : :type:`string`
@@ -190,23 +192,21 @@ Search permissions from role by id.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
-         
-        GET https://api.meshydb.com/{accountName}/roles/{roleId}/permissions?permissibleName={permissibleName}&
-                                                                             page={page}&
-                                                                             pageSize={pageSize} HTTP/1.1
-        Authorization: Bearer {access_token}
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
 
-        (Line breaks added for readability)
+        await connection.Roles.SearchPermissionAsync(roleId, permissibleName, page, pageSize);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissibleName : :type:`string`
@@ -258,21 +258,23 @@ Search for permissible to assign to a permission.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
+      .. code-block:: http
+         
+        GET https://api.meshydb.com/{accountName}/permissibles?name={name}&
+                                                               page={page}&
+                                                               pageSize={pageSize} HTTP/1.1
+        Authorization: Bearer {access_token}
 
-        await connection.Roles.SearchPermissibleAsync(name, page, pageSize);
+        (Line breaks added for readability)
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -305,23 +307,21 @@ Search for permissible to assign to a permission.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-   .. group-tab:: REST
+.   .. group-tab:: C#
    
-      .. code-block:: http
-         
-        GET https://api.meshydb.com/{accountName}/permissibles?name={name}&
-                                                               page={page}&
-                                                               pageSize={pageSize} HTTP/1.1
-        Authorization: Bearer {access_token}
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
 
-        (Line breaks added for readability)
+        await connection.Roles.SearchPermissibleAsync(name, page, pageSize);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       name : :type:`string`
          Case-insensitive partial name search.
       page : :type:`integer`, default: 1
@@ -329,7 +329,7 @@ Search for permissible to assign to a permission.
       pageSize : :type:`integer`, max: 200, default: 25
          Number of results to bring back per page.
 
-.. rubric:: Responses
+. rubric:: Responses
 
 200 : OK
     * Identifies if permissibles were found.

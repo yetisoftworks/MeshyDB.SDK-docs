@@ -22,6 +22,54 @@ Creating a role allows it to be assignable to a user.
 
 .. tabs::
 
+   .. group-tab:: REST
+   
+      .. code-block:: http
+         
+        POST https://api.meshydb.com/{accountName}/roles HTTP/1.1
+        Authorization: Bearer {access_token}
+        Content-Type: application/json
+
+        {
+            "name":"test",
+            "description":"..."
+        }
+
+      |parameters|
+      
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      name : :type:`string`, :required:`required`
+         Name of the role.
+      description : :type:`string`
+         Describes the purpose of the role.
+
+   .. group-tab:: NodeJS
+      
+      .. code-block:: javascript
+         
+        var client = MeshyClient.initialize(accountName, publicKey);
+        var meshyConnection = await client.loginAnonymously(username);
+      
+        await meshyConnection.rolesService.create(role);
+
+      |parameters|
+
+      accountName : :type:`string`, :required:`required`
+         Indicates which account you are connecting to.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      name : :type:`string`, :required:`required`
+         Name of the role.
+      description : :type:`string`
+         Describes the purpose of the role.
+      numberOfUsers : :type:`string`
+         Read-only count of users assigned to the role.
+
    .. group-tab:: C#
    
       .. code-block:: c#
@@ -48,54 +96,6 @@ Creating a role allows it to be assignable to a user.
       numberOfUsers : :type:`string`
          Read-only count of users assigned to the role.
 		
-   .. group-tab:: NodeJS
-      
-      .. code-block:: javascript
-         
-        var client = MeshyClient.initialize(accountName, publicKey);
-        var meshyConnection = await client.loginAnonymously(username);
-      
-        await meshyConnection.rolesService.create(role);
-
-      |parameters|
-
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      name : :type:`string`, :required:`required`
-         Name of the role.
-      description : :type:`string`
-         Describes the purpose of the role.
-      numberOfUsers : :type:`string`
-         Read-only count of users assigned to the role.
-
-   .. group-tab:: REST
-   
-      .. code-block:: http
-         
-        POST https://api.meshydb.com/{accountName}/roles HTTP/1.1
-        Authorization: Bearer {access_token}
-        Content-Type: application/json
-
-        {
-            "name":"test",
-            "description":"..."
-        }
-
-      |parameters|
-      
-      accountName : :type:`string`, :required:`required`
-         Indicates which account you are connecting to.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      name : :type:`string`, :required:`required`
-         Name of the role.
-      description : :type:`string`
-         Describes the purpose of the role.
-
 .. rubric:: Responses
 
 201 : Created
@@ -134,23 +134,28 @@ When creating a permission it is assigned to a role. When a user has the role th
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
+      .. code-block:: http
+         
+        POST https://api.meshydb.com/{accountName}/roles/{roleId}/permissions HTTP/1.1
+        Authorization: Bearer {access_token}
+        Content-Type: application/json
 
-        var permission = new Permission();
-
-        await connection.Roles.CreatePermissionAsync(roleId, permission);
+        {
+            "permissibleName":"meshes",
+            "create":"true",
+            "update":"true",
+            "read":"true",
+            "delete":"true"
+        }
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissibleName : :type:`string`, :required:`required`
@@ -194,28 +199,23 @@ When creating a permission it is assigned to a role. When a user has the role th
       delete : type:`boolean`
          Identifies if role can delete data.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
-         
-        POST https://api.meshydb.com/{accountName}/roles/{roleId}/permissions HTTP/1.1
-        Authorization: Bearer {access_token}
-        Content-Type: application/json
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
 
-        {
-            "permissibleName":"meshes",
-            "create":"true",
-            "update":"true",
-            "read":"true",
-            "delete":"true"
-        }
+        var permission = new Permission();
+
+        await connection.Roles.CreatePermissionAsync(roleId, permission);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissibleName : :type:`string`, :required:`required`

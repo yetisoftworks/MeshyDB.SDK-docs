@@ -20,26 +20,20 @@ Retrieve details about role by id.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
-
-        await connection.Roles.GetAsync(roleId);
+      .. code-block:: http
+         
+        GET https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
+        Authorization: Bearer {access_token}
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
-      username : :type:`string`, :required:`required`
-         Unique user name for authentication.
-      roleId : :type:`string`, :required:`required`
-         Identifies id of role.
-		
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+
    .. group-tab:: NodeJS
       
       .. code-block:: javascript
@@ -61,20 +55,26 @@ Retrieve details about role by id.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
-         
-        GET https://api.meshydb.com/{accountName}/roles/{roleId} HTTP/1.1
-        Authorization: Bearer {access_token}
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
+
+        await connection.Roles.GetAsync(roleId);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
-
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
+      username : :type:`string`, :required:`required`
+         Unique user name for authentication.
+      roleId : :type:`string`, :required:`required`
+         Identifies id of role.
+		
 .. rubric:: Responses
 
 200 : OK
@@ -110,21 +110,19 @@ Get specific permission from role by id.
 
 .. tabs::
 
-   .. group-tab:: C#
+   .. group-tab:: REST
    
-      .. code-block:: c#
-      
-        var client = MeshyClient.Initialize(accountName, publicKey);
-        var connection = await client.LoginAnonymouslyAsync(username);
-
-        var permission = await connection.Roles.GetPermissionAsync(roleId, permissionId);
+      .. code-block:: http
+         
+        GET https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
+        Authorization: Bearer {access_token}
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      publicKey : :type:`string`, :required:`required`
-         Public identifier of connecting service.
+      access_token : :type:`string`, :required:`required`
+         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissionId : :type:`string`, :required:`required`
@@ -153,19 +151,21 @@ Get specific permission from role by id.
       permissionId : :type:`string`, :required:`required`
          Identifies id of permission.
 
-   .. group-tab:: REST
+   .. group-tab:: C#
    
-      .. code-block:: http
-         
-        GET https://api.meshydb.com/{accountName}/roles/{roleId}/permissions/{permissionId} HTTP/1.1
-        Authorization: Bearer {access_token}
+      .. code-block:: c#
+      
+        var client = MeshyClient.Initialize(accountName, publicKey);
+        var connection = await client.LoginAnonymouslyAsync(username);
+
+        var permission = await connection.Roles.GetPermissionAsync(roleId, permissionId);
 
       |parameters|
       
       accountName : :type:`string`, :required:`required`
          Indicates which account you are connecting to.
-      access_token : :type:`string`, :required:`required`
-         Token identifying authorization with MeshyDB requested during `Generating Token <../authorization/generating_token.html#generating-token>`_.
+      publicKey : :type:`string`, :required:`required`
+         Public identifier of connecting service.
       roleId : :type:`string`, :required:`required`
          Identifies id of role.
       permissionId : :type:`string`, :required:`required`
